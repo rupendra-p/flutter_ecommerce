@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/components/product_card.dart';
-import 'package:shop_app/models/Product.dart';
+import '/components/product_card.dart';
+import '/models/Product.dart';
 
-import '../../../size_config.dart';
+import '/utils/size_config.dart';
 import 'section_title.dart';
 
 class PopularProducts extends StatelessWidget {
@@ -11,11 +11,14 @@ class PopularProducts extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.heightMultiplier * 2.5,
+          ),
           child: SectionTitle(title: "Popular Products", press: () {}),
         ),
-        SizedBox(height: getProportionateScreenWidth(20)),
+        SizedBox(
+          height: SizeConfig.heightMultiplier * 2.5,
+        ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -30,7 +33,9 @@ class PopularProducts extends StatelessWidget {
                       .shrink(); // here by default width and height is 0
                 },
               ),
-              SizedBox(width: getProportionateScreenWidth(20)),
+              SizedBox(
+                width: SizeConfig.heightMultiplier * 2.5,
+              ),
             ],
           ),
         )

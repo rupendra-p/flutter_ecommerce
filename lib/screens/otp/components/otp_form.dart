@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/components/default_button.dart';
-import 'package:shop_app/size_config.dart';
+import '/components/default_button.dart';
+import '/utils/size_config.dart';
 
-import '../../../constants.dart';
+import '/utils/constants.dart';
 
 class OtpForm extends StatefulWidget {
   const OtpForm({
@@ -45,16 +45,16 @@ class _OtpFormState extends State<OtpForm> {
     return Form(
       child: Column(
         children: [
-          SizedBox(height: SizeConfig.screenHeight * 0.15),
+          SizedBox(height: SizeConfig.heightMultiplier * .5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: getProportionateScreenWidth(60),
+                width: SizeConfig.heightMultiplier * 7.5,
                 child: TextFormField(
                   autofocus: true,
                   obscureText: true,
-                  style: TextStyle(fontSize: 24),
+                  // style: TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
@@ -64,11 +64,11 @@ class _OtpFormState extends State<OtpForm> {
                 ),
               ),
               SizedBox(
-                width: getProportionateScreenWidth(60),
+                width: SizeConfig.heightMultiplier * 7.5,
                 child: TextFormField(
                   focusNode: pin2FocusNode,
                   obscureText: true,
-                  style: TextStyle(fontSize: 24),
+                  // style: TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
@@ -76,11 +76,11 @@ class _OtpFormState extends State<OtpForm> {
                 ),
               ),
               SizedBox(
-                width: getProportionateScreenWidth(60),
+                width: SizeConfig.heightMultiplier * 7.5,
                 child: TextFormField(
                   focusNode: pin3FocusNode,
                   obscureText: true,
-                  style: TextStyle(fontSize: 24),
+                  // style: TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
@@ -88,11 +88,11 @@ class _OtpFormState extends State<OtpForm> {
                 ),
               ),
               SizedBox(
-                width: getProportionateScreenWidth(60),
+                width: SizeConfig.heightMultiplier * 7.5,
                 child: TextFormField(
                   focusNode: pin4FocusNode,
                   obscureText: true,
-                  style: TextStyle(fontSize: 24),
+                  // style: TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
@@ -106,7 +106,9 @@ class _OtpFormState extends State<OtpForm> {
               ),
             ],
           ),
-          SizedBox(height: SizeConfig.screenHeight * 0.15),
+          SizedBox(
+            height: SizeConfig.heightMultiplier,
+          ),
           DefaultButton(
             text: "Continue",
             press: () {},

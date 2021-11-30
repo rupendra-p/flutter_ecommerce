@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../constants.dart';
+import '/utils/constants.dart';
+import '/utils/size_config.dart';
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
@@ -17,13 +18,19 @@ class ProfileMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(
+        horizontal: SizeConfig.heightMultiplier * 2.5,
+        vertical: SizeConfig.heightMultiplier * 1.3,
+      ),
       child: TextButton(
         style: TextButton.styleFrom(
           primary: kPrimaryColor,
-          padding: EdgeInsets.all(20),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          padding: EdgeInsets.all(SizeConfig.heightMultiplier * 2.5),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              SizeConfig.heightMultiplier * 2,
+            ),
+          ),
           backgroundColor: Color(0xFFF5F6F9),
         ),
         onPressed: press,
@@ -32,9 +39,9 @@ class ProfileMenu extends StatelessWidget {
             SvgPicture.asset(
               icon,
               color: kPrimaryColor,
-              width: 22,
+              // width: 22,
             ),
-            SizedBox(width: 20),
+            SizedBox(width: SizeConfig.heightMultiplier * 2.5),
             Expanded(child: Text(text)),
             Icon(Icons.arrow_forward_ios),
           ],

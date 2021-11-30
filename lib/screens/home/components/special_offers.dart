@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../size_config.dart';
+import '/utils/size_config.dart';
 import 'section_title.dart';
 
 class SpecialOffers extends StatelessWidget {
@@ -13,14 +13,17 @@ class SpecialOffers extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.heightMultiplier * 2.5,
+          ),
           child: SectionTitle(
             title: "Special for you",
             press: () {},
           ),
         ),
-        SizedBox(height: getProportionateScreenWidth(20)),
+        SizedBox(
+          height: SizeConfig.heightMultiplier * 2.5,
+        ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -37,7 +40,9 @@ class SpecialOffers extends StatelessWidget {
                 numOfBrands: 24,
                 press: () {},
               ),
-              SizedBox(width: getProportionateScreenWidth(20)),
+              SizedBox(
+                width: SizeConfig.heightMultiplier * 2.5,
+              ),
             ],
           ),
         ),
@@ -62,14 +67,18 @@ class SpecialOfferCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+      padding: EdgeInsets.only(
+        left: SizeConfig.heightMultiplier * 2.5,
+      ),
       child: GestureDetector(
         onTap: press,
         child: SizedBox(
-          width: getProportionateScreenWidth(242),
-          height: getProportionateScreenWidth(100),
+          width: SizeConfig.heightMultiplier * 40,
+          height: SizeConfig.heightMultiplier * 12.5,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(
+              SizeConfig.heightMultiplier * 2.5,
+            ),
             child: Stack(
               children: [
                 Image.asset(
@@ -90,8 +99,8 @@ class SpecialOfferCard extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(15.0),
-                    vertical: getProportionateScreenWidth(10),
+                    horizontal: SizeConfig.heightMultiplier * 2,
+                    vertical: SizeConfig.heightMultiplier * 25,
                   ),
                   child: Text.rich(
                     TextSpan(
@@ -100,7 +109,7 @@ class SpecialOfferCard extends StatelessWidget {
                         TextSpan(
                           text: "$category\n",
                           style: TextStyle(
-                            fontSize: getProportionateScreenWidth(18),
+                            // fontSize: getProportionateScreenWidth(18),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

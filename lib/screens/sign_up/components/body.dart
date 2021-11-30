@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/components/socal_card.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/size_config.dart';
+import '/components/socal_card.dart';
+import '/utils/constants.dart';
+import '/utils/size_config.dart';
 
 import 'sign_up_form.dart';
 
@@ -12,20 +12,21 @@ class Body extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.heightMultiplier * 2.5,
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.04), // 4%
+                SizedBox(height: SizeConfig.heightMultiplier * .5), // 4%
                 Text("Register Account", style: headingStyle),
                 Text(
                   "Complete your details or continue \nwith social media",
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
+                SizedBox(height: SizeConfig.heightMultiplier * .5),
                 SignUpForm(),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
+                SizedBox(height: SizeConfig.heightMultiplier * .5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -43,7 +44,7 @@ class Body extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: getProportionateScreenHeight(20)),
+                SizedBox(height: SizeConfig.heightMultiplier * 2.5),
                 Text(
                   'By continuing your confirm that you agree \nwith our Term and Condition',
                   textAlign: TextAlign.center,

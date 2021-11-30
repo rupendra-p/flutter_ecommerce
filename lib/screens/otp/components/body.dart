@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/size_config.dart';
+import '/utils/constants.dart';
+import '/utils/size_config.dart';
 
 import 'otp_form.dart';
 
@@ -10,12 +10,13 @@ class Body extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+        padding: EdgeInsets.symmetric(
+          horizontal: SizeConfig.heightMultiplier * 2.5,
+        ),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: SizeConfig.screenHeight * 0.05),
+              SizedBox(height: SizeConfig.heightMultiplier),
               Text(
                 "OTP Verification",
                 style: headingStyle,
@@ -23,7 +24,7 @@ class Body extends StatelessWidget {
               Text("We sent your code to +1 898 860 ***"),
               buildTimer(),
               OtpForm(),
-              SizedBox(height: SizeConfig.screenHeight * 0.1),
+              SizedBox(height: SizeConfig.heightMultiplier),
               GestureDetector(
                 onTap: () {
                   // OTP code resend
