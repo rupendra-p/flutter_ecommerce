@@ -66,7 +66,7 @@ class ProductCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: SizeConfig.heightMultiplier * 2.5,
                       fontWeight: FontWeight.w600,
-                      color: secondayColor,
+                      color: secondaryColor,
                     ),
                   ),
                   InkWell(
@@ -81,7 +81,7 @@ class ProductCard extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: product.isFavourite
                             ? primaryColor.withOpacity(0.15)
-                            : secondayColor.withOpacity(0.1),
+                            : secondaryColor.withOpacity(0.1),
                         shape: BoxShape.circle,
                       ),
                       child: SvgPicture.asset(
