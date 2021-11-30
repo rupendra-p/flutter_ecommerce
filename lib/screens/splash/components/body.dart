@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import '/constant/constants.dart';
 import '/screens/sign_in/sign_in_screen.dart';
@@ -87,12 +88,14 @@ class _BodyState extends State<Body> {
 
   AnimatedContainer buildDot({int? index}) {
     return AnimatedContainer(
-      duration: kAnimationDuration,
+      duration: Duration(
+        seconds: 5,
+      ),
       margin: EdgeInsets.only(right: 5),
       height: 6,
       width: currentPage == index ? 20 : 6,
       decoration: BoxDecoration(
-        color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
+        color: currentPage == index ? primaryColor : Color(0xFFD8D8D8),
         borderRadius: BorderRadius.circular(3),
       ),
     );

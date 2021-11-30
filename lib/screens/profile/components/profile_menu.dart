@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,23 +23,21 @@ class ProfileMenu extends StatelessWidget {
         horizontal: SizeConfig.heightMultiplier * 2.5,
         vertical: SizeConfig.heightMultiplier * 1.3,
       ),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          primary: kPrimaryColor,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
           padding: EdgeInsets.all(SizeConfig.heightMultiplier * 2.5),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
               SizeConfig.heightMultiplier * 2,
             ),
           ),
-          backgroundColor: Color(0xFFF5F6F9),
         ),
         onPressed: press,
         child: Row(
           children: [
             SvgPicture.asset(
               icon,
-              color: kPrimaryColor,
+              color: primaryColor,
               // width: 22,
             ),
             SizedBox(width: SizeConfig.heightMultiplier * 2.5),

@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
 import '/constant/constants.dart';
@@ -20,7 +21,7 @@ class SplashContent extends StatelessWidget {
           "TOKOTO",
           style: TextStyle(
             fontSize: SizeConfig.heightMultiplier * 4,
-            color: kPrimaryColor,
+            color: primaryColor,
             fontWeight: FontWeight.bold,
           ),
         ),
