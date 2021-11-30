@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/components/custom_surfix_icon.dart';
-import 'package:shop_app/components/default_button.dart';
-import 'package:shop_app/components/form_error.dart';
-import 'package:shop_app/components/no_account_text.dart';
-import 'package:shop_app/size_config.dart';
+import '/components/custom_surfix_icon.dart';
+import '/components/default_button.dart';
+import '/components/form_error.dart';
+import '/components/no_account_text.dart';
+import '/utils/size_config.dart';
 
-import '../../../constants.dart';
+import '/utils/constants.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -14,15 +14,18 @@ class Body extends StatelessWidget {
       width: double.infinity,
       child: SingleChildScrollView(
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.heightMultiplier * 2.5,
+          ),
           child: Column(
             children: [
-              SizedBox(height: SizeConfig.screenHeight * 0.04),
+              SizedBox(
+                height: SizeConfig.heightMultiplier * .5,
+              ),
               Text(
                 "Forgot Password",
                 style: TextStyle(
-                  fontSize: getProportionateScreenWidth(28),
+                  // fontSize: getProportionateScreenWidth(28),
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
@@ -31,7 +34,9 @@ class Body extends StatelessWidget {
                 "Please enter your email and we will send \nyou a link to return to your account",
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: SizeConfig.screenHeight * 0.1),
+              SizedBox(
+                height: SizeConfig.heightMultiplier * .5,
+              ),
               ForgotPassForm(),
             ],
           ),
@@ -94,9 +99,13 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
               suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
             ),
           ),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(
+            height: SizeConfig.heightMultiplier * 23.8,
+          ),
           FormError(errors: errors),
-          SizedBox(height: SizeConfig.screenHeight * 0.1),
+          SizedBox(
+            height: SizeConfig.heightMultiplier * .5,
+          ),
           DefaultButton(
             text: "Continue",
             press: () {
@@ -105,7 +114,9 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
               }
             },
           ),
-          SizedBox(height: SizeConfig.screenHeight * 0.1),
+          SizedBox(
+            height: SizeConfig.heightMultiplier * .5,
+          ),
           NoAccountText(),
         ],
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../size_config.dart';
+import '/utils/size_config.dart';
 
 class DiscountBanner extends StatelessWidget {
   const DiscountBanner({
@@ -12,10 +12,12 @@ class DiscountBanner extends StatelessWidget {
     return Container(
       // height: 90,
       width: double.infinity,
-      margin: EdgeInsets.all(getProportionateScreenWidth(20)),
+      margin: EdgeInsets.all(
+        SizeConfig.heightMultiplier * 2.5,
+      ),
       padding: EdgeInsets.symmetric(
-        horizontal: getProportionateScreenWidth(20),
-        vertical: getProportionateScreenWidth(15),
+        horizontal: SizeConfig.heightMultiplier * 2.5,
+        vertical: SizeConfig.heightMultiplier * 2,
       ),
       decoration: BoxDecoration(
         color: Color(0xFF4A3298),
@@ -29,7 +31,7 @@ class DiscountBanner extends StatelessWidget {
             TextSpan(
               text: "Cashback 20%",
               style: TextStyle(
-                fontSize: getProportionateScreenWidth(24),
+                // fontSize: getProportionateScreenWidth(24),
                 fontWeight: FontWeight.bold,
               ),
             ),

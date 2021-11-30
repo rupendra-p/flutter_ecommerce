@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/screens/cart/cart_screen.dart';
+import '/screens/cart/cart_screen.dart';
 
-import '../../../size_config.dart';
+import '/utils/size_config.dart';
 import 'icon_btn_with_counter.dart';
 import 'search_field.dart';
 
@@ -13,8 +13,9 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+      padding: EdgeInsets.symmetric(
+        horizontal: SizeConfig.heightMultiplier * 2.5,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
