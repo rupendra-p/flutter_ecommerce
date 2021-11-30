@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '/utils/constants.dart';
+import '../../../constant/constants.dart';
 
 import '/utils/size_config.dart';
 
