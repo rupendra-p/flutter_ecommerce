@@ -89,13 +89,13 @@ class _BodyState extends State<Body> {
   AnimatedContainer buildDot({int? index}) {
     return AnimatedContainer(
       duration: Duration(
-        seconds: 5,
+        milliseconds: 400,
       ),
       margin: EdgeInsets.only(right: 5),
       height: 6,
       width: currentPage == index ? 20 : 6,
       decoration: BoxDecoration(
-        color: currentPage == index ? primaryColor : Color(0xFFD8D8D8),
+        color: currentPage == index ? secondaryColor : colorDarkGrey,
         borderRadius: BorderRadius.circular(3),
       ),
     );

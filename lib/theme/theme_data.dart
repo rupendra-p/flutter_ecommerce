@@ -5,6 +5,13 @@ import 'package:flutter/material.dart';
 ThemeData lightTheme(BuildContext context) {
   return ThemeData(
     primaryColor: primaryColor,
+    // scaffoldBackgroundColor: secondaryColor.withOpacity(
+    //   0.5,
+    // ),
+    canvasColor: canvasColor,
+    // secondaryColor.withOpacity(
+    //   0.5,
+    // ),
     appBarTheme: const AppBarTheme(color: primaryColor),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -13,7 +20,7 @@ ThemeData lightTheme(BuildContext context) {
       ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedItemColor:  primaryColor,
+      selectedItemColor: primaryColor,
       backgroundColor: colorWhite,
       unselectedItemColor: colorLightGrey,
       showSelectedLabels: true,

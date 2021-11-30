@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 const Color primaryColor = Color(0xff00244C);
 const Color primaryAccent = Color(0xff00244C);
 const Color secondaryColor = Color(0xffffa400);
+Color canvasColor = Colors.orange.shade100;
 
 const Color colorWhite = Color(0xffFFFFFF);
 
