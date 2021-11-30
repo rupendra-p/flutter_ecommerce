@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../size_config.dart';
+import '/utils/size_config.dart';
 import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
@@ -14,15 +14,23 @@ class Body extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: getProportionateScreenHeight(20)),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 2.5,
+            ),
             HomeHeader(),
-            SizedBox(height: getProportionateScreenWidth(10)),
+            SizedBox(
+              height: SizeConfig.heightMultiplier,
+            ),
             DiscountBanner(),
             Categories(),
             SpecialOffers(),
-            SizedBox(height: getProportionateScreenWidth(30)),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 2.5,
+            ),
             PopularProducts(),
-            SizedBox(height: getProportionateScreenWidth(30)),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 2.5,
+            ),
           ],
         ),
       ),
