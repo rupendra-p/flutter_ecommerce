@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 ThemeData lightTheme(BuildContext context) {
   return ThemeData(
     primaryColor: primaryColor,
-    appBarTheme: const AppBarTheme(),
+    appBarTheme: const AppBarTheme(color: primaryColor),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        primary: secondayColor,
+        primary: secondaryColor,
         //fixedSize: Size.fromHeight(SizeConfig.heightMultiplier*5),
       ),
     ),
