@@ -20,7 +20,6 @@ class DefaultButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          primary: Colors.white,
         ),
         onPressed: press as void Function()?,
         child: Text(
