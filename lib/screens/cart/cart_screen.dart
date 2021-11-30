@@ -19,13 +19,14 @@ class CartScreen extends StatelessWidget {
     return AppBar(
       title: Column(
         children: [
-          Text(
+          const Text(
             "Your Cart",
-            style: TextStyle(color: Colors.black),
           ),
           Text(
             "${demoCarts.length} items",
-            style: Theme.of(context).textTheme.caption,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ],
       ),

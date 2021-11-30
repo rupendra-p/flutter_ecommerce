@@ -12,7 +12,15 @@ ThemeData lightTheme(BuildContext context) {
     // secondaryColor.withOpacity(
     //   0.5,
     // ),
-    appBarTheme: const AppBarTheme(color: primaryColor),
+    appBarTheme: AppBarTheme(
+        color: primaryColor,
+        titleTextStyle: TextStyle(
+          color: colorWhite,
+          fontSize: 2 * SizeConfig.textMultiplier,
+        ),
+        toolbarTextStyle: const TextStyle(
+          color: colorWhite,
+        )),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         primary: secondaryColor,
