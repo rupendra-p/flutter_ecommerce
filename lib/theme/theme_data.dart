@@ -20,8 +20,7 @@ ThemeData lightTheme(BuildContext context) {
       ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedItemColor: primaryColor,
-      backgroundColor: colorWhite,
+      selectedItemColor: secondaryColor,
       unselectedItemColor: colorLightGrey,
       showSelectedLabels: true,
     ),

@@ -1,7 +1,6 @@
 import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
-import '/constant/constants.dart';
 import '/utils/size_config.dart';
 
 class SearchField extends StatelessWidget {
@@ -12,7 +11,7 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: SizeConfig.widthMultiplier * 65,
+      width: SizeConfig.widthMultiplier * 60,
       decoration: BoxDecoration(
         color: secondaryColor.withOpacity(0.1),
         borderRadius: BorderRadius.circular(15),
