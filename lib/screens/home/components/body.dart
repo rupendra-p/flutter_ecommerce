@@ -15,7 +15,7 @@ class Body extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: SizeConfig.heightMultiplier * 2.5,
+              height: SizeConfig.heightMultiplier * 1,
             ),
             HomeHeader(),
             SizedBox(
