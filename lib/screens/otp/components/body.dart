@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/utils/constants.dart';
+import '/constant/constants.dart';
 import '/utils/size_config.dart';
 
 import 'otp_form.dart';
