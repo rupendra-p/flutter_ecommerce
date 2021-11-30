@@ -17,7 +17,7 @@ class PopularProducts extends StatelessWidget {
           child: SectionTitle(title: "Popular Products", press: () {}),
         ),
         SizedBox(
-          height: SizeConfig.heightMultiplier * 2.5,
+          height: SizeConfig.heightMultiplier,
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

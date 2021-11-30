@@ -11,7 +11,7 @@ class Body extends StatelessWidget {
         SizedBox(height: SizeConfig.heightMultiplier),
         Image.asset(
           "assets/images/success.png",
-          height: SizeConfig.heightMultiplier, //40%
+          height: SizeConfig.heightMultiplier * 40, //40%
         ),
         SizedBox(height: SizeConfig.heightMultiplier),
         Text(
@@ -24,7 +24,7 @@ class Body extends StatelessWidget {
         ),
         Spacer(),
         SizedBox(
-          width: SizeConfig.widthMultiplier,
+          width: SizeConfig.widthMultiplier * 50,
           child: DefaultButton(
             text: "Back to home",
             press: () {

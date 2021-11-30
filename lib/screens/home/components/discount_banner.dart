@@ -16,8 +16,8 @@ class DiscountBanner extends StatelessWidget {
         SizeConfig.heightMultiplier * 2.5,
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: SizeConfig.heightMultiplier * 2.5,
-        vertical: SizeConfig.heightMultiplier * 2,
+        horizontal: SizeConfig.heightMultiplier * 5,
+        vertical: SizeConfig.heightMultiplier * 6,
       ),
       decoration: BoxDecoration(
         color: Color(0xFF4A3298),
