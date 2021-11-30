@@ -1,8 +1,8 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import '/components/rounded_icon_btn.dart';
 import '/models/Product.dart';
 
-import '../../../constant/constants.dart';
 import '/utils/size_config.dart';
 
 class ColorDots extends StatelessWidget {
@@ -69,7 +69,7 @@ class ColorDot extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.transparent,
         border:
-            Border.all(color: isSelected ? kPrimaryColor : Colors.transparent),
+            Border.all(color: isSelected ? primaryColor : Colors.transparent),
         shape: BoxShape.circle,
       ),
       child: DecoratedBox(

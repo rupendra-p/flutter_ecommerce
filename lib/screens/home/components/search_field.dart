@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
 import '/constant/constants.dart';
@@ -13,7 +14,7 @@ class SearchField extends StatelessWidget {
     return Container(
       width: SizeConfig.widthMultiplier * 65,
       decoration: BoxDecoration(
-        color: kSecondaryColor.withOpacity(0.1),
+        color: secondayColor.withOpacity(0.1),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(

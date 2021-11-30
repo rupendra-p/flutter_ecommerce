@@ -57,7 +57,7 @@ class _OtpFormState extends State<OtpForm> {
                   // style: TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                 
                   onChanged: (value) {
                     nextField(value, pin2FocusNode);
                   },
@@ -71,7 +71,7 @@ class _OtpFormState extends State<OtpForm> {
                   // style: TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                  
                   onChanged: (value) => nextField(value, pin3FocusNode),
                 ),
               ),
@@ -83,7 +83,7 @@ class _OtpFormState extends State<OtpForm> {
                   // style: TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                  
                   onChanged: (value) => nextField(value, pin4FocusNode),
                 ),
               ),
@@ -95,7 +95,7 @@ class _OtpFormState extends State<OtpForm> {
                   // style: TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                  
                   onChanged: (value) {
                     if (value.length == 1) {
                       pin4FocusNode!.unfocus();
