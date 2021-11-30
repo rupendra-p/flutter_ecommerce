@@ -30,41 +30,44 @@ class CustomBottomNavBar extends StatelessWidget {
             type: BottomNavigationBarType.fixed,
             backgroundColor: primaryColor,
             elevation: 1.0,
-            iconSize: SizeConfig.widthMultiplier * 6.0,
+            iconSize: SizeConfig.widthMultiplier * 5.0,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   CupertinoIcons.house,
                 ),
                 label: 'HOME',
                 activeIcon: CircleAvatar(
-                  child: Icon(
+                  child: const Icon(
                     CupertinoIcons.house_fill,
                     color: secondaryColor,
                   ),
                   backgroundColor: colorWhite,
+                  minRadius: SizeConfig.widthMultiplier * 5.0,
                 ),
               ),
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.heart),
+                icon: const Icon(CupertinoIcons.heart),
                 label: 'FAV',
                 activeIcon: CircleAvatar(
-                  child: Icon(
+                  child: const Icon(
                     CupertinoIcons.heart_fill,
                     color: secondaryColor,
                   ),
                   backgroundColor: colorWhite,
+                  minRadius: SizeConfig.widthMultiplier * 5.0,
                 ),
               ),
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.person_alt_circle),
+                icon: const Icon(CupertinoIcons.person_alt_circle),
                 label: 'PROFILE',
                 activeIcon: CircleAvatar(
-                  child: Icon(
+                  child: const Icon(
                     CupertinoIcons.person_alt_circle_fill,
                     color: secondaryColor,
                   ),
                   backgroundColor: colorWhite,
+                  minRadius: SizeConfig.widthMultiplier * 5.0,
                 ),
               ),
             ],
