@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import '/constant/constants.dart';
 import '/utils/size_config.dart';
@@ -19,7 +20,7 @@ class Body extends StatelessWidget {
               SizedBox(height: SizeConfig.heightMultiplier),
               Text(
                 "OTP Verification",
-                style: headingStyle,
+                
               ),
               Text("We sent your code to +1 898 860 ***"),
               buildTimer(),
@@ -51,7 +52,7 @@ class Body extends StatelessWidget {
           duration: Duration(seconds: 30),
           builder: (_, dynamic value, child) => Text(
             "00:${value.toInt()}",
-            style: TextStyle(color: kPrimaryColor),
+            style: TextStyle(color: primaryColor),
           ),
         ),
       ],

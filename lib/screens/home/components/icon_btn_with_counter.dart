@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -31,7 +32,7 @@ class IconBtnWithCounter extends StatelessWidget {
             height: SizeConfig.heightMultiplier * 6,
             width: SizeConfig.heightMultiplier * 6,
             decoration: BoxDecoration(
-              color: kSecondaryColor.withOpacity(0.1),
+              color: secondayColor.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
             child: SvgPicture.asset(svgSrc),

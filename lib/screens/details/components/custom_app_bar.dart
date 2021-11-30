@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constant/constants.dart';
@@ -30,7 +31,7 @@ class CustomAppBar extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(60),
                   ),
-                  primary: kPrimaryColor,
+                  primary: primaryColor,
                   backgroundColor: Colors.white,
                   padding: EdgeInsets.zero,
                 ),

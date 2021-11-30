@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '/models/Product.dart';
@@ -74,13 +75,13 @@ class ProductDescription extends StatelessWidget {
                 Text(
                   "See More Detail",
                   style: TextStyle(
-                      fontWeight: FontWeight.w600, color: kPrimaryColor),
+                      fontWeight: FontWeight.w600, color: primaryColor),
                 ),
                 SizedBox(width: 5),
                 Icon(
                   Icons.arrow_forward_ios,
                   size: 12,
-                  color: kPrimaryColor,
+                  color: primaryColor,
                 ),
               ],
             ),

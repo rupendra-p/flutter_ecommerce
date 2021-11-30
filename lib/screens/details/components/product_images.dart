@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import '/models/Product.dart';
 
@@ -63,7 +64,7 @@ class _ProductImagesState extends State<ProductImages> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-              color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0)),
+              color: primaryColor.withOpacity(selectedImage == index ? 1 : 0)),
         ),
         child: Image.asset(widget.product.images[index]),
       ),
