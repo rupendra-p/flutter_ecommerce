@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/components/custom_surfix_icon.dart';
-import 'package:shop_app/components/form_error.dart';
-import 'package:shop_app/helper/keyboard.dart';
-import 'package:shop_app/screens/forgot_password/forgot_password_screen.dart';
-import 'package:shop_app/screens/login_success/login_success_screen.dart';
+import '/components/custom_surfix_icon.dart';
+import '/components/form_error.dart';
+import '/helper/keyboard.dart';
+import '/screens/forgot_password/forgot_password_screen.dart';
+import '/screens/login_success/login_success_screen.dart';
 
-import '../../../components/default_button.dart';
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import '/components/default_button.dart';
+import '/utils/constants.dart';
+import '/utils/size_config.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -42,9 +42,13 @@ class _SignFormState extends State<SignForm> {
       child: Column(
         children: [
           buildEmailFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(
+            height: SizeConfig.heightMultiplier * 4,
+          ),
           buildPasswordFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(
+            height: SizeConfig.heightMultiplier * 4,
+          ),
           Row(
             children: [
               Checkbox(
@@ -69,7 +73,9 @@ class _SignFormState extends State<SignForm> {
             ],
           ),
           FormError(errors: errors),
-          SizedBox(height: getProportionateScreenHeight(20)),
+          SizedBox(
+            height: SizeConfig.heightMultiplier * 2.5,
+          ),
           DefaultButton(
             text: "Continue",
             press: () {

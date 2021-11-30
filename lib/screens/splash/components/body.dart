@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
-import 'package:shop_app/size_config.dart';
+import '/utils/constants.dart';
+import '/screens/sign_in/sign_in_screen.dart';
+import '/utils/size_config.dart';
 
 // This is the best practice
-import '../components/splash_content.dart';
-import '../../../components/default_button.dart';
+import 'splash_content.dart';
+import '/components/default_button.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -55,7 +55,8 @@ class _BodyState extends State<Body> {
               flex: 2,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(20)),
+                  horizontal: SizeConfig.heightMultiplier * 2.5,
+                ),
                 child: Column(
                   children: <Widget>[
                     Spacer(),
