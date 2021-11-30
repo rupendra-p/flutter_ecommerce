@@ -1,10 +1,11 @@
+import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop_app/models/Product.dart';
-import 'package:shop_app/screens/details/details_screen.dart';
+import '/models/Product.dart';
+import '/screens/details/details_screen.dart';
 
-import '../constants.dart';
-import '../size_config.dart';
+import '/constant/constants.dart';
+
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -20,9 +21,9 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+      padding: EdgeInsets.only(left:  SizeConfig.heightMultiplier*2.5,),
       child: SizedBox(
-        width: getProportionateScreenWidth(width),
+        width:  SizeConfig.heightMultiplier*width,
         child: GestureDetector(
           onTap: () => Navigator.pushNamed(
             context,
@@ -35,7 +36,7 @@ class ProductCard extends StatelessWidget {
               AspectRatio(
                 aspectRatio: 1.02,
                 child: Container(
-                  padding: EdgeInsets.all(getProportionateScreenWidth(20)),
+                  padding: EdgeInsets.all( SizeConfig.heightMultiplier*2.5,),
                   decoration: BoxDecoration(
                     color: kSecondaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(15),
@@ -58,7 +59,7 @@ class ProductCard extends StatelessWidget {
                   Text(
                     "\$${product.price}",
                     style: TextStyle(
-                      fontSize: getProportionateScreenWidth(18),
+                      fontSize:  SizeConfig.heightMultiplier*2.5,
                       fontWeight: FontWeight.w600,
                       color: kPrimaryColor,
                     ),
@@ -67,9 +68,9 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                     onTap: () {},
                     child: Container(
-                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                      height: getProportionateScreenWidth(28),
-                      width: getProportionateScreenWidth(28),
+                      padding: EdgeInsets.all( SizeConfig.heightMultiplier*2.5,),
+                      height:  SizeConfig.heightMultiplier*2.5,
+                      width:  SizeConfig.heightMultiplier*2.5,
                       decoration: BoxDecoration(
                         color: product.isFavourite
                             ? kPrimaryColor.withOpacity(0.15)

@@ -4,7 +4,7 @@ import '/components/default_button.dart';
 import '/components/form_error.dart';
 import '/screens/otp/otp_screen.dart';
 
-import '/utils/constants.dart';
+import '../../../constant/constants.dart';
 import '/utils/size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
