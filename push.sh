@@ -1,6 +1,8 @@
 echo "Enter your commit message"
 read message
 
+sed -i '4d' android/gradle.properties 
+
 git add .
 git commit -m "${message}"
 
