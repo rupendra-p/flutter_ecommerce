@@ -1,8 +1,6 @@
-import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-import '/constant/constants.dart';
-
+import '/utils/size_config.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
@@ -17,19 +15,18 @@ class DefaultButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height:  SizeConfig.heightMultiplier*8,
-      child: TextButton(
-        style: TextButton.styleFrom(
+      height: SizeConfig.heightMultiplier * 8,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           primary: Colors.white,
-          backgroundColor: kPrimaryColor,
         ),
         onPressed: press as void Function()?,
         child: Text(
           text!,
           style: TextStyle(
-            fontSize:  SizeConfig.heightMultiplier*2.3,
+            fontSize: SizeConfig.heightMultiplier * 2.3,
             color: Colors.white,
           ),
         ),

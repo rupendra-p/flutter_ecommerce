@@ -1,3 +1,5 @@
+import 'package:ecommerce/constant/color_properties.dart';
+
 import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -41,7 +43,7 @@ class ProductCard extends StatelessWidget {
                     SizeConfig.heightMultiplier * 2.5,
                   ),
                   decoration: BoxDecoration(
-                    color: kSecondaryColor.withOpacity(0.1),
+                    color: primaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Hero(
@@ -64,7 +66,7 @@ class ProductCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: SizeConfig.heightMultiplier * 2.5,
                       fontWeight: FontWeight.w600,
-                      color: kPrimaryColor,
+                      color: secondayColor,
                     ),
                   ),
                   InkWell(
@@ -78,8 +80,8 @@ class ProductCard extends StatelessWidget {
                       width: SizeConfig.heightMultiplier * 2.5,
                       decoration: BoxDecoration(
                         color: product.isFavourite
-                            ? kPrimaryColor.withOpacity(0.15)
-                            : kSecondaryColor.withOpacity(0.1),
+                            ? primaryColor.withOpacity(0.15)
+                            : secondayColor.withOpacity(0.1),
                         shape: BoxShape.circle,
                       ),
                       child: SvgPicture.asset(
