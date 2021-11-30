@@ -1,10 +1,11 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+
+import '/constant/enums.dart';
 import '/screens/home/home_screen.dart';
 import '/screens/profile/profile_screen.dart';
-
-import '/constant/constants.dart';
-import '/constant/enums.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
@@ -33,41 +34,38 @@ class CustomBottomNavBar extends StatelessWidget {
           topRight: Radius.circular(40),
         ),
       ),
-      child: SafeArea(
-          top: false,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/Shop Icon.svg",
-                  color: MenuState.home == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, HomeScreen.routeName),
-              ),
-              IconButton(
-                icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg"),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/User Icon.svg",
-                  color: MenuState.profile == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ProfileScreen.routeName),
-              ),
-            ],
-          )),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/Shop Icon.svg",
+              color: MenuState.home == selectedMenu
+                  ? primaryColor
+                  : inActiveIconColor,
+            ),
+            onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
+          ),
+          IconButton(
+            icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg"),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/User Icon.svg",
+              color: MenuState.profile == selectedMenu
+                  ? primaryColor
+                  : inActiveIconColor,
+            ),
+            onPressed: () =>
+                Navigator.pushNamed(context, ProfileScreen.routeName),
+          ),
+        ],
+      ),
     );
   }
 }
