@@ -7,6 +7,8 @@
 .atom/
 .buildlog/
 .history
+pull.sh
+push.sh
 .svn/
 
 # IntelliJ related
