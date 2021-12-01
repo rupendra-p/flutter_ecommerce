@@ -1,50 +1,11 @@
+import 'package:ecommerce/components/custom_surfix_icon.dart';
+import 'package:ecommerce/components/default_button.dart';
+import 'package:ecommerce/components/form_error.dart';
+import 'package:ecommerce/components/no_account_text.dart';
+import 'package:ecommerce/constant/constants.dart';
+import 'package:ecommerce/utils/size_config.dart';
 import 'package:flutter/material.dart';
-import '/components/custom_surfix_icon.dart';
-import '/components/default_button.dart';
-import '/components/form_error.dart';
-import '/components/no_account_text.dart';
-import '/utils/size_config.dart';
 
-import '../../../constant/constants.dart';
-
-class Body extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.heightMultiplier * 2.5,
-          ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: SizeConfig.heightMultiplier * .5,
-              ),
-              Text(
-                "Forgot Password",
-                style: TextStyle(
-                  // fontSize: getProportionateScreenWidth(28),
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "Please enter your email and we will send \nyou a link to return to your account",
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: SizeConfig.heightMultiplier * .5,
-              ),
-              ForgotPassForm(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class ForgotPassForm extends StatefulWidget {
   @override
@@ -75,7 +36,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
                   errors.remove(kInvalidEmailError);
                 });
               }
-              return null;
+              return ;
             },
             validator: (value) {
               if (value!.isEmpty && !errors.contains(kEmailNullError)) {
