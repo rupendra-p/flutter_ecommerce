@@ -5,13 +5,7 @@ import 'package:flutter/material.dart';
 ThemeData lightTheme(BuildContext context) {
   return ThemeData(
     primaryColor: primaryColor,
-    // scaffoldBackgroundColor: secondaryColor.withOpacity(
-    //   0.5,
-    // ),
     canvasColor: canvasColor,
-    // secondaryColor.withOpacity(
-    //   0.5,
-    // ),
     appBarTheme: AppBarTheme(
         color: primaryColor,
         titleTextStyle: TextStyle(
@@ -32,6 +26,9 @@ ThemeData lightTheme(BuildContext context) {
       unselectedItemColor: colorLightGrey,
       showSelectedLabels: true,
     ),
+    colorScheme: Theme.of(context).colorScheme.copyWith(
+          primary: primaryColor,
+        ),
     inputDecorationTheme: InputDecorationTheme(
       enabledBorder: OutlineInputBorder(
         borderSide: const BorderSide(
@@ -42,10 +39,13 @@ ThemeData lightTheme(BuildContext context) {
           2 * SizeConfig.heightMultiplier,
         ),
       ),
+      floatingLabelStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
+            color: primaryColor,
+          ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           width: 2,
-          color: Theme.of(context).focusColor,
+          color: secondaryColor,
         ),
         borderRadius: BorderRadius.circular(
           2 * SizeConfig.heightMultiplier,
