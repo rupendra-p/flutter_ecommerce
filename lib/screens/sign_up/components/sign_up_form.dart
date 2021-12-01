@@ -1,10 +1,10 @@
+import 'package:ecommerce/utils/validation_mixin.dart';
 import 'package:flutter/material.dart';
-import '/components/custom_surfix_icon.dart';
+
 import '/components/default_button.dart';
 import '/components/form_error.dart';
-import '/screens/complete_profile/complete_profile_screen.dart';
-
 import '/constant/constants.dart';
+import '/screens/complete_profile/complete_profile_screen.dart';
 import '/utils/size_config.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -21,17 +21,19 @@ class _SignUpFormState extends State<SignUpForm> {
   final List<String?> errors = [];
 
   void addError({String? error}) {
-    if (!errors.contains(error))
+    if (!errors.contains(error)) {
       setState(() {
         errors.add(error);
       });
+    }
   }
 
   void removeError({String? error}) {
-    if (errors.contains(error))
+    if (errors.contains(error)) {
       setState(() {
         errors.remove(error);
       });
+    }
   }
 
   @override
@@ -58,7 +60,7 @@ class _SignUpFormState extends State<SignUpForm> {
             press: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                // if all are valid then go to success screen
+
                 Navigator.pushNamed(context, CompleteProfileScreen.routeName);
               }
             },
@@ -80,23 +82,16 @@ class _SignUpFormState extends State<SignUpForm> {
         }
         conform_password = value;
       },
-      validator: (value) {
-        if (value!.isEmpty) {
-          addError(error: kPassNullError);
-          return "";
-        } else if ((password != value)) {
-          addError(error: kMatchPassError);
-          return "";
-        }
-        return null;
-      },
+      validator: (value) => ValidationMixin().validatePassword(value!),
       decoration: InputDecoration(
         labelText: "Confirm Password",
         hintText: "Re-enter your password",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+        suffixIcon: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.visibility,
+            )),
       ),
     );
   }
@@ -113,23 +108,16 @@ class _SignUpFormState extends State<SignUpForm> {
         }
         password = value;
       },
-      validator: (value) {
-        if (value!.isEmpty) {
-          addError(error: kPassNullError);
-          return "";
-        } else if (value.length < 8) {
-          addError(error: kShortPassError);
-          return "";
-        }
-        return null;
-      },
+      validator: (value) => ValidationMixin().validatePassword(value!),
       decoration: InputDecoration(
         labelText: "Password",
         hintText: "Enter your password",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+        suffixIcon: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.visibility,
+            )),
       ),
     );
   }
@@ -144,25 +132,18 @@ class _SignUpFormState extends State<SignUpForm> {
         } else if (emailValidatorRegExp.hasMatch(value)) {
           removeError(error: kInvalidEmailError);
         }
-        return null;
+        return;
       },
-      validator: (value) {
-        if (value!.isEmpty) {
-          addError(error: kEmailNullError);
-          return "";
-        } else if (!emailValidatorRegExp.hasMatch(value)) {
-          addError(error: kInvalidEmailError);
-          return "";
-        }
-        return null;
-      },
+      validator: (value) => ValidationMixin().validateEmail(value!),
       decoration: InputDecoration(
         labelText: "Email",
         hintText: "Enter your email",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+        suffixIcon: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.email_outlined,
+            )),
       ),
     );
   }
