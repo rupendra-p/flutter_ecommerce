@@ -17,11 +17,14 @@ class SocalCard extends StatelessWidget {
     return GestureDetector(
       onTap: press as void Function()?,
       child: Container(
-        margin:
-            EdgeInsets.symmetric(horizontal:  SizeConfig.heightMultiplier*2.5,),
-        padding: EdgeInsets.all( SizeConfig.heightMultiplier*2.5,),
-        height:  SizeConfig.heightMultiplier*2.5,
-        width:  SizeConfig.heightMultiplier*2.5,
+        margin: EdgeInsets.symmetric(
+          horizontal: SizeConfig.heightMultiplier * 2.5,
+        ),
+        padding: EdgeInsets.all(
+          SizeConfig.heightMultiplier,
+        ),
+        height: SizeConfig.heightMultiplier * 5,
+        width: SizeConfig.heightMultiplier * 5,
         decoration: BoxDecoration(
           color: Color(0xFFF5F6F9),
           shape: BoxShape.circle,
