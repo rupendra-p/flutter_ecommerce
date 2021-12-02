@@ -1,4 +1,5 @@
 import 'package:ecommerce/components/default_button.dart';
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:ecommerce/screens/details/product_description.dart';
 import 'package:ecommerce/screens/details/product_images.dart';
 import 'package:ecommerce/screens/details/top_rounded_container.dart';
@@ -29,7 +30,7 @@ class DetailsScreen extends StatelessWidget {
         children: [
           ProductImages(product: agrs.product),
           TopRoundedContainer(
-            color: Colors.white,
+            color: colorWhite,
             child: Column(
               children: [
                 ProductDescription(

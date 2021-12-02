@@ -33,35 +33,49 @@ class CartCard extends StatelessWidget {
           ),
         ),
         SizedBox(width: SizeConfig.widthMultiplier * 3),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                cart.product.title,
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      color: primaryColor,
+                    ),
+                maxLines: 2,
+              ),
+              SizedBox(
+                height: SizeConfig.heightMultiplier,
+              ),
+              Text.rich(
+                TextSpan(
+                  text: "\$${cart.product.price}",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .copyWith(color: secondaryColor),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.remove_circle,
+                )),
             Text(
-              cart.product.title,
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              '10',
+              style: Theme.of(context).textTheme.subtitle2!.copyWith(
                     color: primaryColor,
                   ),
-              maxLines: 2,
             ),
-            SizedBox(
-              height: SizeConfig.heightMultiplier,
-            ),
-            Text.rich(
-              TextSpan(
-                text: "\$${cart.product.price}",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(color: secondaryColor),
-                children: [
-                  TextSpan(
-                      text: " x${cart.numOfItem}",
-                      style: Theme.of(context).textTheme.bodyText1),
-                ],
-              ),
-            )
+            IconButton(onPressed: () {}, icon: const Icon(Icons.add_circle)),
           ],
-        )
+        ),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:ecommerce/constant/color_properties.dart';
+import 'package:ecommerce/utils/scroll_configuration.dart';
 import 'package:ecommerce/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -65,32 +66,37 @@ class _CartScreenState extends State<CartScreen> {
                 height: SizeConfig.heightMultiplier,
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: demoCarts.length,
-                  itemBuilder: (context, index) => Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Dismissible(
-                      key: Key(demoCarts[index].product.id.toString()),
-                      direction: DismissDirection.endToStart,
-                      onDismissed: (direction) {
-                        setState(() {
-                          demoCarts.removeAt(index);
-                        });
-                      },
-                      background: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFFE6E6),
-                          borderRadius: BorderRadius.circular(15),
+                child: ScrollConfiguration(
+                  behavior: MyBehavior(),
+                  child: ListView.builder(
+                    itemCount: demoCarts.length,
+                    itemBuilder: (context, index) => Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: SizeConfig.heightMultiplier),
+                      child: Dismissible(
+                        key: Key(demoCarts[index].product.id.toString()),
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (direction) {
+                          setState(() {
+                            demoCarts.removeAt(index);
+                          });
+                        },
+                        background: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: SizeConfig.heightMultiplier * 2.2),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFFE6E6),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Row(
+                            children: [
+                              const Spacer(),
+                              SvgPicture.asset("assets/icons/Trash.svg"),
+                            ],
+                          ),
                         ),
-                        child: Row(
-                          children: [
-                            Spacer(),
-                            SvgPicture.asset("assets/icons/Trash.svg"),
-                          ],
-                        ),
+                        child: CartCard(cart: demoCarts[index]),
                       ),
-                      child: CartCard(cart: demoCarts[index]),
                     ),
                   ),
                 ),
@@ -98,7 +104,7 @@ class _CartScreenState extends State<CartScreen> {
             ],
           ),
         ),
-        bottomNavigationBar: CheckoutCard(),
+        bottomNavigationBar: const CheckoutCard(),
       ),
     );
   }
