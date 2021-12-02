@@ -1,3 +1,4 @@
+import 'package:ecommerce/screens/navigation_screen.dart';
 import 'package:flutter/material.dart';
 
 import '/components/default_button.dart';
@@ -11,36 +12,52 @@ class OtpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("OTP Verification"),
-      ),
-      body: SizedBox(
-        width: double.infinity,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.heightMultiplier * 2.5,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: SizeConfig.heightMultiplier),
-                const Text(
-                  "OTP Verification",
-                ),
-                const Text("We sent your code to +1 898 860 ***"),
-                buildTimer(),
-                const OtpForm(),
-                SizedBox(height: SizeConfig.heightMultiplier),
-                GestureDetector(
-                  onTap: () {
-                    // OTP code resend
-                  },
-                  child: const Text(
-                    "Resend OTP Code",
-                    style: TextStyle(decoration: TextDecoration.underline),
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.heightMultiplier * 2.5,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: SizeConfig.heightMultiplier * 8),
+                  Text(
+                    "OTP Verification",
+                    style: Theme.of(context).textTheme.headline4!.copyWith(
+                          color: primaryColor,
+                        ),
                   ),
-                )
-              ],
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 2,
+                  ),
+                  Text(
+                    "We sent your code to +1 898 860 ***",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier,
+                  ),
+                  buildTimer(),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 8,
+                  ),
+                  const OtpForm(),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 2,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // OTP code resend
+                    },
+                    child: const Text(
+                      "Resend OTP Code",
+                      style: TextStyle(decoration: TextDecoration.underline),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -115,11 +132,9 @@ class _OtpFormState extends State<OtpForm> {
                 width: SizeConfig.heightMultiplier * 7.5,
                 child: TextFormField(
                   autofocus: true,
-                  obscureText: true,
-                  // style: TextStyle(fontSize: 24),
+                  style: Theme.of(context).textTheme.bodyText1,
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-
                   onChanged: (value) {
                     nextField(value, pin2FocusNode);
                   },
@@ -129,11 +144,9 @@ class _OtpFormState extends State<OtpForm> {
                 width: SizeConfig.heightMultiplier * 7.5,
                 child: TextFormField(
                   focusNode: pin2FocusNode,
-                  obscureText: true,
-                  // style: TextStyle(fontSize: 24),
+                  style: Theme.of(context).textTheme.bodyText1,
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-
                   onChanged: (value) => nextField(value, pin3FocusNode),
                 ),
               ),
@@ -141,11 +154,9 @@ class _OtpFormState extends State<OtpForm> {
                 width: SizeConfig.heightMultiplier * 7.5,
                 child: TextFormField(
                   focusNode: pin3FocusNode,
-                  obscureText: true,
-                  // style: TextStyle(fontSize: 24),
+                  style: Theme.of(context).textTheme.bodyText1,
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-
                   onChanged: (value) => nextField(value, pin4FocusNode),
                 ),
               ),
@@ -153,11 +164,9 @@ class _OtpFormState extends State<OtpForm> {
                 width: SizeConfig.heightMultiplier * 7.5,
                 child: TextFormField(
                   focusNode: pin4FocusNode,
-                  obscureText: true,
-                  // style: TextStyle(fontSize: 24),
+                  style: Theme.of(context).textTheme.bodyText1,
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-
                   onChanged: (value) {
                     if (value.length == 1) {
                       pin4FocusNode!.unfocus();
@@ -169,11 +178,15 @@ class _OtpFormState extends State<OtpForm> {
             ],
           ),
           SizedBox(
-            height: SizeConfig.heightMultiplier,
+            height: SizeConfig.heightMultiplier * 4,
           ),
           DefaultButton(
             text: "Continue",
-            press: () {},
+            press: () {
+              Navigator.of(context).pushNamed(
+                NavigationScreen.routeName,
+              );
+            },
           )
         ],
       ),

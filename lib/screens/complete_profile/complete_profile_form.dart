@@ -58,7 +58,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
             height: SizeConfig.heightMultiplier * 4,
           ),
           DefaultButton(
-            text: "continue",
+            text: "Continue",
             press: () {
               if (_formKey.currentState!.validate()) {
                 Navigator.pushNamed(context, OtpScreen.routeName);
