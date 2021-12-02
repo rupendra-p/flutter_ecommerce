@@ -90,6 +90,7 @@ class _SignFormState extends State<SignForm> {
   String? password;
   bool? remember = false;
   final List<String?> errors = [];
+  bool isObsecure = true;
 
   void addError({String? error}) {
     if (!errors.contains(error)) {
@@ -137,9 +138,14 @@ class _SignFormState extends State<SignForm> {
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),
-                child: const Text(
+                child: Text(
                   "Forgot Password",
-                  style: TextStyle(decoration: TextDecoration.underline),
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    decorationColor: secondaryColor,
+                    decorationThickness: SizeConfig.heightMultiplier * .4,
+                    color: primaryColor,
+                  ),
                 ),
               )
             ],
@@ -164,7 +170,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
-      obscureText: true,
+      obscureText: isObsecure,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -176,13 +182,20 @@ class _SignFormState extends State<SignForm> {
       },
       validator: (value) => ValidationMixin().validatePassword(value!),
       decoration: InputDecoration(
+        isDense: true,
         labelText: "Password",
         hintText: "Enter your password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.visibility_off,
+          onPressed: () {
+            setState(() {
+              isObsecure = !isObsecure;
+            });
+          },
+          icon: Icon(
+            isObsecure
+                ? Icons.visibility_off_outlined
+                : Icons.visibility_outlined,
           ),
         ),
       ),

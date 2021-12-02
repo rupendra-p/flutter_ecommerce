@@ -12,25 +12,32 @@ class LoginSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const SizedBox(),
-        title: const Text("Login Success"),
-      ),
-      body: Column(
-        children: [
-          SizedBox(height: SizeConfig.heightMultiplier),
-          Image.asset(
-            "assets/images/success.png",
-            height: SizeConfig.heightMultiplier * 40, //40%
-          ),
-          SizedBox(height: SizeConfig.heightMultiplier),
-          const Text(
-            "Login Success",
-            style: TextStyle(
-              // fontSize: getProportionateScreenWidth(30),
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+      // appBar: AppBar(
+      //   leading: const SizedBox(),
+      //   title: const Text("Login Success"),
+      // ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 5,
             ),
+            Image.asset(
+              "assets/images/success.png",
+              height: SizeConfig.heightMultiplier * 40, //40%
+            ),
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 2,
+            ),
+            Text(
+              "Login Success",
+              style: TextStyle(
+                fontSize: SizeConfig.textMultiplier * 3,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+
           ),
           const Spacer(),
           SizedBox(
@@ -40,10 +47,11 @@ class LoginSuccessScreen extends StatelessWidget {
               press: () {
                 Navigator.pushNamed(context, NavigationScreen.routeName);
               },
+
             ),
-          ),
-          const Spacer(),
-        ],
+            const Spacer(),
+          ],
+        ),
       ),
     );
   }

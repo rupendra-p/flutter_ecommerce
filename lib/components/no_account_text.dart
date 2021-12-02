@@ -24,10 +24,13 @@ class NoAccountText extends StatelessWidget {
           onTap: () => Navigator.pushNamed(context, SignUpScreen.routeName),
           child: Text(
             "Sign Up",
-            style: Theme.of(context).textTheme.headline6!.copyWith(
-                  color: primaryColor,
-                  decoration: TextDecoration.underline,
-                ),
+            style: TextStyle(
+              fontSize: SizeConfig.textMultiplier * 2.4,
+              decoration: TextDecoration.underline,
+              decorationColor: secondaryColor,
+              decorationThickness: SizeConfig.heightMultiplier * .4,
+              color: primaryColor,
+            ),
           ),
         ),
       ],
