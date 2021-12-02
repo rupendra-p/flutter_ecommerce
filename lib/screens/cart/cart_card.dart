@@ -1,8 +1,7 @@
 import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
-import '/models/Cart.dart';
 
-import '../../constant/constants.dart';
+import '/models/Cart.dart';
 import '/utils/size_config.dart';
 
 class CartCard extends StatelessWidget {
@@ -18,36 +17,42 @@ class CartCard extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 88,
+          width: SizeConfig.widthMultiplier * 20,
           child: AspectRatio(
-            aspectRatio: 0.88,
+            aspectRatio: 1,
             child: Container(
               padding: EdgeInsets.all(
                 SizeConfig.heightMultiplier * 1,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFF5F6F9),
+                color: colorWhite,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Image.asset(cart.product.images[0]),
             ),
           ),
         ),
-        SizedBox(width: 20),
+        SizedBox(width: SizeConfig.widthMultiplier * 3),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               cart.product.title,
-              style: TextStyle(color: Colors.black, fontSize: 16),
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    color: primaryColor,
+                  ),
               maxLines: 2,
             ),
-            SizedBox(height: 10),
+            SizedBox(
+              height: SizeConfig.heightMultiplier,
+            ),
             Text.rich(
               TextSpan(
                 text: "\$${cart.product.price}",
-                style:
-                    TextStyle(fontWeight: FontWeight.w600, color: primaryColor),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: secondaryColor),
                 children: [
                   TextSpan(
                       text: " x${cart.numOfItem}",
