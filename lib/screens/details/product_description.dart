@@ -21,45 +21,72 @@ class ProductDescription extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
+          padding: EdgeInsets.only(
+            left: SizeConfig.heightMultiplier * 2.5,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.title,
+                      maxLines: 2,
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    SizedBox(height: SizeConfig.heightMultiplier),
+                    Text(
+                      "Rs.200",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(color: secondaryColor),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: SizeConfig.widthMultiplier,
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  padding: EdgeInsets.all(
+                    SizeConfig.heightMultiplier * 2,
+                  ),
+                  width: SizeConfig.heightMultiplier * 8,
+                  decoration: BoxDecoration(
+                    color: product.isFavourite
+                        ? const Color(0xFFFFE6E6)
+                        : const Color(0xFFF5F6F9),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                    ),
+                  ),
+                  child: SvgPicture.asset(
+                    "assets/icons/Heart Icon_2.svg",
+                    color: product.isFavourite
+                        ? const Color(0xFFFF4848)
+                        : const Color(0xFFDBDEE4),
+                    height: SizeConfig.heightMultiplier * 2,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: SizeConfig.heightMultiplier * 2),
+        Padding(
           padding: EdgeInsets.symmetric(
             horizontal: SizeConfig.heightMultiplier * 2.5,
           ),
           child: Text(
-            product.title,
-            style: Theme.of(context).textTheme.headline6,
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Container(
-            padding: EdgeInsets.all(
-              SizeConfig.heightMultiplier * 2,
-            ),
-            width: SizeConfig.heightMultiplier * 8,
-            decoration: BoxDecoration(
-              color:
-                  product.isFavourite ? const Color(0xFFFFE6E6) : const Color(0xFFF5F6F9),
-              borderRadius:const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-              ),
-            ),
-            child: SvgPicture.asset(
-              "assets/icons/Heart Icon_2.svg",
-              color:
-                  product.isFavourite ? const Color(0xFFFF4848) :const  Color(0xFFDBDEE4),
-              height: SizeConfig.heightMultiplier * 2,
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            left: SizeConfig.heightMultiplier * 2.5,
-            right: SizeConfig.heightMultiplier * 8,
-          ),
-          child: Text(
             product.description,
             maxLines: 3,
+            textAlign: TextAlign.justify,
           ),
         ),
         Padding(
