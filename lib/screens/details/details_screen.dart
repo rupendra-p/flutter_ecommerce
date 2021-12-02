@@ -38,11 +38,7 @@ class DetailsScreen extends StatelessWidget {
                 ),
                 TopRoundedContainer(
                   color: const Color(0xFFF6F7F9),
-                  child: Column(
-                    children: [
-                      ColorDots(product: agrs.product),
-                    ],
-                  ),
+                  child: ColorDots(product: agrs.product),
                 ),
               ],
             ),
@@ -50,23 +46,12 @@ class DetailsScreen extends StatelessWidget {
           const Spacer(),
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.widthMultiplier * 3,
+              horizontal: SizeConfig.widthMultiplier * 5,
               vertical: SizeConfig.heightMultiplier,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      '240',
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                  ],
-                ),
-                
-              ],
+            child: DefaultButton(
+              press: () {},
+              text: "Add to Cart",
             ),
           ),
         ],
