@@ -60,6 +60,15 @@ ThemeData lightTheme(BuildContext context) {
           2 * SizeConfig.heightMultiplier,
         ),
       ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          width: 2,
+          color: Theme.of(context).errorColor,
+        ),
+        borderRadius: BorderRadius.circular(
+          2 * SizeConfig.heightMultiplier,
+        ),
+      ),
     ),
   );
 }

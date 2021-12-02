@@ -1,3 +1,5 @@
+import 'package:ecommerce/utils/scroll_configuration.dart';
+
 import '/components/default_button.dart';
 import '/components/no_account_text.dart';
 import '/components/socal_card.dart';
@@ -24,50 +26,53 @@ class SignInScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: SizeConfig.heightMultiplier * 2.5,
             ),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: SizeConfig.heightMultiplier * 8),
-                  Text(
-                    "Welcome Back",
-                    style: Theme.of(context).textTheme.headline4!.copyWith(
-                          color: primaryColor,
+            child: ScrollConfiguration(
+              behavior: MyBehavior(),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: SizeConfig.heightMultiplier * 8),
+                    Text(
+                      "Welcome Back",
+                      style: Theme.of(context).textTheme.headline4!.copyWith(
+                            color: primaryColor,
+                          ),
+                    ),
+                    SizedBox(height: SizeConfig.heightMultiplier * 2),
+                    Text(
+                      "Sign in with your email and password  \nor continue with social media",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                            color: colorGrey,
+                          ),
+                    ),
+                    SizedBox(height: SizeConfig.heightMultiplier * 8),
+                    const SignForm(),
+                    SizedBox(height: SizeConfig.heightMultiplier * 4),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SocialCard(
+                          icon: "assets/icons/google-icon.svg",
+                          press: () {},
                         ),
-                  ),
-                  SizedBox(height: SizeConfig.heightMultiplier * 2),
-                  Text(
-                    "Sign in with your email and password  \nor continue with social media",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                          color: colorGrey,
+                        SocialCard(
+                          icon: "assets/icons/facebook-2.svg",
+                          press: () {},
                         ),
-                  ),
-                  SizedBox(height: SizeConfig.heightMultiplier * 8),
-                  const SignForm(),
-                  SizedBox(height: SizeConfig.heightMultiplier * 4),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SocialCard(
-                        icon: "assets/icons/google-icon.svg",
-                        press: () {},
-                      ),
-                      SocialCard(
-                        icon: "assets/icons/facebook-2.svg",
-                        press: () {},
-                      ),
-                      SocialCard(
-                        icon: "assets/icons/twitter.svg",
-                        press: () {},
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: SizeConfig.heightMultiplier * 2.5,
-                  ),
-                  const NoAccountText(),
-                ],
+                        SocialCard(
+                          icon: "assets/icons/twitter.svg",
+                          press: () {},
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: SizeConfig.heightMultiplier * 2.5,
+                    ),
+                    const NoAccountText(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -171,6 +176,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: isObsecure,
+      textInputAction: TextInputAction.done,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -205,6 +211,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
+      textInputAction: TextInputAction.next,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
