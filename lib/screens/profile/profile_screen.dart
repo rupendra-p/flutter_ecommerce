@@ -1,3 +1,5 @@
+import 'package:ecommerce/utils/scroll_configuration.dart';
+
 import '/constant/color_properties.dart';
 import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -10,41 +12,61 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Profile"),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Column(
-          children: [
-            const ProfilePic(),
-            const SizedBox(height: 20),
-            ProfileMenu(
-              text: "My Account",
-              icon: "assets/icons/User Icon.svg",
-              press: () => {},
+      body: SafeArea(
+        child: ScrollConfiguration(
+          behavior: MyBehavior(),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: SizeConfig.heightMultiplier * 4,
+                  ),
+                  child: Text(
+                    "Profile",
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                    // textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 2,
+                ),
+                const Center(child: ProfilePic()),
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 2,
+                ),
+                ProfileMenu(
+                  text: "My Account",
+                  icon: Icons.person_outline,
+                  press: () => {},
+                ),
+                ProfileMenu(
+                  text: "Notifications",
+                  icon: Icons.notifications_outlined,
+                  press: () {},
+                ),
+                ProfileMenu(
+                  text: "Settings",
+                  icon: Icons.settings_outlined,
+                  press: () {},
+                ),
+                ProfileMenu(
+                  text: "Help Center",
+                  icon: Icons.help_outline,
+                  press: () {},
+                ),
+                ProfileMenu(
+                  text: "Log Out",
+                  icon: Icons.logout_outlined,
+                  press: () {},
+                ),
+              ],
             ),
-            ProfileMenu(
-              text: "Notifications",
-              icon: "assets/icons/Bell.svg",
-              press: () {},
-            ),
-            ProfileMenu(
-              text: "Settings",
-              icon: "assets/icons/Settings.svg",
-              press: () {},
-            ),
-            ProfileMenu(
-              text: "Help Center",
-              icon: "assets/icons/Question mark.svg",
-              press: () {},
-            ),
-            ProfileMenu(
-              text: "Log Out",
-              icon: "assets/icons/Log out.svg",
-              press: () {},
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -59,7 +81,8 @@ class ProfileMenu extends StatelessWidget {
     this.press,
   }) : super(key: key);
 
-  final String text, icon;
+  final String text;
+  final IconData icon;
   final VoidCallback? press;
 
   @override
@@ -71,7 +94,10 @@ class ProfileMenu extends StatelessWidget {
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.all(SizeConfig.heightMultiplier * 2.5),
+          primary: colorWhite,
+          padding: EdgeInsets.all(
+            SizeConfig.heightMultiplier * 2,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
               SizeConfig.heightMultiplier * 2,
@@ -81,14 +107,25 @@ class ProfileMenu extends StatelessWidget {
         onPressed: press,
         child: Row(
           children: [
-            SvgPicture.asset(
+            Icon(
               icon,
               color: primaryColor,
-              // width: 22,
+              size: SizeConfig.imageSizeMultiplier * 7,
             ),
             SizedBox(width: SizeConfig.heightMultiplier * 2.5),
-            Expanded(child: Text(text)),
-            const Icon(Icons.arrow_forward_ios),
+            Expanded(
+              child: Text(
+                text,
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      color: primaryColor,
+                    ),
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: primaryColor,
+              size: SizeConfig.imageSizeMultiplier * 5,
+            ),
           ],
         ),
       ),

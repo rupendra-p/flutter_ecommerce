@@ -1,8 +1,7 @@
-import 'package:ecommerce/screens/navigation_screen.dart';
 import 'package:flutter/material.dart';
 
 import '/components/default_button.dart';
-import '/screens/home/home_screen.dart';
+import '/screens/navigation_screen.dart';
 import '/utils/size_config.dart';
 
 class LoginSuccessScreen extends StatelessWidget {
@@ -37,20 +36,18 @@ class LoginSuccessScreen extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-
-    
-         
-          SizedBox(
-            width: SizeConfig.widthMultiplier * 50,
-            child: DefaultButton(
-              text: "Back to home",
-              press: () {
-                Navigator.pushNamed(context, NavigationScreen.routeName);
-              },
-
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 10,
             ),
-          ),
-           
+            SizedBox(
+              width: SizeConfig.widthMultiplier * 50,
+              child: DefaultButton(
+                text: "Back to home",
+                press: () {
+                  Navigator.pushNamed(context, NavigationScreen.routeName);
+                },
+              ),
+            ),
           ],
         ),
       ),
