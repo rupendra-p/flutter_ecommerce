@@ -17,8 +17,10 @@ class ColorDots extends StatelessWidget {
     // Now this is fixed and only for demo
     int selectedColor = 3;
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: SizeConfig.heightMultiplier * 2.5,
+      padding: EdgeInsets.only(
+        left: SizeConfig.heightMultiplier * 2.5,
+        right: SizeConfig.heightMultiplier * 2.5,
+        bottom: SizeConfig.heightMultiplier * 1.5,
       ),
       child: Row(
         children: [

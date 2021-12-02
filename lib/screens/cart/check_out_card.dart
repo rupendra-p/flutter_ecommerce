@@ -1,8 +1,8 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '/components/default_button.dart';
 
-import '../../constant/constants.dart';
+import '/components/default_button.dart';
 import '/utils/size_config.dart';
 
 class CheckoutCard extends StatelessWidget {
@@ -26,9 +26,9 @@ class CheckoutCard extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, -15),
+            offset: const Offset(0, -15),
             blurRadius: 20,
-            color: Color(0xFFDADADA).withOpacity(0.15),
+            color: const Color(0xFFDADADA).withOpacity(0.15),
           )
         ],
       ),
@@ -40,22 +40,21 @@ class CheckoutCard extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(SizeConfig.heightMultiplier),
                   height: 5 * SizeConfig.heightMultiplier,
                   width: 5 * SizeConfig.heightMultiplier,
                   decoration: BoxDecoration(
-                    color: Color(0xFFF5F6F9),
+                    color: const Color(0xFFF5F6F9),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: SvgPicture.asset("assets/icons/receipt.svg"),
                 ),
-                Spacer(),
-                Text("Add voucher code"),
-                const SizedBox(width: 10),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12,
-                  // color: kTextColor,
+                const Spacer(),
+                Text("Add voucher code",
+                    style: Theme.of(context).textTheme.bodyText2),
+                SizedBox(width: SizeConfig.widthMultiplier),
+                const Icon(
+                  Icons.chevron_right_outlined,
                 )
               ],
             ),
@@ -68,10 +67,15 @@ class CheckoutCard extends StatelessWidget {
                 Text.rich(
                   TextSpan(
                     text: "Total:\n",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          color: primaryColor,
+                        ),
                     children: [
                       TextSpan(
                         text: "\$337.15",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                              color: secondaryColor,
+                            ),
                       ),
                     ],
                   ),
