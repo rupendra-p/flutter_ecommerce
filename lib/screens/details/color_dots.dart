@@ -8,9 +8,15 @@ class ColorDots extends StatelessWidget {
   const ColorDots({
     Key? key,
     required this.product,
+    required this.quantity,
+    required this.incrementChange,
+    required this.decrementChange,
   }) : super(key: key);
 
   final Product product;
+  final int quantity;
+  final Function incrementChange;
+  final Function decrementChange;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +39,9 @@ class ColorDots extends StatelessWidget {
           ),
           const Spacer(),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                decrementChange();
+              },
               icon: const Icon(
                 Icons.remove_circle,
               )),
@@ -41,13 +49,17 @@ class ColorDots extends StatelessWidget {
             backgroundColor: colorWhite,
             radius: SizeConfig.imageSizeMultiplier * 5,
             child: Text(
-              '10',
+              quantity.toString(),
               style: Theme.of(context).textTheme.subtitle2!.copyWith(
                     color: primaryColor,
                   ),
             ),
           ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.add_circle)),
+          IconButton(
+              onPressed: () {
+                incrementChange();
+              },
+              icon: const Icon(Icons.add_circle)),
         ],
       ),
     );

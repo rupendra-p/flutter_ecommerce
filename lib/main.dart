@@ -1,5 +1,7 @@
+import 'package:ecommerce/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 
 import '/screens/splash/splash_screen.dart';
 import '/theme/theme_data.dart';
@@ -15,18 +17,29 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return OrientationBuilder(builder: (context, orientation) {
-        SizeConfig().init(constraints, orientation);
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: dotenv.env['clientName']!,
-          theme: lightTheme(context),
-          // darkTheme: darkTheme(context),
-          initialRoute: SplashScreen.routeName,
-          routes: routes,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return OrientationBuilder(
+          builder: (context, orientation) {
+            SizeConfig().init(constraints, orientation);
+            return MultiProvider(
+              providers: [
+                ChangeNotifierProvider(
+                  create: (context) => CartProvider(),
+                ),
+              ],
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: dotenv.env['clientName']!,
+                theme: lightTheme(context),
+                // darkTheme: darkTheme(context),
+                initialRoute: SplashScreen.routeName,
+                routes: routes,
+              ),
+            );
+          },
         );
-      });
-    });
+      },
+    );
   }
 }
