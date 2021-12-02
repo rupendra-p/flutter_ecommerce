@@ -1,3 +1,4 @@
+import 'package:ecommerce/screens/sign_in/sign_in_screen.dart';
 import 'package:ecommerce/utils/scroll_configuration.dart';
 
 import '/constant/color_properties.dart';
@@ -20,24 +21,12 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: SizeConfig.heightMultiplier * 4,
-                  ),
-                  child: Text(
-                    "Profile",
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                    // textAlign: TextAlign.center,
-                  ),
-                ),
                 SizedBox(
                   height: SizeConfig.heightMultiplier * 2,
                 ),
                 const Center(child: ProfilePic()),
                 SizedBox(
-                  height: SizeConfig.heightMultiplier * 2,
+                  height: SizeConfig.heightMultiplier * 3,
                 ),
                 ProfileMenu(
                   text: "My Account",
@@ -62,7 +51,11 @@ class ProfileScreen extends StatelessWidget {
                 ProfileMenu(
                   text: "Log Out",
                   icon: Icons.logout_outlined,
-                  press: () {},
+                  press: () {
+                    Navigator.of(context).pushNamed(
+                      SignInScreen.routeName,
+                    );
+                  },
                 ),
               ],
             ),
@@ -92,41 +85,32 @@ class ProfileMenu extends StatelessWidget {
         horizontal: SizeConfig.heightMultiplier * 2.5,
         vertical: SizeConfig.heightMultiplier * 1.3,
       ),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          primary: colorWhite,
-          padding: EdgeInsets.all(
+      child: ListTile(
+        tileColor: colorWhite,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
             SizeConfig.heightMultiplier * 2,
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              SizeConfig.heightMultiplier * 2,
-            ),
+        ),
+        onTap: press,
+        leading: Icon(
+          icon,
+          color: primaryColor,
+          size: SizeConfig.imageSizeMultiplier * 7,
+        ),
+        title: Expanded(
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                  color: primaryColor,
+                  fontSize: SizeConfig.textMultiplier * 2,
+                ),
           ),
         ),
-        onPressed: press,
-        child: Row(
-          children: [
-            Icon(
-              icon,
-              color: primaryColor,
-              size: SizeConfig.imageSizeMultiplier * 7,
-            ),
-            SizedBox(width: SizeConfig.heightMultiplier * 2.5),
-            Expanded(
-              child: Text(
-                text,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      color: primaryColor,
-                    ),
-              ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: primaryColor,
-              size: SizeConfig.imageSizeMultiplier * 5,
-            ),
-          ],
+        trailing: Icon(
+          Icons.arrow_forward_ios,
+          color: primaryColor,
+          size: SizeConfig.imageSizeMultiplier * 5,
         ),
       ),
     );
@@ -147,8 +131,13 @@ class ProfilePic extends StatelessWidget {
         fit: StackFit.expand,
         clipBehavior: Clip.none,
         children: [
-          const CircleAvatar(
-            backgroundImage: AssetImage("assets/images/Profile Image.png"),
+          CircleAvatar(
+            backgroundColor: secondaryColor,
+            child: Icon(
+              Icons.person,
+              size: SizeConfig.imageSizeMultiplier * 20,
+              color: canvasColor,
+            ),
           ),
           Positioned(
             right: -16,
@@ -159,14 +148,19 @@ class ProfilePic extends StatelessWidget {
               child: TextButton(
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(
+                      SizeConfig.heightMultiplier * 6,
+                    ),
                     side: const BorderSide(color: colorWhite),
                   ),
-                  primary: Colors.white,
+                  primary: colorWhite,
                   backgroundColor: colorWhite,
                 ),
                 onPressed: () {},
-                child: SvgPicture.asset("assets/icons/Camera Icon.svg"),
+                child: const Icon(
+                  Icons.add_a_photo,
+                  color: primaryColor,
+                ),
               ),
             ),
           )
