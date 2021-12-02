@@ -1,16 +1,13 @@
-import 'package:ecommerce/screens/home/discount_banner.dart';
+
 import 'package:ecommerce/screens/home/popular_product.dart';
 import 'package:ecommerce/screens/home/special_offers.dart';
-import 'package:ecommerce/screens/profile/profile_screen.dart';
+
 import 'package:ecommerce/utils/size_config.dart';
 import 'package:flutter/material.dart';
-import '../../components/custom_bottom_nav_bar.dart';
-
-
 
 import 'categories.dart';
+import 'discount_banner.dart';
 import 'home_header.dart';
-
 class HomeScreen extends StatefulWidget {
   static const  String routeName = "/home";
 
@@ -21,25 +18,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int index = 0;
 
-  @override
-  Widget build(BuildContext context) {
-    return CustomBottomNavBar(
-      currentIndex: index,
-      onTap: (i) => setState(() => index = i),
-      pages: [
-        Body(),
-        Container(),
-      
-        ProfileScreen(),
-      ],
-    );
-  }
-}
 
-class Body extends StatelessWidget {
-  @override
+   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
@@ -68,3 +49,4 @@ class Body extends StatelessWidget {
     );
   }
 }
+
