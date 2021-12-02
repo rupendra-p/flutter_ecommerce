@@ -38,8 +38,8 @@ class LoginSuccessScreen extends StatelessWidget {
               ),
             ),
 
-          ),
-          const Spacer(),
+    
+         
           SizedBox(
             width: SizeConfig.widthMultiplier * 50,
             child: DefaultButton(
@@ -49,7 +49,8 @@ class LoginSuccessScreen extends StatelessWidget {
               },
 
             ),
-            const Spacer(),
+          ),
+           
           ],
         ),
       ),
