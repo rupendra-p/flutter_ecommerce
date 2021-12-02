@@ -1,7 +1,7 @@
 import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
-import '/models/Product.dart';
+import '../../models/product.dart';
 import '/utils/size_config.dart';
 
 class ColorDots extends StatelessWidget {

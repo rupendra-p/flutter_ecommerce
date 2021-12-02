@@ -83,7 +83,7 @@ class ProfileMenu extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: SizeConfig.heightMultiplier * 2.5,
-        vertical: SizeConfig.heightMultiplier * 1.3,
+        vertical: SizeConfig.heightMultiplier * .8,
       ),
       child: ListTile(
         tileColor: colorWhite,
@@ -98,14 +98,12 @@ class ProfileMenu extends StatelessWidget {
           color: primaryColor,
           size: SizeConfig.imageSizeMultiplier * 7,
         ),
-        title: Expanded(
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  color: primaryColor,
-                  fontSize: SizeConfig.textMultiplier * 2,
-                ),
-          ),
+        title: Text(
+          text,
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                color: primaryColor,
+                fontSize: SizeConfig.textMultiplier * 2,
+              ),
         ),
         trailing: Icon(
           Icons.arrow_forward_ios,
@@ -124,48 +122,63 @@ class ProfilePic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 115,
-      width: 115,
-      child: Stack(
-        fit: StackFit.expand,
-        clipBehavior: Clip.none,
-        children: [
-          CircleAvatar(
-            backgroundColor: secondaryColor,
-            child: Icon(
-              Icons.person,
-              size: SizeConfig.imageSizeMultiplier * 20,
-              color: canvasColor,
-            ),
-          ),
-          Positioned(
-            right: -16,
-            bottom: 0,
-            child: SizedBox(
-              height: 46,
-              width: 46,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      SizeConfig.heightMultiplier * 6,
-                    ),
-                    side: const BorderSide(color: colorWhite),
-                  ),
-                  primary: colorWhite,
-                  backgroundColor: colorWhite,
-                ),
-                onPressed: () {},
-                child: const Icon(
-                  Icons.add_a_photo,
-                  color: primaryColor,
+    return Column(
+      children: [
+        SizedBox(
+          height: SizeConfig.heightMultiplier * 15,
+          width: SizeConfig.heightMultiplier * 15,
+          child: Stack(
+            fit: StackFit.expand,
+            clipBehavior: Clip.none,
+            children: [
+              CircleAvatar(
+                backgroundColor: secondaryColor,
+                child: Icon(
+                  Icons.person,
+                  size: SizeConfig.imageSizeMultiplier * 20,
+                  color: canvasColor,
                 ),
               ),
-            ),
-          )
-        ],
-      ),
+              Positioned(
+                right: -16,
+                bottom: 0,
+                child: SizedBox(
+                  height: 46,
+                  width: 46,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          SizeConfig.heightMultiplier * 6,
+                        ),
+                        side: const BorderSide(color: colorWhite),
+                      ),
+                      primary: colorWhite,
+                      backgroundColor: colorWhite,
+                    ),
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.add_a_photo,
+                      color: primaryColor,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        SizedBox(
+          height: SizeConfig.heightMultiplier,
+        ),
+        Text(
+          "Sameer Baniya",
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+        Text(
+          "baniyanischal@gmail.com",
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
+      ],
     );
   }
 }
