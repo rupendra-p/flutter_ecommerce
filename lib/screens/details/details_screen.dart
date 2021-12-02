@@ -1,4 +1,5 @@
-import 'package:ecommerce/components/default_button.dart';
+
+import '/widgets/default_button.dart';
 import 'package:ecommerce/constant/color_properties.dart';
 import 'package:ecommerce/screens/details/product_description.dart';
 import 'package:ecommerce/screens/details/product_images.dart';

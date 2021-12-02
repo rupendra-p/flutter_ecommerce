@@ -1,4 +1,4 @@
-import '/components/default_button.dart';
+import '/widgets/default_button.dart';
 import '/constant/color_properties.dart';
 import '/screens/sign_in/sign_in_screen.dart';
 import '/utils/size_config.dart';

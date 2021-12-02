@@ -1,7 +1,7 @@
 import 'package:ecommerce/screens/navigation_screen.dart';
 import 'package:flutter/material.dart';
 
-import '/components/default_button.dart';
+import '/widgets/default_button.dart';
 import '/constant/color_properties.dart';
 import '/utils/size_config.dart';
 

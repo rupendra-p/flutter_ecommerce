@@ -2,7 +2,7 @@ import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '/components/default_button.dart';
+import '/widgets/default_button.dart';
 import '/utils/size_config.dart';
 
 class CheckoutCard extends StatelessWidget {

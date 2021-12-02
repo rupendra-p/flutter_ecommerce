@@ -1,4 +1,4 @@
-import 'package:ecommerce/components/custom_bottom_nav_bar.dart';
+import '/widgets/custom_bottom_nav_bar.dart';
 import 'package:ecommerce/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
