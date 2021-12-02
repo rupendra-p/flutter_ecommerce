@@ -1,8 +1,7 @@
 import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
-import '/components/rounded_icon_btn.dart';
-import '/models/Product.dart';
 
+import '/models/Product.dart';
 import '/utils/size_config.dart';
 
 class ColorDots extends StatelessWidget {
@@ -30,19 +29,23 @@ class ColorDots extends StatelessWidget {
               isSelected: index == selectedColor,
             ),
           ),
-          Spacer(),
-          RoundedIconBtn(
-            icon: Icons.remove,
-            press: () {},
+          const Spacer(),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.remove_circle,
+              )),
+          CircleAvatar(
+            backgroundColor: colorWhite,
+            radius: SizeConfig.imageSizeMultiplier * 5,
+            child: Text(
+              '10',
+              style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                    color: primaryColor,
+                  ),
+            ),
           ),
-          SizedBox(
-            width: SizeConfig.heightMultiplier * 2.5,
-          ),
-          RoundedIconBtn(
-            icon: Icons.add,
-            showShadow: true,
-            press: () {},
-          ),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.add_circle)),
         ],
       ),
     );
@@ -62,7 +65,7 @@ class ColorDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 2),
+      margin: const EdgeInsets.only(right: 2),
       padding: EdgeInsets.all(SizeConfig.heightMultiplier),
       height: SizeConfig.heightMultiplier * 5,
       width: SizeConfig.heightMultiplier * 5,

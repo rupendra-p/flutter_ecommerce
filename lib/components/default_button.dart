@@ -7,15 +7,17 @@ class DefaultButton extends StatelessWidget {
     Key? key,
     this.text,
     this.press,
+    this.width,
   }) : super(key: key);
   final String? text;
   final Function? press;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
       height: SizeConfig.heightMultiplier * 7,
+      width: width ?? SizeConfig.widthMultiplier * 90,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape:
