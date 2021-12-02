@@ -1,13 +1,13 @@
-import 'package:ecommerce/components/custom_surfix_icon.dart';
 import 'package:ecommerce/components/default_button.dart';
-import 'package:ecommerce/components/form_error.dart';
 import 'package:ecommerce/components/no_account_text.dart';
 import 'package:ecommerce/constant/constants.dart';
 import 'package:ecommerce/utils/size_config.dart';
+import 'package:ecommerce/utils/validation_mixin.dart';
 import 'package:flutter/material.dart';
 
-
 class ForgotPassForm extends StatefulWidget {
+  const ForgotPassForm({Key? key}) : super(key: key);
+
   @override
   _ForgotPassFormState createState() => _ForgotPassFormState();
 }
@@ -36,36 +36,24 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
                   errors.remove(kInvalidEmailError);
                 });
               }
-              return ;
+              return;
             },
-            validator: (value) {
-              if (value!.isEmpty && !errors.contains(kEmailNullError)) {
-                setState(() {
-                  errors.add(kEmailNullError);
-                });
-              } else if (!emailValidatorRegExp.hasMatch(value) &&
-                  !errors.contains(kInvalidEmailError)) {
-                setState(() {
-                  errors.add(kInvalidEmailError);
-                });
-              }
-              return null;
-            },
+            validator: (value) => ValidationMixin().validateEmail(value!),
             decoration: InputDecoration(
               labelText: "Email",
+              isDense: true,
               hintText: "Enter your email",
-              // If  you are using latest version of flutter then lable text and hint text shown like this
-              // if you r using flutter less then 1.20.* then maybe this is not working properly
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+              suffixIcon: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.email_outlined,
+                ),
+              ),
             ),
           ),
           SizedBox(
-            height: SizeConfig.heightMultiplier * 23.8,
-          ),
-          FormError(errors: errors),
-          SizedBox(
-            height: SizeConfig.heightMultiplier * .5,
+            height: SizeConfig.heightMultiplier * 2.5,
           ),
           DefaultButton(
             text: "Continue",
@@ -76,9 +64,9 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
             },
           ),
           SizedBox(
-            height: SizeConfig.heightMultiplier * .5,
+            height: SizeConfig.heightMultiplier * 2.5,
           ),
-          NoAccountText(),
+          const NoAccountText(),
         ],
       ),
     );
