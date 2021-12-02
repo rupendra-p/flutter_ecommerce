@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '/components/default_button.dart';
+import '/widgets/default_button.dart';
 import '/screens/navigation_screen.dart';
 import '/utils/size_config.dart';
 

@@ -1,4 +1,9 @@
+
+
+import '/utils/scroll_configuration.dart';
+
 import '/providers/cart_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';

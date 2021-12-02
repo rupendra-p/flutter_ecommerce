@@ -1,8 +1,8 @@
 import 'package:ecommerce/screens/sign_in/sign_in_screen.dart';
 import 'package:ecommerce/utils/scroll_configuration.dart';
 
-import '/components/default_button.dart';
-import '/components/socal_card.dart';
+import '/widgets/default_button.dart';
+import '/widgets/socal_card.dart';
 import '/constant/color_properties.dart';
 import '/constant/constants.dart';
 import '/screens/complete_profile/complete_profile_screen.dart';

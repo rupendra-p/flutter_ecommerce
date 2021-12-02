@@ -1,5 +1,6 @@
-import 'package:ecommerce/components/default_button.dart';
-import 'package:ecommerce/components/no_account_text.dart';
+
+import '/widgets/default_button.dart';
+import '/widgets/no_account_text.dart';
 import 'package:ecommerce/constant/constants.dart';
 import 'package:ecommerce/utils/size_config.dart';
 import 'package:ecommerce/utils/validation_mixin.dart';
