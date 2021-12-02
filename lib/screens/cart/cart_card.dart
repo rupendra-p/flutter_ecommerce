@@ -1,7 +1,7 @@
-import 'package:ecommerce/constant/color_properties.dart';
+import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
-import '/models/Cart.dart';
+import '/models/cart.dart';
 import '/utils/size_config.dart';
 
 class CartCard extends StatelessWidget {

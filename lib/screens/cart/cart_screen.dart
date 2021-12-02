@@ -1,12 +1,12 @@
-import 'package:ecommerce/constant/color_properties.dart';
-import 'package:ecommerce/utils/scroll_configuration.dart';
-import 'package:ecommerce/utils/size_config.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '/models/Cart.dart';
+import '/models/cart.dart';
 import 'cart_card.dart';
 import 'check_out_card.dart';
+import '/constant/color_properties.dart';
+import '/utils/size_config.dart';
 
 class CartScreen extends StatefulWidget {
   static const String routeName = "/cart";

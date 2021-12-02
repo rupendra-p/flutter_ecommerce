@@ -3,7 +3,7 @@ import 'package:ecommerce/constant/color_properties.dart';
 import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '/models/Product.dart';
+import '../models/product.dart';
 import '/screens/details/details_screen.dart';
 
 import '/constant/constants.dart';

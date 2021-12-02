@@ -6,7 +6,7 @@ import 'package:ecommerce/screens/details/top_rounded_container.dart';
 import 'package:ecommerce/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/Product.dart';
+import '../../models/product.dart';
 import 'color_dots.dart';
 import 'custom_app_bar.dart';
 
