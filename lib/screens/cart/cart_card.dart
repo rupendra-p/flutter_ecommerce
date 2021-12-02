@@ -1,3 +1,6 @@
+import 'package:ecommerce/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
+
 import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
@@ -59,23 +62,33 @@ class CartCard extends StatelessWidget {
             ],
           ),
         ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.remove_circle,
-                )),
-            Text(
-              '10',
-              style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                    color: primaryColor,
-                  ),
-            ),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.add_circle)),
-          ],
-        ),
+        Consumer<CartProvider>(builder: (_, value, __) {
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                  onPressed: () {
+                    if (cart.numOfItem > 1) {
+                      value.addToCart(cart.product, -1);
+                    }
+                  },
+                  icon: const Icon(
+                    Icons.remove_circle,
+                  )),
+              Text(
+                cart.numOfItem.toString(),
+                style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                      color: primaryColor,
+                    ),
+              ),
+              IconButton(
+                  onPressed: () {
+                    value.addToCart(cart.product, 1);
+                  },
+                  icon: const Icon(Icons.add_circle)),
+            ],
+          );
+        }),
       ],
     );
   }
