@@ -1,3 +1,4 @@
+import 'package:ecommerce/screens/navigation_screen.dart';
 import 'package:flutter/material.dart';
 
 import '/components/default_button.dart';
@@ -36,15 +37,17 @@ class LoginSuccessScreen extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            const Spacer(),
-            SizedBox(
-              width: SizeConfig.widthMultiplier * 50,
-              child: DefaultButton(
-                text: "Back to home",
-                press: () {
-                  Navigator.pushNamed(context, HomeScreen.routeName);
-                },
-              ),
+
+          ),
+          const Spacer(),
+          SizedBox(
+            width: SizeConfig.widthMultiplier * 50,
+            child: DefaultButton(
+              text: "Back to home",
+              press: () {
+                Navigator.pushNamed(context, NavigationScreen.routeName);
+              },
+
             ),
             const Spacer(),
           ],
