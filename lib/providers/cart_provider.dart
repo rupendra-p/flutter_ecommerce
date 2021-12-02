@@ -1,9 +1,15 @@
 import '/models/product.dart';
 import '/models/cart.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:collection/collection.dart';
 
 class CartProvider with ChangeNotifier {
-  List<Cart> _carts = [];
+  // ignore: prefer_final_fields
+  List<Cart> _carts = [
+    Cart(product: demoProducts[0], numOfItem: 2),
+    Cart(product: demoProducts[1], numOfItem: 1),
+    Cart(product: demoProducts[3], numOfItem: 1),
+  ];
   List<Cart> get cart => _carts;
 
   addToCart(Product product, int numberOfItem) {
@@ -20,7 +26,9 @@ class CartProvider with ChangeNotifier {
   }
 
   Cart? checkIsInCart(int id) {
-    return _carts.firstWhere((element) => element.product.id == id);
+    return _carts.firstWhereOrNull(
+      (element) => element.product.id == id,
+    );
   }
 
   removeFromCart(Product product) {
