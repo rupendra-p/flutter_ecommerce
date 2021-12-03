@@ -146,10 +146,10 @@ class _SignFormState extends State<SignForm> {
                 child: Text(
                   "Forgot Password",
                   style: TextStyle(
-                    decoration: TextDecoration.underline,
+                    
                     decorationColor: secondaryColor,
                     decorationThickness: SizeConfig.heightMultiplier * .4,
-                    color: primaryColor,
+                    color: secondaryColor,
                   ),
                 ),
               )
