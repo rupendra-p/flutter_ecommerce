@@ -1,9 +1,12 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '/utils/size_config.dart';
 
 class Categories extends StatelessWidget {
+  const Categories({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
@@ -59,13 +62,22 @@ class CategoryCard extends StatelessWidget {
               height: SizeConfig.heightMultiplier * 7,
               width: SizeConfig.heightMultiplier * 7,
               decoration: BoxDecoration(
-                color: Color(0xFFFFECDF),
+                color: primaryColor.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SvgPicture.asset(icon!),
+              child: SvgPicture.asset(
+                icon!,
+                color: primaryColor,
+              ),
             ),
-            SizedBox(height: 5),
-            Text(text!, textAlign: TextAlign.center)
+            SizedBox(height: SizeConfig.heightMultiplier),
+            Text(
+              text!,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                    color: primaryColor,
+                  ),
+            )
           ],
         ),
       ),

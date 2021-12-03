@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '/widgets/product_card.dart';
-import '../../models/product.dart';
 
 import '/utils/size_config.dart';
+import '/widgets/product_card.dart';
+import '../../models/product.dart';
 import 'section_title.dart';
 
 class PopularProducts extends StatelessWidget {
@@ -14,7 +14,7 @@ class PopularProducts extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.heightMultiplier * 2.5,
+            horizontal: SizeConfig.heightMultiplier * 2,
           ),
           child: SectionTitle(title: "Popular Products", press: () {}),
         ),
@@ -23,23 +23,29 @@ class PopularProducts extends StatelessWidget {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ...List.generate(
-                demoProducts.length,
-                (index) {
-                  if (demoProducts[index].isPopular) {
-                    return ProductCard(product: demoProducts[index]);
-                  }
-
-                  return const SizedBox
-                      .shrink(); // here by default width and height is 0
-                },
-              ),
-              SizedBox(
-                width: SizeConfig.heightMultiplier * 2.5,
-              ),
-            ],
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.heightMultiplier,
+            ),
+            child: Row(
+              children: [
+                ...List.generate(
+                  demoProducts.length,
+                  (index) {
+                    if (demoProducts[index].isPopular) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.heightMultiplier,
+                        ),
+                        child: ProductCard(product: demoProducts[index]),
+                      );
+                    }
+                    return const SizedBox
+                        .shrink(); // here by default width and height is 0
+                  },
+                ),
+              ],
+            ),
           ),
         )
       ],

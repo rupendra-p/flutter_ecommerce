@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
@@ -10,24 +12,36 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: SizeConfig.widthMultiplier * 60,
-      decoration: BoxDecoration(
-        color: secondaryColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(15),
-      ),
       child: TextField(
-        onChanged: (value) => print(value),
+        onChanged: (value) => log(value),
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
               horizontal: SizeConfig.heightMultiplier * 2.5,
-              vertical: SizeConfig.heightMultiplier * 2,
             ),
-            border: InputBorder.none,
-            focusedBorder: InputBorder.none,
-            enabledBorder: InputBorder.none,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(
+                SizeConfig.imageSizeMultiplier * 3,
+              ),
+              borderSide: BorderSide.none,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(
+                SizeConfig.imageSizeMultiplier * 3,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(
+                SizeConfig.imageSizeMultiplier * 3,
+              ),
+              borderSide: BorderSide.none,
+            ),
+            fillColor: primaryColor.withOpacity(0.05),
+            filled: true,
+            isDense: true,
             hintText: "Search product",
-            prefixIcon: Icon(Icons.search)),
+            prefixIcon: const Icon(Icons.search)),
       ),
     );
   }

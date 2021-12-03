@@ -14,7 +14,7 @@ class SpecialOffers extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.heightMultiplier * 2.5,
+            horizontal: SizeConfig.heightMultiplier * 2,
           ),
           child: SectionTitle(
             title: "Special for you",
@@ -68,7 +68,7 @@ class SpecialOfferCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        left: SizeConfig.heightMultiplier * 2.5,
+        left: SizeConfig.heightMultiplier * 2,
       ),
       child: GestureDetector(
         onTap: press,

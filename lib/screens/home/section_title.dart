@@ -1,6 +1,5 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
-
-import '/utils/size_config.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
@@ -19,16 +18,17 @@ class SectionTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
-            // fontSize: getProportionateScreenWidth(18),
-            color: Colors.black,
-          ),
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                color: primaryColor,
+              ),
         ),
         GestureDetector(
           onTap: press,
           child: Text(
             "See More",
-            style: TextStyle(color: Color(0xFFBBBBBB)),
+            style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                  color: secondaryColor,
+                ),
           ),
         ),
       ],

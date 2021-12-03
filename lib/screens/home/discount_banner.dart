@@ -13,14 +13,14 @@ class DiscountBanner extends StatelessWidget {
       // height: 90,
       width: double.infinity,
       margin: EdgeInsets.all(
-        SizeConfig.heightMultiplier * 2.5,
+        SizeConfig.heightMultiplier * 2,
       ),
       padding: EdgeInsets.symmetric(
         horizontal: SizeConfig.heightMultiplier * 5,
         vertical: SizeConfig.heightMultiplier * 6,
       ),
       decoration: BoxDecoration(
-        color: Color(0xFF4A3298),
+        color: const Color(0xFF4A3298),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text.rich(
