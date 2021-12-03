@@ -14,24 +14,26 @@ class HomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: SizeConfig.widthMultiplier * 1.5,
+        horizontal: SizeConfig.heightMultiplier * 2,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SearchField(),
-          Spacer(),
+          const SearchField(),
+          const Spacer(),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart Icon.svg",
+            numOfitem: 3,
+            isShow: true,
             press: () => Navigator.pushNamed(context, CartScreen.routeName),
           ),
           SizedBox(
-            width: SizeConfig.widthMultiplier * 1.5,
+            width: SizeConfig.widthMultiplier * 2,
           ),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
-            numOfitem: 3,
             press: () {},
+            numOfitem: 1,
           ),
         ],
       ),

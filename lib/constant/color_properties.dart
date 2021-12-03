@@ -13,6 +13,8 @@ Color colorLightBlack = Colors.black54;
 const Color colorLightBrown = Color(0xffCCBBBB);
 const Color colorDarkBrown = Color(0xff443734);
 
+const Color redColor = Color(0xFFFF4848);
+
 const Color colorGrey = Color(0xff5E5E5E);
 const Color colorDarkGrey = Color(0xffABABAB);
 Color colorMediumGrey = Colors.grey.shade600;
