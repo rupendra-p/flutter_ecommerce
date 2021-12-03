@@ -1,19 +1,18 @@
 import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '/utils/size_config.dart';
 
 class IconBtnWithCounter extends StatelessWidget {
   const IconBtnWithCounter({
     Key? key,
-    required this.svgSrc,
+    required this.icon,
     this.numOfitem = 0,
     this.isShow = false,
     required this.press,
   }) : super(key: key);
 
-  final String svgSrc;
+  final Icon icon;
   final int numOfitem;
   final bool isShow;
   final GestureTapCallback press;
@@ -27,8 +26,9 @@ class IconBtnWithCounter extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           CircleAvatar(
+            foregroundColor: primaryColor,
             backgroundColor: primaryColor.withOpacity(0.05),
-            child: SvgPicture.asset(svgSrc),
+            child: icon,
           ),
           if (numOfitem != 0)
             Positioned(

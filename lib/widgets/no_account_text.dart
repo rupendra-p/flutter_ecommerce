@@ -26,10 +26,10 @@ class NoAccountText extends StatelessWidget {
             "Sign Up",
             style: TextStyle(
               fontSize: SizeConfig.textMultiplier * 2.4,
-              decoration: TextDecoration.underline,
+              
               decorationColor: secondaryColor,
               decorationThickness: SizeConfig.heightMultiplier * .4,
-              color: primaryColor,
+              color: secondaryColor,
             ),
           ),
         ),

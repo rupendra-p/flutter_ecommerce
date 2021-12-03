@@ -1,14 +1,14 @@
 import 'package:ecommerce/screens/sign_in/sign_in_screen.dart';
 import 'package:ecommerce/utils/scroll_configuration.dart';
+import 'package:flutter/material.dart';
 
-import '/widgets/default_button.dart';
-import '/widgets/socal_card.dart';
 import '/constant/color_properties.dart';
 import '/constant/constants.dart';
 import '/screens/complete_profile/complete_profile_screen.dart';
 import '/utils/size_config.dart';
 import '/utils/validation_mixin.dart';
-import 'package:flutter/material.dart';
+import '/widgets/default_button.dart';
+import '/widgets/socal_card.dart';
 
 class SignUpScreen extends StatelessWidget {
   static const String routeName = "/sign_up";
@@ -102,9 +102,8 @@ class SignUpScreen extends StatelessWidget {
             style: TextStyle(
               fontSize: SizeConfig.textMultiplier * 2.4,
               decoration: TextDecoration.underline,
-              decorationColor: secondaryColor,
               decorationThickness: SizeConfig.heightMultiplier * .4,
-              color: primaryColor,
+              color: secondaryColor,
             ),
           ),
         ),
