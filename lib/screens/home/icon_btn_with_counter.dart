@@ -48,7 +48,8 @@ class IconBtnWithCounter extends StatelessWidget {
                 child: isShow
                     ? Center(
                         child: Text(
-                          "$numOfitem                                                                                ",
+                          "$numOfitem",
+                          textAlign: TextAlign.center,
                           style:
                               Theme.of(context).textTheme.subtitle2!.copyWith(
                                     color: colorWhite,
