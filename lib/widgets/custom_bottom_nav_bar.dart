@@ -3,7 +3,7 @@ import 'package:ecommerce/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CustomBottomNavBar extends StatelessWidget {
+class CustomBottomNavBar extends StatefulWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
   final List<Widget> pages;
@@ -16,17 +16,56 @@ class CustomBottomNavBar extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
+}
+
+class _CustomBottomNavBarState extends State<CustomBottomNavBar>
+    with SingleTickerProviderStateMixin {
+  late Animation<Offset> _offsetAnimation;
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 500,
+      ),
+    );
+
+    _offsetAnimation =
+        Tween<Offset>(begin: const Offset(-5.0, 0), end: Offset.zero)
+            .animate(CurvedAnimation(
+      curve: Curves.easeInOutCubic,
+      parent: controller,
+    ));
+
+    controller.forward();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Material(
       child: Scaffold(
-        body: pages[currentIndex],
+        body: SlideTransition(
+          position: _offsetAnimation,
+          child: widget.pages[widget.currentIndex],
+        ),
         bottomNavigationBar: ClipRRect(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(SizeConfig.widthMultiplier * 6.0),
             topRight: Radius.circular(SizeConfig.widthMultiplier * 6.0),
           ),
           child: BottomNavigationBar(
-            currentIndex: currentIndex,
+            currentIndex: widget.currentIndex,
             type: BottomNavigationBarType.fixed,
             backgroundColor: primaryColor,
             elevation: 1.0,
@@ -71,7 +110,12 @@ class CustomBottomNavBar extends StatelessWidget {
                 ),
               ),
             ],
-            onTap: onTap,
+            onTap: (x) {
+              controller.value = 0;
+              // controller.reverse();
+              controller.forward();
+              widget.onTap(x);
+            },
           ),
         ),
       ),

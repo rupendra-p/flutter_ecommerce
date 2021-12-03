@@ -1,5 +1,6 @@
 import 'package:ecommerce/providers/cart_provider.dart';
 import 'package:ecommerce/providers/wishlist_provider.dart';
+import 'package:ecommerce/screens/navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
                 title: dotenv.env['clientName']!,
                 theme: lightTheme(context),
                 // darkTheme: darkTheme(context),
-                initialRoute: SplashScreen.routeName,
-                routes: routes,
+                home: NavigationScreen(),
+                // initialRoute: SplashScreen.routeName,
+                // routes: routes,
               ),
             );
           },
