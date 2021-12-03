@@ -1,8 +1,8 @@
-import 'package:ecommerce/screens/home/popular_product.dart';
-import 'package:ecommerce/screens/home/special_offers.dart';
-import 'package:ecommerce/screens/home/staggerred_gridview_product.dart';
-import 'package:ecommerce/utils/scroll_configuration.dart';
-import 'package:ecommerce/utils/size_config.dart';
+import '/screens/home/popular_product.dart';
+import '/screens/home/special_offers.dart';
+import '/screens/home/staggerred_gridview_product.dart';
+import '/utils/scroll_configuration.dart';
+import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 import 'categories.dart';

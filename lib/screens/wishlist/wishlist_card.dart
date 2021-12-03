@@ -1,5 +1,5 @@
-import 'package:ecommerce/providers/wishlist_provider.dart';
-import 'package:ecommerce/utils/show_toast.dart';
+import '/providers/wishlist_provider.dart';
+import '/utils/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

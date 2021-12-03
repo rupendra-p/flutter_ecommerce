@@ -1,9 +1,8 @@
-
 import '/widgets/default_button.dart';
 import '/widgets/no_account_text.dart';
-import 'package:ecommerce/constant/constants.dart';
-import 'package:ecommerce/utils/size_config.dart';
-import 'package:ecommerce/utils/validation_mixin.dart';
+import '/constant/constants.dart';
+import '/utils/size_config.dart';
+import '/utils/validation_mixin.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassForm extends StatefulWidget {

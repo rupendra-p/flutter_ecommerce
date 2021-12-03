@@ -1,8 +1,9 @@
-import 'package:ecommerce/providers/cart_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/providers/cart_provider.dart';
+
 import '/constant/color_properties.dart';
-import 'package:flutter/material.dart';
 
 import '/models/cart.dart';
 import '/utils/size_config.dart';

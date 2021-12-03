@@ -1,5 +1,5 @@
-import 'package:ecommerce/constant/color_properties.dart';
-import 'package:ecommerce/screens/search_list/search_screen.dart';
+import '/constant/color_properties.dart';
+import '/screens/search_list/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,6 +1,5 @@
-import 'package:ecommerce/providers/cart_provider.dart';
-import 'package:ecommerce/providers/wishlist_provider.dart';
-import 'package:ecommerce/screens/navigation_screen.dart';
+import '/providers/cart_provider.dart';
+import '/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';

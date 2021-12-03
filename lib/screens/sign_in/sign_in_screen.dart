@@ -1,4 +1,4 @@
-import 'package:ecommerce/utils/scroll_configuration.dart';
+import '/utils/scroll_configuration.dart';
 
 import '/widgets/default_button.dart';
 import '/widgets/no_account_text.dart';
@@ -146,7 +146,6 @@ class _SignFormState extends State<SignForm> {
                 child: Text(
                   "Forgot Password",
                   style: TextStyle(
-                    
                     decorationColor: secondaryColor,
                     decorationThickness: SizeConfig.heightMultiplier * .4,
                     color: secondaryColor,
