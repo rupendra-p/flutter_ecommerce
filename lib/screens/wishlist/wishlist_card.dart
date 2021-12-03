@@ -1,11 +1,11 @@
 import 'package:ecommerce/providers/wishlist_provider.dart';
+import 'package:ecommerce/utils/show_toast.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/constant/color_properties.dart';
-import 'package:flutter/material.dart';
-
-import '/providers/cart_provider.dart';
 import '/models/wishlist.dart';
+import '/providers/cart_provider.dart';
 import '/utils/size_config.dart';
 
 class WishListCard extends StatelessWidget {
@@ -70,7 +70,7 @@ class WishListCard extends StatelessWidget {
                 .addToCart(wishList.product, 1);
             Provider.of<WishListProvider>(context, listen: false)
                 .removeFromWishList(wishList.product);
-            ScaffoldMessenger.of(context).showSnackBar(
+            /* ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text(
                   "Successfully added the item to cart",
@@ -80,6 +80,9 @@ class WishListCard extends StatelessWidget {
                   seconds: 3,
                 ),
               ),
+            ); */
+            showToast(
+              text: "Successfully added the item to cart",
             );
           },
           icon: const Icon(

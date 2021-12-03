@@ -1,3 +1,4 @@
+import 'package:ecommerce/utils/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -61,11 +62,11 @@ class WishlistScreen extends StatelessWidget {
 }
 
 class WishListBuilder extends StatefulWidget {
-  WishListBuilder(
+  const WishListBuilder(
     this.data, {
     Key? key,
   }) : super(key: key);
-  WishListProvider? data;
+  final WishListProvider? data;
   @override
   State<WishListBuilder> createState() => _WishListBuilderState();
 }
@@ -84,7 +85,7 @@ class _WishListBuilderState extends State<WishListBuilder> {
             setState(() {
               widget.data!
                   .removeFromWishList(widget.data!.wishlists[index].product);
-              ScaffoldMessenger.of(context).showSnackBar(
+              /*  ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text(
                     "Successfully removed the item from wishlist",
@@ -94,6 +95,9 @@ class _WishListBuilderState extends State<WishListBuilder> {
                     seconds: 3,
                   ),
                 ),
+              ); */
+              showToast(
+                text: "Successfully removed the item from whishlist",
               );
             });
           },

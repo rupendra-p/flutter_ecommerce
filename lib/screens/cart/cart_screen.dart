@@ -1,4 +1,4 @@
-
+import 'package:ecommerce/utils/show_toast.dart';
 
 import '/utils/scroll_configuration.dart';
 
@@ -88,6 +88,7 @@ class _CartScreenState extends State<CartScreen> {
                             setState(() {
                               data.removeFromCart(data.cart[index].product);
                             });
+                            showToast(text: 'Item remove from cart');
                           },
                           background: Container(
                             padding: EdgeInsets.symmetric(
