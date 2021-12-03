@@ -1,6 +1,6 @@
-import 'package:ecommerce/constant/color_properties.dart';
-import 'package:ecommerce/screens/search_list/search_field.dart';
-import 'package:ecommerce/utils/size_config.dart';
+import '/constant/color_properties.dart';
+import '/screens/search_list/search_field.dart';
+import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {

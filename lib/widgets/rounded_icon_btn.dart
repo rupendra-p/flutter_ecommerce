@@ -1,9 +1,7 @@
-import 'package:ecommerce/constant/color_properties.dart';
+import '/constant/color_properties.dart';
 
 import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
-
-
 
 class RoundedIconBtn extends StatelessWidget {
   const RoundedIconBtn({
@@ -20,8 +18,8 @@ class RoundedIconBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height:  SizeConfig.heightMultiplier*2.5,
-      width:  SizeConfig.heightMultiplier*2.5,
+      height: SizeConfig.heightMultiplier * 2.5,
+      width: SizeConfig.heightMultiplier * 2.5,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         boxShadow: [

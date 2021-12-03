@@ -1,7 +1,7 @@
-import 'package:ecommerce/models/product.dart';
-import 'package:ecommerce/screens/home/section_title.dart';
-import 'package:ecommerce/utils/size_config.dart';
-import 'package:ecommerce/widgets/product_card.dart';
+import '/models/product.dart';
+import '/screens/home/section_title.dart';
+import '/utils/size_config.dart';
+import '/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 

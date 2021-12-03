@@ -1,4 +1,4 @@
-import 'package:ecommerce/constant/color_properties.dart';
+import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {

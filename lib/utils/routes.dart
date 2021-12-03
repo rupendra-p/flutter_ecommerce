@@ -1,5 +1,5 @@
-import 'package:ecommerce/screens/navigation_screen.dart';
-import 'package:ecommerce/screens/search_list/search_screen.dart';
+import '/screens/navigation_screen.dart';
+import '/screens/search_list/search_screen.dart';
 import 'package:flutter/widgets.dart';
 import '/screens/cart/cart_screen.dart';
 import '/screens/complete_profile/complete_profile_screen.dart';
@@ -25,9 +25,9 @@ final Map<String, WidgetBuilder> routes = {
   CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
   OtpScreen.routeName: (context) => OtpScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
-  NavigationScreen.routeName:(context)=>NavigationScreen(),
+  NavigationScreen.routeName: (context) => NavigationScreen(),
   DetailsScreen.routeName: (context) => DetailsScreen(),
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
-  SearchScreen.routeName:(context)=>SearchScreen(),
+  SearchScreen.routeName: (context) => SearchScreen(),
 };

@@ -1,4 +1,4 @@
-import 'package:ecommerce/constant/color_properties.dart';
+import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
 import '/screens/sign_up/sign_up_screen.dart';
@@ -26,7 +26,6 @@ class NoAccountText extends StatelessWidget {
             "Sign Up",
             style: TextStyle(
               fontSize: SizeConfig.textMultiplier * 2.4,
-              
               decorationColor: secondaryColor,
               decorationThickness: SizeConfig.heightMultiplier * .4,
               color: secondaryColor,

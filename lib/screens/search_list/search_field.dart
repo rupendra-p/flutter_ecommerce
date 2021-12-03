@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:ecommerce/constant/color_properties.dart';
+import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
 import '/utils/size_config.dart';

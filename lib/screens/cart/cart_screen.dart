@@ -1,4 +1,4 @@
-import 'package:ecommerce/utils/show_toast.dart';
+import '/utils/show_toast.dart';
 
 import '/utils/scroll_configuration.dart';
 

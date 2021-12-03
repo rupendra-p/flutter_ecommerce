@@ -1,5 +1,5 @@
-import 'package:ecommerce/constant/color_properties.dart';
-import 'package:ecommerce/providers/wishlist_provider.dart';
+import '/constant/color_properties.dart';
+import '/providers/wishlist_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

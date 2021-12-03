@@ -1,7 +1,7 @@
-import 'package:ecommerce/screens/wishlist/wishlist_screen.dart';
+import '/screens/wishlist/wishlist_screen.dart';
 
 import '/widgets/custom_bottom_nav_bar.dart';
-import 'package:ecommerce/screens/profile/profile_screen.dart';
+import '/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'home/home_screen.dart';

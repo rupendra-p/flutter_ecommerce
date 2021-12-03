@@ -1,4 +1,4 @@
-import 'package:ecommerce/screens/navigation_screen.dart';
+import '/screens/navigation_screen.dart';
 import 'package:flutter/material.dart';
 
 import '/widgets/default_button.dart';

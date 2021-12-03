@@ -1,5 +1,5 @@
-import 'package:ecommerce/constant/color_properties.dart';
-import 'package:ecommerce/utils/size_config.dart';
+import '/constant/color_properties.dart';
+import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'complete_profile_form.dart';
 
