@@ -49,11 +49,12 @@ class IconBtnWithCounter extends StatelessWidget {
                     ? Center(
                         child: Text(
                           "$numOfitem",
-                          style: const TextStyle(
-                            height: 1,
-                            fontWeight: FontWeight.w600,
-                            color: colorWhite,
-                          ),
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.subtitle2!.copyWith(
+                                    color: colorWhite,
+                                    fontSize: SizeConfig.textMultiplier,
+                                  ),
                         ),
                       )
                     : null,

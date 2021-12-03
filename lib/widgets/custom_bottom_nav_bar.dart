@@ -8,7 +8,7 @@ class CustomBottomNavBar extends StatelessWidget {
   final ValueChanged<int> onTap;
   final List<Widget> pages;
 
-  CustomBottomNavBar({
+  const CustomBottomNavBar({
     Key? key,
     required this.currentIndex,
     required this.onTap,
@@ -22,8 +22,8 @@ class CustomBottomNavBar extends StatelessWidget {
         body: pages[currentIndex],
         bottomNavigationBar: ClipRRect(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(SizeConfig.widthMultiplier * 10.0),
-            topRight: Radius.circular(SizeConfig.widthMultiplier * 10.0),
+            topLeft: Radius.circular(SizeConfig.widthMultiplier * 6.0),
+            topRight: Radius.circular(SizeConfig.widthMultiplier * 6.0),
           ),
           child: BottomNavigationBar(
             currentIndex: currentIndex,

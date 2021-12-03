@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'cart_card.dart';
 import 'check_out_card.dart';
 import '/constant/color_properties.dart';
-import '/utils/scroll_configuration.dart';
+
 import '/utils/size_config.dart';
 
 class CartScreen extends StatefulWidget {
