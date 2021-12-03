@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
                 title: dotenv.env['clientName']!,
                 theme: lightTheme(context),
                 // darkTheme: darkTheme(context),
-                home: NavigationScreen(),
-                // initialRoute: SplashScreen.routeName,
-                // routes: routes,
+                // home: NavigationScreen(),
+                initialRoute: SplashScreen.routeName,
+                routes: routes,
               ),
             );
           },

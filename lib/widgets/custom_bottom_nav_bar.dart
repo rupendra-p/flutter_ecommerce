@@ -31,7 +31,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar>
     controller = AnimationController(
       vsync: this,
       duration: const Duration(
-        milliseconds: 500,
+        milliseconds: 250,
       ),
     );
 
