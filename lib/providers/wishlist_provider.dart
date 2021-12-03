@@ -18,7 +18,9 @@ class WishListProvider with ChangeNotifier {
   ];
   List<WishList> get wishlists => _wishlists;
 
-  addToWishList(Product product, int numberOfItem) {
+  addToWishList(
+    Product product,
+  ) {
     final wishListItem = checkIsInWishList(product.id);
     if (wishListItem != null) {
       final indexOfWishList = _wishlists.indexOf(wishListItem);

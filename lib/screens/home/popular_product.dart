@@ -37,7 +37,10 @@ class PopularProducts extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                           horizontal: SizeConfig.heightMultiplier,
                         ),
-                        child: ProductCard(product: demoProducts[index]),
+                        child: ProductCard(
+                          product: demoProducts[index],
+                          category: "popular",
+                        ),
                       );
                     }
                     return const SizedBox

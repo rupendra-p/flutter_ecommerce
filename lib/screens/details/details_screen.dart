@@ -1,4 +1,3 @@
-
 import '/widgets/default_button.dart';
 import 'package:ecommerce/constant/color_properties.dart';
 import 'package:ecommerce/providers/cart_provider.dart';
@@ -43,64 +42,70 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     final ProductDetailsArguments agrs =
         ModalRoute.of(context)!.settings.arguments as ProductDetailsArguments;
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(AppBar().preferredSize.height),
-        child: CustomAppBar(rating: agrs.product.rating),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ProductImages(product: agrs.product),
-          TopRoundedContainer(
-            color: colorWhite,
-            child: Column(
-              children: [
-                ProductDescription(
-                  product: agrs.product,
-                  pressOnSeeMore: () {},
-                ),
-                TopRoundedContainer(
-                  color: const Color(0xFFF6F7F9),
-                  child: ColorDots(
+    return WillPopScope(
+      onWillPop: () {
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        return Future.value(true);
+      },
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(AppBar().preferredSize.height),
+          child: CustomAppBar(rating: agrs.product.rating),
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ProductImages(product: agrs.product),
+            TopRoundedContainer(
+              color: colorWhite,
+              child: Column(
+                children: [
+                  ProductDescription(
                     product: agrs.product,
-                    quantity: quantity,
-                    incrementChange: incrementValueChanged,
-                    decrementChange: decrementValueChanged,
+                    pressOnSeeMore: () {},
                   ),
-                ),
-              ],
-            ),
-          ),
-          const Spacer(),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.widthMultiplier * 5,
-              vertical: SizeConfig.heightMultiplier,
-            ),
-            child: DefaultButton(
-              press: () {
-                Provider.of<CartProvider>(context, listen: false).addToCart(
-                  agrs.product,
-                  quantity,
-                );
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text(
-                      "Successfully added to the cart",
-                      textAlign: TextAlign.center,
-                    ),
-                    duration: Duration(
-                      seconds: 3,
+                  TopRoundedContainer(
+                    color: const Color(0xFFF6F7F9),
+                    child: ColorDots(
+                      product: agrs.product,
+                      quantity: quantity,
+                      incrementChange: incrementValueChanged,
+                      decrementChange: decrementValueChanged,
                     ),
                   ),
-                );
-              },
-              text: "Add to Cart",
+                ],
+              ),
             ),
-          ),
-        ],
+            const Spacer(),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.widthMultiplier * 5,
+                vertical: SizeConfig.heightMultiplier,
+              ),
+              child: DefaultButton(
+                press: () {
+                  Provider.of<CartProvider>(context, listen: false).addToCart(
+                    agrs.product,
+                    quantity,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text(
+                        "Successfully added to the cart",
+                        textAlign: TextAlign.center,
+                      ),
+                      duration: Duration(
+                        seconds: 3,
+                      ),
+                    ),
+                  );
+                },
+                text: "Add to Cart",
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

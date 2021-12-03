@@ -1,6 +1,8 @@
 import 'package:ecommerce/constant/color_properties.dart';
+import 'package:ecommerce/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/product.dart';
 import '/utils/size_config.dart';
@@ -52,26 +54,61 @@ class ProductDescription extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerRight,
-                child: Container(
-                  padding: EdgeInsets.all(
-                    SizeConfig.heightMultiplier * 2,
-                  ),
-                  width: SizeConfig.heightMultiplier * 8,
-                  decoration: BoxDecoration(
-                    color: product.isFavourite
-                        ? const Color(0xFFFFE6E6)
-                        : const Color(0xFFF5F6F9),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
+                child: GestureDetector(
+                  onTap: () {
+                    Provider.of<WishListProvider>(context, listen: false)
+                        .addToWishList(
+                      product,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          Provider.of<WishListProvider>(context, listen: false)
+                                      .checkIsInWishList(
+                                    product.id,
+                                  ) !=
+                                  null
+                              ? "Successfully added to the wishlist"
+                              : "Successfully removed from the wishlist",
+                          textAlign: TextAlign.center,
+                        ),
+                        duration: const Duration(
+                          seconds: 3,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(
+                      SizeConfig.heightMultiplier * 2,
                     ),
-                  ),
-                  child: SvgPicture.asset(
-                    "assets/icons/Heart Icon_2.svg",
-                    color: product.isFavourite
-                        ? const Color(0xFFFF4848)
-                        : const Color(0xFFDBDEE4),
-                    height: SizeConfig.heightMultiplier * 2,
+                    width: SizeConfig.heightMultiplier * 8,
+                    decoration: BoxDecoration(
+                      color: Provider.of<WishListProvider>(
+                                context,
+                              ).checkIsInWishList(
+                                product.id,
+                              ) !=
+                              null
+                          ? const Color(0xFFFFE6E6)
+                          : const Color(0xFFF5F6F9),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        bottomLeft: Radius.circular(20),
+                      ),
+                    ),
+                    child: SvgPicture.asset(
+                      "assets/icons/Heart Icon_2.svg",
+                      color: Provider.of<WishListProvider>(
+                                context,
+                              ).checkIsInWishList(
+                                product.id,
+                              ) !=
+                              null
+                          ? const Color(0xFFFF4848)
+                          : const Color(0xFFDBDEE4),
+                      height: SizeConfig.heightMultiplier * 2,
+                    ),
                   ),
                 ),
               ),
