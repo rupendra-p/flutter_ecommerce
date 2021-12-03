@@ -1,11 +1,13 @@
+import 'package:ecommerce/screens/wishlist/wishlist_screen.dart';
+
 import '/widgets/custom_bottom_nav_bar.dart';
 import 'package:ecommerce/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'home/home_screen.dart';
 
-class NavigationScreen extends StatefulWidget{
-   static const  String routeName = "/home";
+class NavigationScreen extends StatefulWidget {
+  static const String routeName = "/home";
   const NavigationScreen({Key? key}) : super(key: key);
 
   @override
@@ -17,14 +19,13 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
-   
     return CustomBottomNavBar(
       currentIndex: index,
       onTap: (i) => setState(() => index = i),
-      pages: [
-       const HomeScreen(),
-        Container(),
-        const ProfileScreen(),
+      pages: const [
+        HomeScreen(),
+        WishlistScreen(),
+        ProfileScreen(),
       ],
     );
   }

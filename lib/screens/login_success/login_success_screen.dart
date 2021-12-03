@@ -11,10 +11,6 @@ class LoginSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: const SizedBox(),
-      //   title: const Text("Login Success"),
-      // ),
       body: SafeArea(
         child: Column(
           children: [
@@ -44,7 +40,8 @@ class LoginSuccessScreen extends StatelessWidget {
               child: DefaultButton(
                 text: "Back to home",
                 press: () {
-                  Navigator.pushNamed(context, NavigationScreen.routeName);
+                  Navigator.pushReplacementNamed(
+                      context, NavigationScreen.routeName);
                 },
               ),
             ),
