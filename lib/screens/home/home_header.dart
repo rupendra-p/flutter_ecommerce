@@ -26,7 +26,7 @@ class HomeHeader extends StatelessWidget {
           const Spacer(),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart Icon.svg",
-            numOfitem: data.cart.length,
+            numOfitem: data.gettotalCartItems(),
             isShow: true,
             press: () => Navigator.pushNamed(context, CartScreen.routeName),
           ),

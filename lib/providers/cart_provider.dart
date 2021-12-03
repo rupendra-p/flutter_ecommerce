@@ -38,4 +38,15 @@ class CartProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  int gettotalCartItems() {
+    if (_carts.isEmpty) {
+      return 0;
+    }
+    var numberOfItems = 0;
+    for (var element in _carts) {
+      numberOfItems += element.numOfItem;
+    }
+    return numberOfItems;
+  }
 }

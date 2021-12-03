@@ -62,7 +62,7 @@ class _CartScreenState extends State<CartScreen> {
                           height: SizeConfig.heightMultiplier,
                         ),
                         Text(
-                          '${data.cart.length} Items',
+                          '${data.gettotalCartItems()} Items',
                           style:
                               Theme.of(context).textTheme.caption!.copyWith(),
                         ),
