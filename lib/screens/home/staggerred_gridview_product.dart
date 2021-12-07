@@ -1,7 +1,6 @@
-import 'package:ecommerce/providers/product_provider.dart';
+import '/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 
-import '/models/product.dart';
 import '/screens/home/section_title.dart';
 import '/utils/size_config.dart';
 import '/widgets/product_card.dart';

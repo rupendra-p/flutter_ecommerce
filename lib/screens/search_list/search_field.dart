@@ -1,10 +1,10 @@
 import 'dart:developer';
 
-import 'package:ecommerce/constant/color_properties.dart';
-import 'package:ecommerce/models/product.dart';
-import 'package:ecommerce/providers/product_provider.dart';
-import 'package:ecommerce/screens/details/details_screen.dart';
-import 'package:ecommerce/utils/size_config.dart';
+import '/constant/color_properties.dart';
+import '/models/product.dart';
+import '/providers/product_provider.dart';
+import '/screens/details/details_screen.dart';
+import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

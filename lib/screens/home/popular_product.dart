@@ -1,10 +1,9 @@
-import 'package:ecommerce/providers/product_provider.dart';
+import '/providers/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/utils/size_config.dart';
 import '/widgets/product_card.dart';
-import '../../models/product.dart';
 import 'section_title.dart';
 
 class PopularProducts extends StatelessWidget {
