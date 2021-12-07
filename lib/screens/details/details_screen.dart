@@ -1,13 +1,13 @@
-import '/widgets/default_button.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '/constant/color_properties.dart';
 import '/providers/cart_provider.dart';
 import '/screens/details/product_description.dart';
 import '/screens/details/product_images.dart';
 import '/screens/details/top_rounded_container.dart';
 import '/utils/size_config.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
+import '/widgets/default_button.dart';
 import '../../models/product.dart';
 import 'color_dots.dart';
 import 'custom_app_bar.dart';
@@ -56,28 +56,36 @@ class _DetailsScreenState extends State<DetailsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            ProductImages(product: agrs.product),
-            TopRoundedContainer(
-              color: colorWhite,
-              child: Column(
-                children: [
-                  ProductDescription(
-                    product: agrs.product,
-                    pressOnSeeMore: () {},
-                  ),
-                  TopRoundedContainer(
-                    color: const Color(0xFFF6F7F9),
-                    child: ColorDots(
-                      product: agrs.product,
-                      quantity: quantity,
-                      incrementChange: incrementValueChanged,
-                      decrementChange: decrementValueChanged,
+            Expanded(
+              child: Center(
+                child: Column(
+                  children: [
+                    ProductImages(product: agrs.product),
+                    TopRoundedContainer(
+                      color: colorWhite,
+                      child: Column(
+                        children: [
+                          ProductDescription(
+                            product: agrs.product,
+                            pressOnSeeMore: () {},
+                          ),
+                          TopRoundedContainer(
+                            color: const Color(0xFFF6F7F9),
+                            child: ColorDots(
+                              product: agrs.product,
+                              quantity: quantity,
+                              incrementChange: incrementValueChanged,
+                              decrementChange: decrementValueChanged,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    const Spacer(),
+                  ],
+                ),
               ),
             ),
-            const Spacer(),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: SizeConfig.widthMultiplier * 5,
