@@ -20,7 +20,7 @@ class SearchScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: SizeConfig.heightMultiplier * 2.0),
-              child: const Expanded(child: SearchField()),
+              child: const SearchField(),
             ),
           ],
         ),
