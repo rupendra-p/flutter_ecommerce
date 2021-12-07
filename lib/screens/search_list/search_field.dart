@@ -1,17 +1,26 @@
-import 'dart:developer';
+import '/screens/search_list/search_screen.dart';
 
-import 'package:ecommerce/constant/color_properties.dart';
-import 'package:ecommerce/models/product.dart';
-import 'package:ecommerce/providers/product_provider.dart';
-import 'package:ecommerce/screens/details/details_screen.dart';
-import 'package:ecommerce/utils/size_config.dart';
+import '/screens/search_list/search_result.dart';
+
+import '/constant/color_properties.dart';
+import '/models/product.dart';
+import '/providers/product_provider.dart';
+import '/screens/details/details_screen.dart';
+import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({
+    this.value,
+    this.autoFocus = true,
+    this.isSearchScreen = true,
     Key? key,
   }) : super(key: key);
+
+  final String? value;
+  final bool autoFocus;
+  final bool isSearchScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -45,53 +54,76 @@ class SearchField extends StatelessWidget {
         ));
       },
       fieldViewBuilder: (context, controller, focusNode, function) {
-        return TextField(
-          controller: controller,
-          autofocus: true,
-          focusNode: focusNode,
-          decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(vertical: 0),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                SizeConfig.imageSizeMultiplier * 6,
+        controller.text = value ?? "";
+        return TextFormField(
+            controller: controller,
+            autofocus: autoFocus,
+            focusNode: focusNode,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(vertical: 0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(
+                  SizeConfig.imageSizeMultiplier * 6,
+                ),
+                borderSide: BorderSide.none,
               ),
-              borderSide: BorderSide.none,
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                SizeConfig.imageSizeMultiplier * 6,
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(
+                  SizeConfig.imageSizeMultiplier * 6,
+                ),
+                borderSide: BorderSide.none,
               ),
-              borderSide: BorderSide.none,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                SizeConfig.imageSizeMultiplier * 6,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(
+                  SizeConfig.imageSizeMultiplier * 6,
+                ),
+                borderSide: BorderSide.none,
               ),
-              borderSide: BorderSide.none,
+              fillColor: primaryColor.withOpacity(0.05),
+              filled: true,
+              isDense: true,
+              hintText: "Search product",
+              prefixIcon: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: colorWhite,
+                    foregroundColor: primaryColor,
+                    radius: SizeConfig.imageSizeMultiplier * 6,
+                    child: IconButton(
+                      icon: const Icon(Icons.chevron_left),
+                      onPressed: () {
+                        if (isSearchScreen) {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (_) => SearchScreen(
+                                autoFocus: true,
+                                value: value ?? "",
+                              ),
+                            ),
+                          );
+                        } else {
+                          Navigator.of(context).pop();
+                        }
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    width: SizeConfig.widthMultiplier * 2,
+                  ),
+                ],
+              ),
             ),
-            fillColor: primaryColor.withOpacity(0.05),
-            filled: true,
-            isDense: true,
-            hintText: "Search product",
-            prefixIcon: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircleAvatar(
-                  backgroundColor: colorWhite,
-                  foregroundColor: primaryColor,
-                  radius: SizeConfig.imageSizeMultiplier * 6,
-                  child: IconButton(
-                    icon: const Icon(Icons.chevron_left),
-                    onPressed: () => Navigator.of(context).pop(),
+            textInputAction: TextInputAction.search,
+            onFieldSubmitted: (newValue) {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (_) => SearchResultScreen(
+                    newValue,
                   ),
                 ),
-                SizedBox(
-                  width: SizeConfig.widthMultiplier * 2,
-                ),
-              ],
-            ),
-          ),
-        );
+              );
+            });
       },
       optionsBuilder: (TextEditingValue textEditingValue) {
         if (textEditingValue.text == '') {
@@ -99,14 +131,6 @@ class SearchField extends StatelessWidget {
         }
         return Provider.of<ProductProvider>(context, listen: false)
             .searchProducts(textEditingValue.text.trim());
-      },
-      onSelected: (Product selection) {
-        log(selection.title);
-        /* Navigator.pushNamed(
-          context,
-          DetailsScreen.routeName,
-          arguments: ProductDetailsArguments(product: selection),
-        ); */
       },
     );
   }
