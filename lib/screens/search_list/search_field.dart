@@ -1,8 +1,12 @@
 import 'dart:developer';
 
 import 'package:ecommerce/constant/color_properties.dart';
+import 'package:ecommerce/models/product.dart';
+import 'package:ecommerce/providers/product_provider.dart';
+import 'package:ecommerce/screens/details/details_screen.dart';
 import 'package:ecommerce/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({
@@ -17,7 +21,7 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Autocomplete<String>(
+    return Autocomplete<Product>(
       optionsViewBuilder: (context, function, string) {
         return Scaffold(
             body: Container(
@@ -35,7 +39,7 @@ class SearchField extends StatelessWidget {
               },
               itemBuilder: (c, i) {
                 return ListTile(
-                  title: Text(string.toList()[i]),
+                  title: Text(string.toList()[i].title),
                 );
               }),
         ));
@@ -91,14 +95,21 @@ class SearchField extends StatelessWidget {
       },
       optionsBuilder: (TextEditingValue textEditingValue) {
         if (textEditingValue.text == '') {
-          return const Iterable<String>.empty();
+          return const Iterable<Product>.empty();
         }
-        return _kOptions.where((String option) {
+        return Provider.of<ProductProvider>(context, listen: false)
+            .searchProducts(textEditingValue.text
+                .trim()); /* _kOptions.where((String option) {
           return option.contains(textEditingValue.text.toLowerCase());
-        });
+        }); */
       },
-      onSelected: (String selection) {
-        log('You just selected $selection');
+      onSelected: (Product selection) {
+        log("message");
+        Navigator.pushNamed(
+          context,
+          DetailsScreen.routeName,
+          arguments: ProductDetailsArguments(product: selection),
+        );
       },
     );
   }
