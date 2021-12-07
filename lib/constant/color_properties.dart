@@ -18,4 +18,6 @@ const Color redColor = Color(0xFFFF4848);
 const Color colorGrey = Color(0xff5E5E5E);
 const Color colorDarkGrey = Color(0xffABABAB);
 Color colorMediumGrey = Colors.grey.shade600;
-const Color colorLightGrey = Color(0xffECECF6);
+Color colorLightGrey = Colors.grey.shade400;
+
+Color colorGreyDarkTheme = Colors.grey.shade900;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '/widgets/default_button.dart';
 import '/screens/navigation_screen.dart';
 import '/utils/size_config.dart';
+import '/widgets/default_button.dart';
 
 class LoginSuccessScreen extends StatelessWidget {
   static const String routeName = "/login_success";
@@ -26,11 +26,7 @@ class LoginSuccessScreen extends StatelessWidget {
             ),
             Text(
               "Login Success",
-              style: TextStyle(
-                fontSize: SizeConfig.textMultiplier * 3,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
+              style: Theme.of(context).textTheme.headline6,
             ),
             SizedBox(
               height: SizeConfig.heightMultiplier * 10,

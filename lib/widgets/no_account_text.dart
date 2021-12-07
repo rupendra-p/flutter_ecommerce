@@ -1,6 +1,6 @@
-import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
+import '/constant/color_properties.dart';
 import '/screens/sign_up/sign_up_screen.dart';
 import '/utils/size_config.dart';
 
@@ -24,12 +24,9 @@ class NoAccountText extends StatelessWidget {
           onTap: () => Navigator.pushNamed(context, SignUpScreen.routeName),
           child: Text(
             "Sign Up",
-            style: TextStyle(
-              fontSize: SizeConfig.textMultiplier * 2.4,
-              decorationColor: secondaryColor,
-              decorationThickness: SizeConfig.heightMultiplier * .4,
-              color: secondaryColor,
-            ),
+            style: Theme.of(context).textTheme.headline6!.copyWith(
+                  color: secondaryColor,
+                ),
           ),
         ),
       ],
