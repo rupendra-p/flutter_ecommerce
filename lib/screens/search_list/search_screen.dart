@@ -5,7 +5,11 @@ import '/utils/size_config.dart';
 
 class SearchScreen extends StatelessWidget {
   static const routeName = "/search";
-  const SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({this.autoFocus = true, this.value, Key? key})
+      : super(key: key);
+
+  final bool autoFocus;
+  final String? value;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,11 @@ class SearchScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: SizeConfig.heightMultiplier * 2.0),
-              child: const SearchField(),
+              child: SearchField(
+                value: value ?? "",
+                autoFocus: autoFocus,
+                isSearchScreen: false,
+              ),
             ),
           ],
         ),
