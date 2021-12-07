@@ -120,13 +120,14 @@ class SplashContent extends StatelessWidget {
         const Spacer(),
         Text(
           "TOKOTO",
-          style: Theme.of(context)
-              .textTheme
-              .headline4!
-              .copyWith(),
+          style: Theme.of(context).textTheme.headline4!.copyWith(),
         ),
+        SizedBox(height: SizeConfig.heightMultiplier * 2),
         Text(
           text!,
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                color: colorGrey,
+              ),
           textAlign: TextAlign.center,
         ),
         const Spacer(flex: 2),
