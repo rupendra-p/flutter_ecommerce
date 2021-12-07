@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '/constant/color_properties.dart';
 import '/utils/size_config.dart';
-import 'package:flutter/material.dart';
 import 'complete_profile_form.dart';
 
 class CompleteProfileScreen extends StatelessWidget {
@@ -25,9 +26,7 @@ class CompleteProfileScreen extends StatelessWidget {
                   ),
                   Text(
                     "Complete Profile",
-                    style: Theme.of(context).textTheme.headline4!.copyWith(
-                          color: primaryColor,
-                        ),
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                   SizedBox(height: SizeConfig.heightMultiplier * 2),
                   Text(
@@ -40,7 +39,7 @@ class CompleteProfileScreen extends StatelessWidget {
                   SizedBox(
                     height: SizeConfig.heightMultiplier * 8,
                   ),
-                  CompleteProfileForm(),
+                  const CompleteProfileForm(),
                   SizedBox(
                     height: SizeConfig.heightMultiplier * 4,
                   ),

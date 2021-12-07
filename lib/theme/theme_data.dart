@@ -130,6 +130,8 @@ ThemeData darkTheme(BuildContext context) {
     inputDecorationTheme: InputDecorationTheme(
       hintStyle:
           Theme.of(context).textTheme.bodyText1!.copyWith(color: colorGrey),
+      labelStyle:
+          Theme.of(context).textTheme.bodyText1!.copyWith(color: colorGrey),
       enabledBorder: OutlineInputBorder(
         borderSide: const BorderSide(
           width: 1,

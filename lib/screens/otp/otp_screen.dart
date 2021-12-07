@@ -1,9 +1,8 @@
-import '/screens/navigation_screen.dart';
 import 'package:flutter/material.dart';
 
-import '/widgets/default_button.dart';
-import '/constant/color_properties.dart';
+import '/screens/navigation_screen.dart';
 import '/utils/size_config.dart';
+import '/widgets/default_button.dart';
 
 class OtpScreen extends StatelessWidget {
   static const String routeName = "/otp";
@@ -25,9 +24,7 @@ class OtpScreen extends StatelessWidget {
                   SizedBox(height: SizeConfig.heightMultiplier * 8),
                   Text(
                     "OTP Verification",
-                    style: Theme.of(context).textTheme.headline4!.copyWith(
-                          color: primaryColor,
-                        ),
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                   SizedBox(
                     height: SizeConfig.heightMultiplier * 2,
@@ -39,7 +36,7 @@ class OtpScreen extends StatelessWidget {
                   SizedBox(
                     height: SizeConfig.heightMultiplier,
                   ),
-                  buildTimer(),
+                  buildTimer(context),
                   SizedBox(
                     height: SizeConfig.heightMultiplier * 8,
                   ),
@@ -65,7 +62,7 @@ class OtpScreen extends StatelessWidget {
     );
   }
 
-  Row buildTimer() {
+  Row buildTimer(context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -75,7 +72,7 @@ class OtpScreen extends StatelessWidget {
           duration: const Duration(seconds: 30),
           builder: (_, dynamic value, child) => Text(
             "00:${value.toInt()}",
-            style: const TextStyle(color: primaryColor),
+            style: Theme.of(context).textTheme.caption,
           ),
         ),
       ],
