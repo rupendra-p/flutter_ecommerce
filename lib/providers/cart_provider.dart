@@ -5,11 +5,7 @@ import 'package:collection/collection.dart';
 
 class CartProvider with ChangeNotifier {
   // ignore: prefer_final_fields
-  List<Cart> _carts = [
-    Cart(product: demoProducts[0], numOfItem: 2),
-    Cart(product: demoProducts[1], numOfItem: 1),
-    Cart(product: demoProducts[3], numOfItem: 1),
-  ];
+  List<Cart> _carts = [];
   List<Cart> get cart => _carts;
 
   addToCart(Product product, int numberOfItem) {

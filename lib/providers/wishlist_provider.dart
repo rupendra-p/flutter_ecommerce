@@ -5,17 +5,7 @@ import 'package:collection/collection.dart';
 
 class WishListProvider with ChangeNotifier {
   // ignore: prefer_final_fields
-  List<WishList> _wishlists = [
-    WishList(
-      demoProducts[0],
-    ),
-    WishList(
-      demoProducts[1],
-    ),
-    WishList(
-      demoProducts[3],
-    ),
-  ];
+  List<WishList> _wishlists = [];
   List<WishList> get wishlists => _wishlists;
 
   addToWishList(
