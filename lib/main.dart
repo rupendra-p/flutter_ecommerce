@@ -48,7 +48,8 @@ class MyApp extends StatelessWidget {
                   animation: controller,
                   builder: (context, child) {
                     return MaterialApp(
-                      themeMode: controller.themeMode,
+                      themeMode: ThemeMode.dark,
+                      //  controller.themeMode,
                       debugShowCheckedModeBanner: false,
                       title: dotenv.env['clientName']!,
                       theme: lightTheme(context),
