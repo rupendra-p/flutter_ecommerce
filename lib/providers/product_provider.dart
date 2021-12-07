@@ -82,4 +82,10 @@ class ProductProvider with ChangeNotifier {
   ];
 
   List<Product> get products => _products;
+
+  List<Product> searchProducts(String name) {
+    return _products
+        .where((element) => element.title.toLowerCase().contains(name))
+        .toList();
+  }
 }
