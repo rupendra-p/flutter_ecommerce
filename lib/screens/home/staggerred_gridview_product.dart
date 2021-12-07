@@ -1,3 +1,6 @@
+import 'package:ecommerce/providers/product_provider.dart';
+import 'package:provider/provider.dart';
+
 import '/models/product.dart';
 import '/screens/home/section_title.dart';
 import '/utils/size_config.dart';
@@ -25,21 +28,23 @@ class _StaggeredGridListViewState extends State<StaggeredGridListView> {
         SizedBox(
           height: SizeConfig.heightMultiplier,
         ),
-        StaggeredGridView.countBuilder(
-          crossAxisCount: 2,
-          shrinkWrap: true,
-          physics: const ClampingScrollPhysics(),
-          itemCount: demoProducts.length,
-          mainAxisSpacing: SizeConfig.heightMultiplier * 2,
-          crossAxisSpacing: SizeConfig.heightMultiplier * 2,
-          padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.heightMultiplier * 2,
-          ),
-          itemBuilder: (context, index) {
-            return ProductCard(product: demoProducts[index]);
-          },
-          staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
-        ),
+        Consumer<ProductProvider>(builder: (_, data, __) {
+          return StaggeredGridView.countBuilder(
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+            itemCount: data.products.length,
+            mainAxisSpacing: SizeConfig.heightMultiplier * 2,
+            crossAxisSpacing: SizeConfig.heightMultiplier * 2,
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.heightMultiplier * 2,
+            ),
+            itemBuilder: (context, index) {
+              return ProductCard(product: data.products[index]);
+            },
+            staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
+          );
+        }),
       ],
     );
   }

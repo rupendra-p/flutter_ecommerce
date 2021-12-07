@@ -1,3 +1,5 @@
+import '/providers/product_provider.dart';
+
 import '/providers/cart_provider.dart';
 import '/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +27,9 @@ class MyApp extends StatelessWidget {
             SizeConfig().init(constraints, orientation);
             return MultiProvider(
               providers: [
+                ChangeNotifierProvider(
+                  create: (context) => ProductProvider(),
+                ),
                 ChangeNotifierProvider(
                   create: (context) => CartProvider(),
                 ),

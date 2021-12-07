@@ -1,4 +1,6 @@
+import 'package:ecommerce/providers/product_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '/utils/size_config.dart';
 import '/widgets/product_card.dart';
@@ -27,28 +29,30 @@ class PopularProducts extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: SizeConfig.heightMultiplier,
             ),
-            child: Row(
-              children: [
-                ...List.generate(
-                  demoProducts.length,
-                  (index) {
-                    if (demoProducts[index].isPopular) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.heightMultiplier,
-                        ),
-                        child: ProductCard(
-                          product: demoProducts[index],
-                          category: "popular",
-                        ),
-                      );
-                    }
-                    return const SizedBox
-                        .shrink(); // here by default width and height is 0
-                  },
-                ),
-              ],
-            ),
+            child: Consumer<ProductProvider>(builder: (_, data, __) {
+              return Row(
+                children: [
+                  ...List.generate(
+                    data.products.length,
+                    (index) {
+                      if (data.products[index].isPopular) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: SizeConfig.heightMultiplier,
+                          ),
+                          child: ProductCard(
+                            product: data.products[index],
+                            category: "popular",
+                          ),
+                        );
+                      }
+                      return const SizedBox
+                          .shrink(); // here by default width and height is 0
+                    },
+                  ),
+                ],
+              );
+            }),
           ),
         )
       ],
