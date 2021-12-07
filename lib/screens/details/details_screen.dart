@@ -1,3 +1,4 @@
+import '/utils/scroll_configuration.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -49,70 +50,67 @@ class _DetailsScreenState extends State<DetailsScreen> {
       },
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(AppBar().preferredSize.height),
+          preferredSize: Size.fromHeight(
+            AppBar().preferredSize.height,
+          ),
           child: CustomAppBar(rating: agrs.product.rating),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-              child: Center(
-                child: Column(
-                  children: [
-                    ProductImages(product: agrs.product),
-                    TopRoundedContainer(
-                      color: colorWhite,
-                      child: Column(
-                        children: [
-                          ProductDescription(
-                            product: agrs.product,
-                            pressOnSeeMore: () {},
-                          ),
-                          TopRoundedContainer(
-                            color: const Color(0xFFF6F7F9),
-                            child: ColorDots(
-                              product: agrs.product,
-                              quantity: quantity,
-                              incrementChange: incrementValueChanged,
-                              decrementChange: decrementValueChanged,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                  ],
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.widthMultiplier * 5,
+            vertical: SizeConfig.heightMultiplier,
+          ),
+          child: DefaultButton(
+            press: () {
+              Provider.of<CartProvider>(context, listen: false).addToCart(
+                agrs.product,
+                quantity,
+              );
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    "Successfully added to the cart",
+                    textAlign: TextAlign.center,
+                  ),
+                  duration: Duration(
+                    seconds: 3,
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.widthMultiplier * 5,
-                vertical: SizeConfig.heightMultiplier,
-              ),
-              child: DefaultButton(
-                press: () {
-                  Provider.of<CartProvider>(context, listen: false).addToCart(
-                    agrs.product,
-                    quantity,
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        "Successfully added to the cart",
-                        textAlign: TextAlign.center,
+              );
+            },
+            text: "Add to Cart",
+          ),
+        ),
+        body: ScrollConfiguration(
+          behavior: MyBehavior(),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ProductImages(product: agrs.product),
+                TopRoundedContainer(
+                  color: colorWhite,
+                  child: Column(
+                    children: [
+                      ProductDescription(
+                        product: agrs.product,
+                        pressOnSeeMore: () {},
                       ),
-                      duration: Duration(
-                        seconds: 3,
+                      TopRoundedContainer(
+                        color: const Color(0xFFF6F7F9),
+                        child: ColorDots(
+                          product: agrs.product,
+                          quantity: quantity,
+                          incrementChange: incrementValueChanged,
+                          decrementChange: decrementValueChanged,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                text: "Add to Cart",
-              ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

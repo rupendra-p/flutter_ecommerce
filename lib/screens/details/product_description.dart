@@ -1,11 +1,11 @@
-import '/constant/color_properties.dart';
-import '/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/product.dart';
+import '/constant/color_properties.dart';
+import '/providers/wishlist_provider.dart';
 import '/utils/size_config.dart';
+import '../../models/product.dart';
 
 class ProductDescription extends StatelessWidget {
   const ProductDescription({
@@ -24,7 +24,7 @@ class ProductDescription extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.only(
-            left: SizeConfig.heightMultiplier * 2.5,
+            left: SizeConfig.heightMultiplier * 2,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,7 +118,7 @@ class ProductDescription extends StatelessWidget {
         SizedBox(height: SizeConfig.heightMultiplier * 2),
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.heightMultiplier * 2.5,
+            horizontal: SizeConfig.heightMultiplier * 2,
           ),
           child: Text(
             product.description,
@@ -128,7 +128,7 @@ class ProductDescription extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.heightMultiplier * 2.5,
+            horizontal: SizeConfig.heightMultiplier * 2,
             vertical: 10,
           ),
           child: GestureDetector(
