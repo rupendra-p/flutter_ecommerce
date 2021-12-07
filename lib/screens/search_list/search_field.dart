@@ -13,23 +13,17 @@ class SearchField extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  static const List<String> _kOptions = <String>[
-    'aardvark',
-    'bobcat',
-    'chameleon',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Autocomplete<Product>(
-      optionsViewBuilder: (context, function, string) {
+      optionsViewBuilder: (context, function, products) {
         return Scaffold(
             body: Container(
           margin: EdgeInsets.zero,
           padding: EdgeInsets.zero,
           child: ListView.separated(
               padding: EdgeInsets.zero,
-              itemCount: string.length,
+              itemCount: products.length,
               separatorBuilder: (c, i) {
                 return Divider(
                   height: 1,
@@ -39,7 +33,13 @@ class SearchField extends StatelessWidget {
               },
               itemBuilder: (c, i) {
                 return ListTile(
-                  title: Text(string.toList()[i].title),
+                  onTap: () => Navigator.pushNamed(
+                    context,
+                    DetailsScreen.routeName,
+                    arguments:
+                        ProductDetailsArguments(product: products.toList()[i]),
+                  ),
+                  title: Text(products.toList()[i].title),
                 );
               }),
         ));
@@ -98,18 +98,15 @@ class SearchField extends StatelessWidget {
           return const Iterable<Product>.empty();
         }
         return Provider.of<ProductProvider>(context, listen: false)
-            .searchProducts(textEditingValue.text
-                .trim()); /* _kOptions.where((String option) {
-          return option.contains(textEditingValue.text.toLowerCase());
-        }); */
+            .searchProducts(textEditingValue.text.trim());
       },
       onSelected: (Product selection) {
-        log("message");
-        Navigator.pushNamed(
+        log(selection.title);
+        /* Navigator.pushNamed(
           context,
           DetailsScreen.routeName,
           arguments: ProductDetailsArguments(product: selection),
-        );
+        ); */
       },
     );
   }
