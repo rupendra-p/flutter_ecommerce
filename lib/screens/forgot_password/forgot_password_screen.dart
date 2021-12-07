@@ -1,7 +1,7 @@
-import '/constant/color_properties.dart';
-import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
+import '/constant/color_properties.dart';
+import '/utils/size_config.dart';
 import 'forgot_password_form.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -26,9 +26,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
                 Text(
                   "Forgot Password",
-                  style: Theme.of(context).textTheme.headline4!.copyWith(
-                        color: primaryColor,
-                      ),
+                  style: Theme.of(context).textTheme.headline4!.copyWith(),
                 ),
                 SizedBox(height: SizeConfig.heightMultiplier * 2),
                 Text(

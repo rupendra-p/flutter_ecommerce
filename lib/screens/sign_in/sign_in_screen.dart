@@ -1,16 +1,16 @@
-import '/utils/scroll_configuration.dart';
+import 'package:flutter/material.dart';
 
+import '/constant/color_properties.dart';
+import '/constant/constants.dart';
+import '/screens/forgot_password/forgot_password_screen.dart';
+import '/screens/login_success/login_success_screen.dart';
+import '/utils/scroll_configuration.dart';
+import '/utils/size_config.dart';
+import '/utils/validation_mixin.dart';
 import '/widgets/default_button.dart';
 import '/widgets/no_account_text.dart';
 import '/widgets/socal_card.dart';
-import '/constant/color_properties.dart';
-import '/constant/constants.dart';
 import '../../utils/keyboard.dart';
-import '/screens/forgot_password/forgot_password_screen.dart';
-import '/screens/login_success/login_success_screen.dart';
-import '/utils/size_config.dart';
-import '/utils/validation_mixin.dart';
-import 'package:flutter/material.dart';
 
 class SignInScreen extends StatelessWidget {
   static const String routeName = "/sign_in";
@@ -34,9 +34,7 @@ class SignInScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.heightMultiplier * 8),
                     Text(
                       "Welcome Back",
-                      style: Theme.of(context).textTheme.headline4!.copyWith(
-                            color: primaryColor,
-                          ),
+                      style: Theme.of(context).textTheme.headline4!.copyWith(),
                     ),
                     SizedBox(height: SizeConfig.heightMultiplier * 2),
                     Text(
@@ -50,16 +48,22 @@ class SignInScreen extends StatelessWidget {
                     const SignForm(),
                     SizedBox(height: SizeConfig.heightMultiplier * 4),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SocialCard(
                           icon: "assets/icons/google-icon.svg",
                           press: () {},
                         ),
+                        SizedBox(
+                          width: SizeConfig.widthMultiplier * 3,
+                        ),
                         SocialCard(
                           icon: "assets/icons/facebook-2.svg",
                           press: () {},
+                        ),
+                        SizedBox(
+                          width: SizeConfig.widthMultiplier * 3,
                         ),
                         SocialCard(
                           icon: "assets/icons/twitter.svg",
@@ -146,7 +150,6 @@ class _SignFormState extends State<SignForm> {
                 child: Text(
                   "Forgot Password",
                   style: TextStyle(
-                    decorationColor: secondaryColor,
                     decorationThickness: SizeConfig.heightMultiplier * .4,
                     color: secondaryColor,
                   ),

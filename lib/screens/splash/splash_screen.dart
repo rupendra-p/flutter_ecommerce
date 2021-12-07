@@ -1,8 +1,9 @@
-import '/widgets/default_button.dart';
+import 'package:flutter/material.dart';
+
 import '/constant/color_properties.dart';
 import '/screens/sign_in/sign_in_screen.dart';
 import '/utils/size_config.dart';
-import 'package:flutter/material.dart';
+import '/widgets/default_button.dart';
 
 class SplashScreen extends StatefulWidget {
   static String routeName = "/splash";
@@ -119,11 +120,10 @@ class SplashContent extends StatelessWidget {
         const Spacer(),
         Text(
           "TOKOTO",
-          style: TextStyle(
-            fontSize: SizeConfig.heightMultiplier * 4,
-            color: primaryColor,
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .headline4!
+              .copyWith(),
         ),
         Text(
           text!,

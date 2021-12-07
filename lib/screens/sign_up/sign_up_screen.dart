@@ -1,10 +1,10 @@
-import '/screens/sign_in/sign_in_screen.dart';
-import '/utils/scroll_configuration.dart';
 import 'package:flutter/material.dart';
 
 import '/constant/color_properties.dart';
 import '/constant/constants.dart';
 import '/screens/complete_profile/complete_profile_screen.dart';
+import '/screens/sign_in/sign_in_screen.dart';
+import '/utils/scroll_configuration.dart';
 import '/utils/size_config.dart';
 import '/utils/validation_mixin.dart';
 import '/widgets/default_button.dart';
@@ -32,9 +32,7 @@ class SignUpScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.heightMultiplier * 8), // 4%
                     Text(
                       "Register Account",
-                      style: Theme.of(context).textTheme.headline4!.copyWith(
-                            color: primaryColor,
-                          ),
+                      style: Theme.of(context).textTheme.headline4!.copyWith(),
                     ),
                     SizedBox(height: SizeConfig.heightMultiplier * 2),
                     Text(
@@ -49,15 +47,21 @@ class SignUpScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.heightMultiplier * 3),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SocialCard(
                           icon: "assets/icons/google-icon.svg",
                           press: () {},
                         ),
+                        SizedBox(
+                          width: SizeConfig.widthMultiplier * 3,
+                        ),
                         SocialCard(
                           icon: "assets/icons/facebook-2.svg",
                           press: () {},
+                        ),
+                        SizedBox(
+                          width: SizeConfig.widthMultiplier * 3,
                         ),
                         SocialCard(
                           icon: "assets/icons/twitter.svg",
@@ -99,12 +103,9 @@ class SignUpScreen extends StatelessWidget {
           onTap: () => Navigator.pushNamed(context, SignInScreen.routeName),
           child: Text(
             "Sign In",
-            style: TextStyle(
-              fontSize: SizeConfig.textMultiplier * 2.4,
-              decoration: TextDecoration.underline,
-              decorationThickness: SizeConfig.heightMultiplier * .4,
-              color: secondaryColor,
-            ),
+            style: Theme.of(context).textTheme.headline6!.copyWith(
+                  color: secondaryColor,
+                ),
           ),
         ),
       ],
