@@ -1,10 +1,9 @@
-import '/constant/color_properties.dart';
-import '/screens/search_list/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/providers/cart_provider.dart';
 import '/screens/cart/cart_screen.dart';
+import '/screens/search_list/search_screen.dart';
 import '/utils/size_config.dart';
 import 'icon_btn_with_counter.dart';
 
@@ -28,7 +27,6 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             icon: const Icon(
               Icons.search,
-              color: primaryColor,
             ),
             press: () {
               Navigator.pushNamed(context, SearchScreen.routeName);
