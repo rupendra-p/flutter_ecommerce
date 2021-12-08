@@ -1,13 +1,11 @@
 import 'package:ecommerce/providers/theme_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/constant/color_properties.dart';
 import '/screens/sign_in/sign_in_screen.dart';
 import '/utils/scroll_configuration.dart';
-
-import '/constant/color_properties.dart';
 import '/utils/size_config.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const String routeName = "/profile";
@@ -15,6 +13,9 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<ThemeProvider>(
+      context,
+    );
     return Scaffold(
       body: SafeArea(
         child: ScrollConfiguration(
@@ -42,16 +43,10 @@ class ProfileScreen extends StatelessWidget {
                   press: () {},
                 ),
                 ProfileMenu(
-                  text: "Settings",
-                  icon: Icons.settings_outlined,
+                  text: "Theme",
+                  icon: Icons.brightness_6_outlined,
                   press: () {
-                    final controller =
-                        Provider.of<ThemeProvider>(context, listen: false);
-
-                    controller.updateThemeMode(
-                        controller.themeMode == ThemeMode.light
-                            ? ThemeMode.dark
-                            : ThemeMode.light);
+                    changeTheme(context, controller);
                   },
                 ),
                 ProfileMenu(
@@ -73,6 +68,132 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  changeTheme(context, controller) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      isDismissible: false,
+      enableDrag: false,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          SizeConfig.imageSizeMultiplier,
+        ),
+      ),
+      builder: (_) {
+        return AnimatedBuilder(
+          animation: controller,
+          builder: (context, child) {
+            return Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(
+                horizontal: SizeConfig.heightMultiplier * 2,
+                vertical: SizeConfig.heightMultiplier,
+              ),
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(SizeConfig.imageSizeMultiplier),
+                color: Theme.of(context).primaryColorDark,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(SizeConfig.heightMultiplier),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Change Theme',
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Material(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(
+                                SizeConfig.imageSizeMultiplier),
+                            child: Padding(
+                              padding: EdgeInsets.all(
+                                  SizeConfig.imageSizeMultiplier),
+                              child: const Icon(
+                                Icons.close,
+                                color: colorWhite,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    ListTile(
+                      title: Text(
+                        "Light",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      selected: controller!.themeMode == ThemeMode.light,
+                      onTap: () {
+                        controller?.updateThemeMode(ThemeMode.light);
+                        Navigator.pop(context);
+                      },
+                      trailing: Icon(
+                        controller!.themeMode == ThemeMode.light
+                            ? Icons.check_circle
+                            : null,
+                        color: secondaryColor,
+                        // size: 28.0,
+                      ),
+                    ),
+                    ListTile(
+                      title: Text(
+                        'Dark',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      selected: controller!.themeMode == ThemeMode.dark,
+                      onTap: () {
+                        controller!.updateThemeMode(ThemeMode.dark);
+                        Navigator.pop(context);
+                      },
+                      trailing: Icon(
+                        controller!.themeMode == ThemeMode.dark
+                            ? Icons.check_circle
+                            : null,
+                        color: secondaryColor,
+                        // size: 28.0,
+                      ),
+                    ),
+                    ListTile(
+                      title: Text(
+                        'Default',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      selected: controller!.themeMode == ThemeMode.system,
+                      onTap: () {
+                        controller!.updateThemeMode(ThemeMode.system);
+                        Navigator.pop(context);
+                      },
+                      trailing: Icon(
+                        controller!.themeMode == ThemeMode.system
+                            ? Icons.check_circle
+                            : null,
+                        color: secondaryColor,
+                        // size: 28.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
