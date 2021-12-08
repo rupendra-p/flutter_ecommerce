@@ -119,6 +119,9 @@ ThemeData darkTheme(BuildContext context) {
         //fixedSize: Size.fromHeight(SizeConfig.heightMultiplier*5),
       ),
     ),
+    iconTheme: IconThemeData(
+      color: colorLightGrey,
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: secondaryColor,
       unselectedItemColor: colorLightGrey,

@@ -25,13 +25,22 @@ class IconBtnWithCounter extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          CircleAvatar(
-            foregroundColor: Theme.of(context).brightness == Brightness.light
-                ? primaryColor
-                : colorGrey,
-            backgroundColor: primaryColor.withOpacity(0.05),
+          Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: SizeConfig.widthMultiplier,
+            ),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: primaryColor.withOpacity(0.1),
+            ),
+            height: SizeConfig.heightMultiplier * 5,
+            width: SizeConfig.heightMultiplier * 5,
             child: icon,
           ),
+          /*  CircleAvatar(
+            backgroundColor: primaryColor.withOpacity(0.05),
+            child: icon,
+          ), */
           if (numOfitem != 0)
             Positioned(
               top: isShow ? -3 : 0,
