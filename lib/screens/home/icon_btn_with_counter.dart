@@ -1,6 +1,6 @@
-import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
+import '/constant/color_properties.dart';
 import '/utils/size_config.dart';
 
 class IconBtnWithCounter extends StatelessWidget {
@@ -26,7 +26,9 @@ class IconBtnWithCounter extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           CircleAvatar(
-            foregroundColor: primaryColor,
+            foregroundColor: Theme.of(context).brightness == Brightness.light
+                ? primaryColor
+                : colorGrey,
             backgroundColor: primaryColor.withOpacity(0.05),
             child: icon,
           ),

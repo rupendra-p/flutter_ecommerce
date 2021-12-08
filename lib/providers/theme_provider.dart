@@ -15,17 +15,16 @@ class ThemeProvider with ChangeNotifier {
 
   void changeToBSDate() {
     _isDateBS = true;
-     notifyListeners();
+    notifyListeners();
   }
 
   void changeToADDate() {
     _isDateBS = false;
-     notifyListeners();
+    notifyListeners();
   }
 
-  SettingsController() {
+  ThemeProvider() {
     _themeMode = _settingsService.themeMode();
-   
   }
 
   void loadSettings() {
