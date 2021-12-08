@@ -116,8 +116,11 @@ class SearchField extends StatelessWidget {
         if (textEditingValue.text == '') {
           return const Iterable<Product>.empty();
         }
-        return Provider.of<ProductProvider>(context, listen: false)
+        Provider.of<ProductProvider>(context, listen: false)
             .searchProducts(textEditingValue.text.trim());
+
+        return Provider.of<ProductProvider>(context, listen: false)
+            .searchedProducts;
       },
     );
   }
