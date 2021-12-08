@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
 import '/screens/search_list/search_field.dart';
@@ -18,16 +19,36 @@ class SearchScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 1,
-            ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.heightMultiplier * 2.0),
-              child: SearchField(
-                value: value ?? "",
-                autoFocus: autoFocus,
-                isSearchScreen: false,
+                vertical: SizeConfig.heightMultiplier,
+                horizontal: SizeConfig.heightMultiplier * 2,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: colorWhite,
+                    foregroundColor: primaryColor,
+                    // radius: SizeConfig.imageSizeMultiplier * 3,
+                    child: IconButton(
+                      icon: const Icon(Icons.chevron_left),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    width: SizeConfig.widthMultiplier * 2,
+                  ),
+                  Expanded(
+                    child: SearchField(
+                      value: value ?? "",
+                      autoFocus: autoFocus,
+                      isSearchScreen: false,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

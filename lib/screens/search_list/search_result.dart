@@ -40,10 +40,41 @@ class SearchResultScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.heightMultiplier * 2.0),
-                  child: SearchField(
-                    value: searchValue,
-                    autoFocus: false,
+                    vertical: SizeConfig.heightMultiplier,
+                    horizontal: SizeConfig.heightMultiplier * 2,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: colorWhite,
+                        foregroundColor: primaryColor,
+                        // radius: SizeConfig.imageSizeMultiplier * 3,
+                        child: IconButton(
+                          icon: const Icon(Icons.chevron_left),
+                          onPressed: () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (_) => SearchScreen(
+                                  autoFocus: true,
+                                  value: searchValue,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        width: SizeConfig.widthMultiplier * 2,
+                      ),
+                      Expanded(
+                        child: SearchField(
+                          value: searchValue,
+                          autoFocus: false,
+                          isSearchScreen: false,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(
