@@ -1,3 +1,5 @@
+import 'package:ecommerce/constant/color_properties.dart';
+import 'package:ecommerce/screens/home/icon_btn_with_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
@@ -8,11 +10,19 @@ import '/screens/search_list/search_screen.dart';
 import '/utils/size_config.dart';
 import '/widgets/product_card.dart';
 
-class SearchResultScreen extends StatelessWidget {
+class SearchResultScreen extends StatefulWidget {
   static const routeName = "/searchResult";
   const SearchResultScreen(this.searchValue, {Key? key}) : super(key: key);
 
   final String searchValue;
+
+  @override
+  State<SearchResultScreen> createState() => _SearchResultScreenState();
+}
+
+class _SearchResultScreenState extends State<SearchResultScreen> {
+  RangeValues values = const RangeValues(1, 100);
+  RangeLabels labels = const RangeLabels("1", "100");
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +32,7 @@ class SearchResultScreen extends StatelessWidget {
           MaterialPageRoute(
             builder: (_) => SearchScreen(
               autoFocus: true,
-              value: searchValue,
+              value: widget.searchValue,
             ),
           ),
         );
@@ -57,7 +67,7 @@ class SearchResultScreen extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (_) => SearchScreen(
                                   autoFocus: true,
-                                  value: searchValue,
+                                  value: widget.searchValue,
                                 ),
                               ),
                             );
@@ -69,7 +79,7 @@ class SearchResultScreen extends StatelessWidget {
                       ),
                       Expanded(
                         child: SearchField(
-                          value: searchValue,
+                          value: widget.searchValue,
                           autoFocus: false,
                         ),
                       ),
@@ -81,7 +91,7 @@ class SearchResultScreen extends StatelessWidget {
                 ),
                 getSearchProducts(
                   context,
-                  searchValue,
+                  widget.searchValue,
                 )
               ],
             ),
@@ -89,6 +99,75 @@ class SearchResultScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  filterDecorated() {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        enableDrag: false,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            SizeConfig.imageSizeMultiplier,
+          ),
+        ),
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+            return Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(
+                horizontal: SizeConfig.heightMultiplier * 2,
+                vertical: SizeConfig.heightMultiplier * 2,
+              ),
+              padding: EdgeInsets.all(SizeConfig.heightMultiplier),
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(SizeConfig.imageSizeMultiplier),
+                color: Theme.of(context).primaryColorDark,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Price',
+                    style: Theme.of(context).textTheme.subtitle1,
+                  ),
+                  RangeSlider(
+                    values: values,
+                    onChanged: (RangeValues value) {
+                      setState(() {
+                        values = value;
+                        labels = RangeLabels(
+                            "${value.start.toInt().toString()}\$",
+                            "${value.end.toInt().toString()}\$");
+                      });
+                    },
+                    divisions: 5,
+                    labels: labels,
+                    min: 1,
+                    max: 100,
+                    inactiveColor: Theme.of(context).primaryColorDark,
+                    activeColor: secondaryColor,
+                  ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      child: const Text(
+                        'Search',
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
+              ),
+            );
+          });
+        });
   }
 
   Widget getSearchProducts(BuildContext context, String name) {
@@ -101,9 +180,20 @@ class SearchResultScreen extends StatelessWidget {
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: SizeConfig.heightMultiplier * 2),
-          child: Text(
-            "Search results for $name",
-            style: Theme.of(context).textTheme.bodyText1,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Search results for $name",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              IconBtnWithCounter(
+                icon: const Icon(Icons.filter_list),
+                press: () {
+                  filterDecorated();
+                },
+              ),
+            ],
           ),
         ),
         SizedBox(
