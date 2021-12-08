@@ -71,7 +71,6 @@ class SearchResultScreen extends StatelessWidget {
                         child: SearchField(
                           value: searchValue,
                           autoFocus: false,
-                          isSearchScreen: false,
                         ),
                       ),
                     ],
@@ -104,9 +103,7 @@ class SearchResultScreen extends StatelessWidget {
               EdgeInsets.symmetric(horizontal: SizeConfig.heightMultiplier * 2),
           child: Text(
             "Search results for $name",
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  color: primaryColor,
-                ),
+            style: Theme.of(context).textTheme.bodyText1,
           ),
         ),
         SizedBox(

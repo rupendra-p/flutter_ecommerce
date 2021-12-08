@@ -19,7 +19,7 @@ class SectionTitle extends StatelessWidget {
         Text(
           title,
           style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                color: primaryColor,
+              // color: primaryColor,
               ),
         ),
         GestureDetector(

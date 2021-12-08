@@ -41,7 +41,7 @@ class ProductCard extends StatelessWidget {
                   SizeConfig.heightMultiplier * 2.5,
                 ),
                 decoration: BoxDecoration(
-                  color: primaryColor.withOpacity(0.1),
+                  color: Theme.of(context).primaryColorDark,
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Hero(
@@ -53,7 +53,7 @@ class ProductCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               product.title,
-              style: const TextStyle(color: Colors.black),
+              // style: const TextStyle(color: Colors.black),
               maxLines: 2,
             ),
             Row(
