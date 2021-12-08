@@ -32,9 +32,6 @@ class HomeHeader extends StatelessWidget {
               Navigator.pushNamed(context, SearchScreen.routeName);
             },
           ),
-          SizedBox(
-            width: SizeConfig.widthMultiplier * 2.5,
-          ),
           IconBtnWithCounter(
             icon: const Icon(
               Icons.shopping_cart_outlined,
@@ -42,9 +39,6 @@ class HomeHeader extends StatelessWidget {
             numOfitem: data.gettotalCartItems(),
             isShow: true,
             press: () => Navigator.pushNamed(context, CartScreen.routeName),
-          ),
-          SizedBox(
-            width: SizeConfig.widthMultiplier * 2.5,
           ),
           IconBtnWithCounter(
             icon: const Icon(Icons.notifications_outlined),

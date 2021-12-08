@@ -1,3 +1,6 @@
+import 'package:ecommerce/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
+
 import '/screens/sign_in/sign_in_screen.dart';
 import '/utils/scroll_configuration.dart';
 
@@ -41,7 +44,15 @@ class ProfileScreen extends StatelessWidget {
                 ProfileMenu(
                   text: "Settings",
                   icon: Icons.settings_outlined,
-                  press: () {},
+                  press: () {
+                    final controller =
+                        Provider.of<ThemeProvider>(context, listen: false);
+
+                    controller.updateThemeMode(
+                        controller.themeMode == ThemeMode.light
+                            ? ThemeMode.dark
+                            : ThemeMode.light);
+                  },
                 ),
                 ProfileMenu(
                   text: "Help Center",

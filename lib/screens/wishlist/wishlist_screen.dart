@@ -28,12 +28,8 @@ class WishlistScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Your Wishlist',
-                      style: Theme.of(context).textTheme.headline6!.copyWith(
-                            color: primaryColor,
-                          ),
-                    ),
+                    Text('Your Wishlist',
+                        style: Theme.of(context).textTheme.headline6),
                     SizedBox(
                       height: SizeConfig.heightMultiplier,
                     ),
