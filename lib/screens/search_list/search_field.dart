@@ -37,7 +37,7 @@ class SearchField extends StatelessWidget {
                 return Divider(
                   height: 1,
                   color: colorGrey,
-                  endIndent: SizeConfig.widthMultiplier * 9,
+                  endIndent: SizeConfig.widthMultiplier * 25,
                 );
               },
               itemBuilder: (c, i) {
@@ -60,7 +60,8 @@ class SearchField extends StatelessWidget {
             autofocus: autoFocus,
             focusNode: focusNode,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(vertical: 0),
+              contentPadding: EdgeInsets.symmetric(
+                  vertical: 0, horizontal: SizeConfig.widthMultiplier * 2),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
                   SizeConfig.imageSizeMultiplier * 6,
@@ -81,38 +82,8 @@ class SearchField extends StatelessWidget {
               ),
               fillColor: primaryColor.withOpacity(0.05),
               filled: true,
-              isDense: true,
+              // isDense: true,
               hintText: "Search product",
-              prefixIcon: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CircleAvatar(
-                    backgroundColor: colorWhite,
-                    foregroundColor: primaryColor,
-                    radius: SizeConfig.imageSizeMultiplier * 6,
-                    child: IconButton(
-                      icon: const Icon(Icons.chevron_left),
-                      onPressed: () {
-                        if (isSearchScreen) {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (_) => SearchScreen(
-                                autoFocus: true,
-                                value: value ?? "",
-                              ),
-                            ),
-                          );
-                        } else {
-                          Navigator.of(context).pop();
-                        }
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    width: SizeConfig.widthMultiplier * 2,
-                  ),
-                ],
-              ),
             ),
             textInputAction: TextInputAction.search,
             onFieldSubmitted: (newValue) {

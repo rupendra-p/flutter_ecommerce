@@ -37,10 +37,6 @@ class IconBtnWithCounter extends StatelessWidget {
             width: SizeConfig.heightMultiplier * 5,
             child: icon,
           ),
-          /*  CircleAvatar(
-            backgroundColor: primaryColor.withOpacity(0.05),
-            child: icon,
-          ), */
           if (numOfitem != 0)
             Positioned(
               top: isShow ? -3 : 0,
