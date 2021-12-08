@@ -61,7 +61,7 @@ class _ProductImagesState extends State<ProductImages> {
         height: SizeConfig.heightMultiplier * 6,
         width: SizeConfig.heightMultiplier * 6,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).primaryColorDark,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
               color: primaryColor.withOpacity(selectedImage == index ? 1 : 0)),

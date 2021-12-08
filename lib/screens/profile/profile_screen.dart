@@ -97,7 +97,7 @@ class ProfileMenu extends StatelessWidget {
         vertical: SizeConfig.heightMultiplier * .8,
       ),
       child: ListTile(
-        tileColor: colorWhite,
+        tileColor: Theme.of(context).primaryColorDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             SizeConfig.heightMultiplier * 2,
@@ -106,19 +106,18 @@ class ProfileMenu extends StatelessWidget {
         onTap: press,
         leading: Icon(
           icon,
-          color: primaryColor,
+          color: Theme.of(context).textTheme.headline1!.color,
           size: SizeConfig.imageSizeMultiplier * 7,
         ),
         title: Text(
           text,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                color: primaryColor,
                 fontSize: SizeConfig.textMultiplier * 2,
               ),
         ),
         trailing: Icon(
           Icons.arrow_forward_ios,
-          color: primaryColor,
+          color: Theme.of(context).textTheme.headline1!.color,
           size: SizeConfig.imageSizeMultiplier * 5,
         ),
       ),

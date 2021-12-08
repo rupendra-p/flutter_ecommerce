@@ -89,7 +89,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               children: [
                 ProductImages(product: agrs.product),
                 TopRoundedContainer(
-                  color: colorWhite,
+                  color: Theme.of(context).primaryColorDark,
                   child: Column(
                     children: [
                       ProductDescription(
@@ -97,7 +97,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         pressOnSeeMore: () {},
                       ),
                       TopRoundedContainer(
-                        color: const Color(0xFFF6F7F9),
+                        color: Theme.of(context).canvasColor,
                         child: ColorDots(
                           product: agrs.product,
                           quantity: quantity,

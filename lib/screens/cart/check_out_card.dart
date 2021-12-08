@@ -19,18 +19,11 @@ class CheckoutCard extends StatelessWidget {
       ),
       // height: 174,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).primaryColorDark,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(4 * SizeConfig.heightMultiplier),
           topRight: Radius.circular(4 * SizeConfig.heightMultiplier),
         ),
-        boxShadow: [
-          BoxShadow(
-            offset: const Offset(0, -15),
-            blurRadius: 20,
-            color: const Color(0xFFDADADA).withOpacity(0.15),
-          )
-        ],
       ),
       child: SafeArea(
         child: Column(
@@ -44,7 +37,7 @@ class CheckoutCard extends StatelessWidget {
                   height: 5 * SizeConfig.heightMultiplier,
                   width: 5 * SizeConfig.heightMultiplier,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF5F6F9),
+                    color: Theme.of(context).canvasColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: SvgPicture.asset("assets/icons/receipt.svg"),
@@ -67,9 +60,7 @@ class CheckoutCard extends StatelessWidget {
                 Text.rich(
                   TextSpan(
                     text: "Total:\n",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          color: primaryColor,
-                        ),
+                    style: Theme.of(context).textTheme.bodyText1,
                     children: [
                       TextSpan(
                         text: "\$337.15",

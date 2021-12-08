@@ -10,11 +10,11 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/Flash Icon.svg", "text": "Flash Deal"},
-      {"icon": "assets/icons/Bill Icon.svg", "text": "Bill"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "Game"},
-      {"icon": "assets/icons/Gift Icon.svg", "text": "Daily Gift"},
-      {"icon": "assets/icons/Discover.svg", "text": "More"},
+      {"icon": Icons.flash_on_outlined, "text": "Flash Deal"},
+      {"icon": Icons.receipt_long_outlined, "text": "Bill"},
+      {"icon": Icons.sports_esports_outlined, "text": "Game"},
+      {"icon": Icons.redeem_outlined, "text": "Daily Gift"},
+      {"icon": Icons.explore_outlined, "text": "More"},
     ];
     return Padding(
       padding: EdgeInsets.all(
@@ -44,7 +44,8 @@ class CategoryCard extends StatelessWidget {
     required this.press,
   }) : super(key: key);
 
-  final String? icon, text;
+  final String? text;
+  final IconData? icon;
   final GestureTapCallback press;
 
   @override
@@ -65,9 +66,8 @@ class CategoryCard extends StatelessWidget {
                 color: primaryColor.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SvgPicture.asset(
+              child: Icon(
                 icon!,
-                color: primaryColor,
               ),
             ),
             SizedBox(height: SizeConfig.heightMultiplier),
@@ -75,7 +75,7 @@ class CategoryCard extends StatelessWidget {
               text!,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                    color: primaryColor,
+                  // color: primaryColor,
                   ),
             )
           ],

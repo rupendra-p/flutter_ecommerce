@@ -29,7 +29,7 @@ class CartCard extends StatelessWidget {
                 SizeConfig.heightMultiplier * 1,
               ),
               decoration: BoxDecoration(
-                color: colorWhite,
+                color: Theme.of(context).primaryColorDark,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Image.asset(cart.product.images[0]),
@@ -43,9 +43,7 @@ class CartCard extends StatelessWidget {
             children: [
               Text(
                 cart.product.title,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      color: primaryColor,
-                    ),
+                style: Theme.of(context).textTheme.bodyText1,
                 maxLines: 2,
               ),
               SizedBox(
@@ -78,9 +76,7 @@ class CartCard extends StatelessWidget {
                   )),
               Text(
                 cart.numOfItem.toString(),
-                style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                      color: primaryColor,
-                    ),
+                style: Theme.of(context).textTheme.subtitle2,
               ),
               IconButton(
                   onPressed: () {

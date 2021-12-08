@@ -1,3 +1,4 @@
+import 'package:ecommerce/utils/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -60,9 +61,8 @@ class ProductDescription extends StatelessWidget {
                         .addToWishList(
                       product,
                     );
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
+                    showToast(
+                      text:
                           Provider.of<WishListProvider>(context, listen: false)
                                       .checkIsInWishList(
                                     product.id,
@@ -70,12 +70,6 @@ class ProductDescription extends StatelessWidget {
                                   null
                               ? "Successfully added to the wishlist"
                               : "Successfully removed from the wishlist",
-                          textAlign: TextAlign.center,
-                        ),
-                        duration: const Duration(
-                          seconds: 3,
-                        ),
-                      ),
                     );
                   },
                   child: Container(
@@ -91,7 +85,7 @@ class ProductDescription extends StatelessWidget {
                               ) !=
                               null
                           ? const Color(0xFFFFE6E6)
-                          : const Color(0xFFF5F6F9),
+                          : Theme.of(context).canvasColor,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(20),
                         bottomLeft: Radius.circular(20),

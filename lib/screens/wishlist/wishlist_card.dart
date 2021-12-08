@@ -29,7 +29,7 @@ class WishListCard extends StatelessWidget {
                 SizeConfig.heightMultiplier * 1,
               ),
               decoration: BoxDecoration(
-                color: colorWhite,
+                color: Theme.of(context).primaryColorDark,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Image.asset(wishList.product.images[0]),
@@ -43,9 +43,7 @@ class WishListCard extends StatelessWidget {
             children: [
               Text(
                 wishList.product.title,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      color: primaryColor,
-                    ),
+                style: Theme.of(context).textTheme.bodyText1,
                 maxLines: 2,
               ),
               SizedBox(

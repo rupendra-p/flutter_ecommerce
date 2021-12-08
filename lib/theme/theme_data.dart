@@ -6,14 +6,16 @@ import '/utils/size_config.dart';
 ThemeData lightTheme(BuildContext context) {
   return ThemeData(
     primaryColor: primaryColor,
+    primaryColorLight: colorWhite,
+    primaryColorDark: colorWhite,
     canvasColor: canvasColor,
     textTheme: const TextTheme(
       overline: TextStyle(),
       caption: TextStyle(color: colorGrey),
       bodyText1: TextStyle(color: primaryColor),
       bodyText2: TextStyle(color: primaryColor),
-      subtitle1: TextStyle(color: secondaryColor),
-      subtitle2: TextStyle(color: secondaryColor),
+      subtitle1: TextStyle(color: primaryColor),
+      subtitle2: TextStyle(color: primaryColor),
       headline6: TextStyle(color: primaryColor),
       headline5: TextStyle(color: primaryColor),
       headline4: TextStyle(color: primaryColor),
@@ -89,8 +91,10 @@ ThemeData lightTheme(BuildContext context) {
 
 ThemeData darkTheme(BuildContext context) {
   return ThemeData(
-    primaryColor: primaryColor,
-    canvasColor: colorGreyDarkTheme,
+    primaryColor: colorBlack,
+    primaryColorLight: colorLightGrey,
+    primaryColorDark: colorGreyDarkTheme,
+    canvasColor: Colors.black45,
     textTheme: TextTheme(
       caption: TextStyle(color: colorLightGrey),
       bodyText1: const TextStyle(color: colorWhite),

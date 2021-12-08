@@ -53,10 +53,7 @@ class _CartScreenState extends State<CartScreen> {
                       children: [
                         Text(
                           'Your Cart',
-                          style:
-                              Theme.of(context).textTheme.headline6!.copyWith(
-                                    color: primaryColor,
-                                  ),
+                          style: Theme.of(context).textTheme.headline6!,
                         ),
                         SizedBox(
                           height: SizeConfig.heightMultiplier,

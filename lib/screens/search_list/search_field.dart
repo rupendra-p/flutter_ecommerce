@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '/screens/search_list/search_screen.dart';
 
 import '/screens/search_list/search_result.dart';
@@ -28,6 +30,7 @@ class SearchField extends StatelessWidget {
       optionsViewBuilder: (context, function, products) {
         return Scaffold(
             body: Container(
+          width: double.infinity,
           margin: EdgeInsets.zero,
           padding: EdgeInsets.zero,
           child: ListView.separated(
@@ -59,6 +62,19 @@ class SearchField extends StatelessWidget {
             controller: controller,
             autofocus: autoFocus,
             focusNode: focusNode,
+            onTap: () {
+              log(value.toString());
+              if (isSearchScreen) {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => SearchScreen(
+                      autoFocus: true,
+                      value: controller.text,
+                    ),
+                  ),
+                );
+              }
+            },
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(
                   vertical: 0, horizontal: SizeConfig.widthMultiplier * 2),
@@ -80,7 +96,7 @@ class SearchField extends StatelessWidget {
                 ),
                 borderSide: BorderSide.none,
               ),
-              fillColor: primaryColor.withOpacity(0.05),
+              fillColor: Theme.of(context).primaryColor.withOpacity(0.05),
               filled: true,
               // isDense: true,
               hintText: "Search product",
