@@ -1,4 +1,3 @@
-import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -24,8 +23,8 @@ class CustomAppBar extends StatelessWidget {
         child: Row(
           children: [
             CircleAvatar(
-              backgroundColor: colorWhite,
-              foregroundColor: primaryColor,
+              backgroundColor: Theme.of(context).primaryColorDark,
+              foregroundColor: Theme.of(context).textTheme.headline6!.color,
               child: IconButton(
                 icon: const Icon(Icons.chevron_left),
                 onPressed: () => Navigator.of(context).pop(),
@@ -38,7 +37,7 @@ class CustomAppBar extends StatelessWidget {
                 vertical: SizeConfig.heightMultiplier,
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).primaryColorDark,
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Row(
@@ -46,7 +45,7 @@ class CustomAppBar extends StatelessWidget {
                   Text(
                     "$rating",
                     style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                          color: primaryColor,
+                          color: Theme.of(context).textTheme.headline6!.color,
                         ),
                   ),
                   const SizedBox(width: 5),

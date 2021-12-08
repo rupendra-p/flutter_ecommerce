@@ -1,17 +1,13 @@
-import '/utils/show_toast.dart';
-
-import '/utils/scroll_configuration.dart';
-
-import '/providers/cart_provider.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+
+import '/providers/cart_provider.dart';
+import '/utils/scroll_configuration.dart';
+import '/utils/show_toast.dart';
+import '/utils/size_config.dart';
 import 'cart_card.dart';
 import 'check_out_card.dart';
-import '/constant/color_properties.dart';
-
-import '/utils/size_config.dart';
 
 class CartScreen extends StatefulWidget {
   static const String routeName = "/cart";
@@ -38,8 +34,9 @@ class _CartScreenState extends State<CartScreen> {
                 Row(
                   children: [
                     CircleAvatar(
-                      backgroundColor: colorWhite,
-                      foregroundColor: primaryColor,
+                      backgroundColor: Theme.of(context).primaryColorDark,
+                      foregroundColor:
+                          Theme.of(context).textTheme.headline6!.color,
                       child: IconButton(
                         icon: const Icon(Icons.chevron_left),
                         onPressed: () => Navigator.of(context).pop(),

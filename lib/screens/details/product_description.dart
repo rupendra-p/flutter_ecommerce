@@ -136,7 +136,6 @@ class ProductDescription extends StatelessWidget {
                 SizedBox(width: SizeConfig.widthMultiplier),
                 const Icon(
                   Icons.chevron_right,
-                  color: primaryColor,
                 ),
               ],
             ),

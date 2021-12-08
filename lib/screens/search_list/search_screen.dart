@@ -1,4 +1,3 @@
-import 'package:ecommerce/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 
 import '/screens/search_list/search_field.dart';
@@ -28,8 +27,9 @@ class SearchScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CircleAvatar(
-                    backgroundColor: colorWhite,
-                    foregroundColor: primaryColor,
+                    backgroundColor: Theme.of(context).primaryColorDark,
+                    foregroundColor:
+                        Theme.of(context).textTheme.headline6!.color,
                     // radius: SizeConfig.imageSizeMultiplier * 3,
                     child: IconButton(
                       icon: const Icon(Icons.chevron_left),

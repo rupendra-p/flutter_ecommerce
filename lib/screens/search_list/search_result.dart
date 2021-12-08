@@ -1,13 +1,12 @@
-import '/constant/color_properties.dart';
-import '/providers/product_provider.dart';
-import '/screens/search_list/search_screen.dart';
-import '/widgets/product_card.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
+import '/providers/product_provider.dart';
 import '/screens/search_list/search_field.dart';
+import '/screens/search_list/search_screen.dart';
 import '/utils/size_config.dart';
-import 'package:flutter/material.dart';
+import '/widgets/product_card.dart';
 
 class SearchResultScreen extends StatelessWidget {
   static const routeName = "/searchResult";
@@ -47,8 +46,9 @@ class SearchResultScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       CircleAvatar(
-                        backgroundColor: colorWhite,
-                        foregroundColor: primaryColor,
+                        backgroundColor: Theme.of(context).primaryColorDark,
+                        foregroundColor:
+                            Theme.of(context).textTheme.headline6!.color,
                         // radius: SizeConfig.imageSizeMultiplier * 3,
                         child: IconButton(
                           icon: const Icon(Icons.chevron_left),
