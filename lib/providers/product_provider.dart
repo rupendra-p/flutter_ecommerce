@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '/models/product.dart';
 import 'package:flutter/material.dart';
 
@@ -83,8 +85,22 @@ class ProductProvider with ChangeNotifier {
 
   List<Product> get products => _products;
 
-  Iterable<Product> searchProducts(String name) {
-    return _products
-        .where((element) => element.title.toLowerCase().contains(name));
+  List<Product> searchedProducts = [];
+
+  searchProducts(String name) {
+    searchedProducts.clear();
+    searchedProducts = _products
+        .where((element) => element.title.toLowerCase().contains(name))
+        .toList();
+  }
+
+  filterProductByPrice(String name, double startValue, double endValue) {
+    searchProducts(name);
+    searchedProducts = searchedProducts
+        .where(
+          (element) => element.price >= startValue && element.price <= endValue,
+        )
+        .toList();
+    notifyListeners();
   }
 }

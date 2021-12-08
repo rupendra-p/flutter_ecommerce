@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:ecommerce/constant/color_properties.dart';
+import 'package:ecommerce/models/product.dart';
 import 'package:ecommerce/screens/home/icon_btn_with_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -26,6 +29,8 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<ProductProvider>(context, listen: false)
+        .searchProducts(widget.searchValue);
     return WillPopScope(
       onWillPop: () {
         Navigator.of(context).pushReplacement(
@@ -101,8 +106,8 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
     );
   }
 
-  filterDecorated() {
-    showModalBottomSheet(
+  filterDecorated() async {
+    await showModalBottomSheet(
         backgroundColor: Colors.transparent,
         isScrollControlled: true,
         enableDrag: false,
@@ -160,7 +165,9 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                       child: const Text(
                         'Search',
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                     ),
                   ),
                 ],
@@ -189,8 +196,15 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
               ),
               IconBtnWithCounter(
                 icon: const Icon(Icons.filter_list),
-                press: () {
-                  filterDecorated();
+                press: () async {
+                  await filterDecorated();
+                  log(values.toString());
+                  Provider.of<ProductProvider>(context, listen: false)
+                      .filterProductByPrice(
+                    widget.searchValue,
+                    values.start,
+                    values.end,
+                  );
                 },
               ),
             ],
@@ -204,7 +218,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             crossAxisCount: 2,
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
-            itemCount: data.searchProducts(name).length,
+            itemCount: data.searchedProducts.length,
             mainAxisSpacing: SizeConfig.heightMultiplier * 2,
             crossAxisSpacing: SizeConfig.heightMultiplier * 2,
             padding: EdgeInsets.symmetric(
@@ -212,7 +226,8 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             ),
             itemBuilder: (context, index) {
               return ProductCard(
-                  product: data.searchProducts(name).toList()[index]);
+                product: data.searchedProducts[index],
+              );
             },
             staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
           );
