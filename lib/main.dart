@@ -1,5 +1,6 @@
-import 'package:ecommerce/providers/theme_provider.dart';
-import 'package:ecommerce/utils/theme_service.dart';
+import '/providers/customer_provider.dart';
+import '/providers/theme_provider.dart';
+import '/utils/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CustomerProvider(),
         ),
       ],
       child: LayoutBuilder(

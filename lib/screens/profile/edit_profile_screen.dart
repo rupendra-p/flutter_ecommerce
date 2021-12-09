@@ -1,10 +1,12 @@
 import 'package:ecommerce/constant/color_properties.dart';
+import 'package:ecommerce/providers/customer_provider.dart';
 import 'package:ecommerce/utils/keyboard.dart';
 import 'package:ecommerce/utils/scroll_configuration.dart';
 import 'package:ecommerce/utils/size_config.dart';
 import 'package:ecommerce/utils/validation_mixin.dart';
 import 'package:ecommerce/widgets/default_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class EditProfileScreen extends StatelessWidget {
   static const routeName = '/editProfile';
@@ -12,7 +14,7 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = new GlobalKey<FormState>();
+    final _formKey = GlobalKey<FormState>();
 
     return Scaffold(
       body: SafeArea(
@@ -49,15 +51,22 @@ class EditProfileScreen extends StatelessWidget {
               ),
               Hero(
                 tag: 'profile-image',
-                child: CircleAvatar(
-                  radius: SizeConfig.imageSizeMultiplier * 15,
-                  backgroundColor: secondaryColor,
-                  child: Icon(
-                    Icons.person,
-                    size: SizeConfig.imageSizeMultiplier * 20,
-                    color: canvasColor,
-                  ),
-                ),
+                child: Consumer<CustomerProvider>(builder: (_, data, __) {
+                  return data.customer == null
+                      ? CircleAvatar(
+                          radius: SizeConfig.imageSizeMultiplier * 15,
+                          backgroundColor: secondaryColor,
+                          child: Icon(
+                            Icons.person,
+                            size: SizeConfig.imageSizeMultiplier * 20,
+                            color: canvasColor,
+                          ),
+                        )
+                      : CircleAvatar(
+                          radius: SizeConfig.imageSizeMultiplier * 15,
+                          backgroundImage: MemoryImage(data.customer!.image!),
+                        );
+                }),
               ),
               SizedBox(
                 height: SizeConfig.heightMultiplier * 5,
