@@ -135,7 +135,13 @@ class _SignFormState extends State<SignForm> {
             children: [
               Checkbox(
                 value: remember,
-                activeColor: primaryColor,
+                activeColor: secondaryColor,
+                fillColor: MaterialStateColor.resolveWith((states) {
+                  if (states.contains(MaterialState.selected)) {
+                    return secondaryColor;
+                  }
+                  return Theme.of(context).textTheme.headline6!.color!;
+                }),
                 onChanged: (value) {
                   setState(() {
                     remember = value;
