@@ -1,3 +1,6 @@
+import 'package:ecommerce/providers/customer_provider.dart';
+import 'package:image_picker/image_picker.dart';
+
 import '/screens/profile/edit_profile_screen.dart';
 import 'package:ecommerce/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -268,14 +271,20 @@ class ProfilePic extends StatelessWidget {
             children: [
               Hero(
                 tag: 'profile-image',
-                child: CircleAvatar(
-                  backgroundColor: secondaryColor,
-                  child: Icon(
-                    Icons.person,
-                    size: SizeConfig.imageSizeMultiplier * 20,
-                    color: canvasColor,
-                  ),
-                ),
+                child: Consumer<CustomerProvider>(builder: (_, data, __) {
+                  return data.customer == null
+                      ? CircleAvatar(
+                          backgroundColor: secondaryColor,
+                          child: Icon(
+                            Icons.person,
+                            size: SizeConfig.imageSizeMultiplier * 20,
+                            color: canvasColor,
+                          ),
+                        )
+                      : CircleAvatar(
+                          backgroundImage: MemoryImage(data.customer!.image!),
+                        );
+                }),
               ),
               Positioned(
                 right: -16,
@@ -294,7 +303,9 @@ class ProfilePic extends StatelessWidget {
                       primary: colorWhite,
                       backgroundColor: colorWhite,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      showModal(context);
+                    },
                     child: const Icon(
                       Icons.add_a_photo,
                       color: primaryColor,
@@ -318,5 +329,109 @@ class ProfilePic extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  showModal(con) async {
+    final ImagePicker _picker = ImagePicker();
+    await showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        enableDrag: false,
+        isDismissible: false,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            SizeConfig.imageSizeMultiplier,
+          ),
+        ),
+        context: con,
+        builder: (context) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+            return Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(
+                horizontal: SizeConfig.heightMultiplier * 2,
+                vertical: SizeConfig.heightMultiplier * 2,
+              ),
+              padding: EdgeInsets.all(SizeConfig.heightMultiplier),
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(SizeConfig.imageSizeMultiplier),
+                color: Theme.of(context).primaryColorDark,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Choose a source',
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Material(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(
+                              SizeConfig.imageSizeMultiplier),
+                          child: Padding(
+                            padding:
+                                EdgeInsets.all(SizeConfig.imageSizeMultiplier),
+                            child: const Icon(
+                              Icons.close,
+                              color: colorWhite,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Divider(),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.camera_outlined,
+                    ),
+                    title: Text(
+                      "Camera",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    onTap: () async {
+                      // Navigator.of(context).pop();
+                      final file =
+                          await _picker.pickImage(source: ImageSource.camera);
+                      if (file != null) {
+                        Provider.of<CustomerProvider>(context, listen: false)
+                            .addPicture(await file.readAsBytes());
+                      }
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.collections_outlined),
+                    title: Text(
+                      "Gallery",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    onTap: () async {
+                      final file =
+                          await _picker.pickImage(source: ImageSource.gallery);
+                      if (file != null) {
+                        await Provider.of<CustomerProvider>(context,
+                                listen: false)
+                            .addPicture(await file.readAsBytes());
+                      }
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            );
+          });
+        });
   }
 }
