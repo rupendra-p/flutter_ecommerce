@@ -1,12 +1,16 @@
-import 'package:ecommerce/providers/customer_provider.dart';
+
+import '/providers/customer_provider.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '/screens/profile/edit_profile_screen.dart';
+
 import 'package:ecommerce/providers/theme_provider.dart';
+import 'package:ecommerce/screens/orders/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/constant/color_properties.dart';
+import '/screens/profile/edit_profile_screen.dart';
 import '/screens/sign_in/sign_in_screen.dart';
 import '/utils/scroll_configuration.dart';
 import '/utils/size_config.dart';
@@ -47,7 +51,9 @@ class SettingScreen extends StatelessWidget {
                 ProfileMenu(
                   text: "My Orders",
                   icon: Icons.toc_outlined,
-                  press: () {},
+                  press: () {
+                    Navigator.pushNamed(context, OrderScreen.routeName);
+                  },
                 ),
                 ProfileMenu(
                   text: "Theme",

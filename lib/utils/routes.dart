@@ -1,4 +1,6 @@
 
+import 'package:ecommerce/screens/orders/order_screen.dart';
+
 import '/screens/profile/edit_profile_screen.dart';
 import 'package:ecommerce/screens/notifications/notification_screen.dart';
 import 'package:ecommerce/screens/search_list/search_result.dart';
@@ -24,22 +26,23 @@ import '/screens/sign_up/sign_up_screen.dart';
 // We use name route
 // All our routes will be available here
 final Map<String, WidgetBuilder> routes = {
-  SplashScreen.routeName: (context) => SplashScreen(),
-  SignInScreen.routeName: (context) => SignInScreen(),
-  ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
-  LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),
-  SignUpScreen.routeName: (context) => SignUpScreen(),
-  CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
-  OtpScreen.routeName: (context) => OtpScreen(),
-  HomeScreen.routeName: (context) => HomeScreen(),
-  NavigationScreen.routeName: (context) => NavigationScreen(),
-  DetailsScreen.routeName: (context) => DetailsScreen(),
-  CartScreen.routeName: (context) => CartScreen(),
-  SettingScreen.routeName: (context) => SettingScreen(),
-  SearchScreen.routeName: (context) => SearchScreen(),
-  SearchResultScreen.routeName: (context) => SearchResultScreen(""),
+  SplashScreen.routeName: (context) =>const SplashScreen(),
+  SignInScreen.routeName: (context) =>const SignInScreen(),
+  ForgotPasswordScreen.routeName: (context) =>const ForgotPasswordScreen(),
+  LoginSuccessScreen.routeName: (context) =>const LoginSuccessScreen(),
+  SignUpScreen.routeName: (context) =>const SignUpScreen(),
+  CompleteProfileScreen.routeName: (context) =>const CompleteProfileScreen(),
+  OtpScreen.routeName: (context) => const OtpScreen(),
+  HomeScreen.routeName: (context) => const HomeScreen(),
+  NavigationScreen.routeName: (context) =>const NavigationScreen(),
+  DetailsScreen.routeName: (context) => const DetailsScreen(),
+  CartScreen.routeName: (context) =>const CartScreen(),
+  SettingScreen.routeName: (context) => const SettingScreen(),
+  SearchScreen.routeName: (context) =>const SearchScreen(),
+  SearchResultScreen.routeName: (context) => const SearchResultScreen(""),
 
-  EditProfileScreen.routeName: (context) => EditProfileScreen(),
-  NotificationScreen.routeName:(context)=>NotificationScreen(),
+  EditProfileScreen.routeName: (context) => const EditProfileScreen(),
+  NotificationScreen.routeName:(context)=> const NotificationScreen(),
+  OrderScreen.routeName:(context)=> const OrderScreen(),
 
 };
