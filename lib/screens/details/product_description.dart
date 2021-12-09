@@ -85,7 +85,7 @@ class ProductDescription extends StatelessWidget {
                               ) !=
                               null
                           ? const Color(0xFFFFE6E6)
-                          : Theme.of(context).canvasColor,
+                          : Theme.of(context).primaryColorLight,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(20),
                         bottomLeft: Radius.circular(20),

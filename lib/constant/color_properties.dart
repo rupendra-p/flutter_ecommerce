@@ -21,3 +21,8 @@ Color colorMediumGrey = Colors.grey.shade600;
 Color colorLightGrey = Colors.grey.shade400;
 
 Color colorGreyDarkTheme = Colors.grey.shade900;
+
+// DARK THEME
+const Color primaryColorBlack = Color(0xff121212);
+const Color primaryColorLight = Color(0xff414141);
+const Color primaryColorDark = Color(0xff292929);
