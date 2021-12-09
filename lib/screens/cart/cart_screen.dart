@@ -21,9 +21,9 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 2.5 * SizeConfig.heightMultiplier,
           ),
@@ -108,8 +108,8 @@ class _CartScreenState extends State<CartScreen> {
             );
           }),
         ),
-        bottomNavigationBar: const CheckoutCard(),
       ),
+      bottomNavigationBar: const CheckoutCard(),
     );
   }
 
