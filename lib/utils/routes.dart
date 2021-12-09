@@ -1,3 +1,4 @@
+import 'package:ecommerce/screens/notifications/notification_screen.dart';
 import 'package:ecommerce/screens/search_list/search_result.dart';
 
 import '/screens/navigation_screen.dart';
@@ -33,4 +34,5 @@ final Map<String, WidgetBuilder> routes = {
   ProfileScreen.routeName: (context) => ProfileScreen(),
   SearchScreen.routeName: (context) => SearchScreen(),
   SearchResultScreen.routeName: (context) => SearchResultScreen(""),
+  NotificationScreen.routeName:(context)=>NotificationScreen(),
 };

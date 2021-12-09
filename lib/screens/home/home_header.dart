@@ -1,3 +1,4 @@
+import 'package:ecommerce/screens/notifications/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +43,9 @@ class HomeHeader extends StatelessWidget {
           ),
           IconBtnWithCounter(
             icon: const Icon(Icons.notifications_outlined),
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, NotificationScreen.routeName);
+            },
             numOfitem: 1,
           ),
         ],
