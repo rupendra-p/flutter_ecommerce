@@ -47,6 +47,16 @@ class ValidationMixin {
     return null;
   }
 
+  validateAddress(String value) {
+    if (value.isEmpty) {
+      return "Address is required ";
+    }
+    //  else if (!regExp.hasMatch(value.trim())) {
+    //   return "Name must be character";
+    // }
+    return null;
+  }
+
   validatePassword(String value) {
     if (value.isEmpty) {
       return "Password is required ";

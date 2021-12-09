@@ -1,3 +1,4 @@
+import '/screens/profile/edit_profile_screen.dart';
 import 'package:ecommerce/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,10 +8,10 @@ import '/screens/sign_in/sign_in_screen.dart';
 import '/utils/scroll_configuration.dart';
 import '/utils/size_config.dart';
 
-class ProfileScreen extends StatelessWidget {
-  static const String routeName = "/profile";
+class SettingScreen extends StatelessWidget {
+  static const String routeName = "/setting";
 
-  const ProfileScreen({Key? key}) : super(key: key);
+  const SettingScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<ThemeProvider>(
@@ -35,11 +36,14 @@ class ProfileScreen extends StatelessWidget {
                 ProfileMenu(
                   text: "My Account",
                   icon: Icons.person_outline,
-                  press: () => {},
+                  press: () {
+                    Navigator.of(context)
+                        .pushNamed(EditProfileScreen.routeName);
+                  },
                 ),
                 ProfileMenu(
-                  text: "Notifications",
-                  icon: Icons.notifications_outlined,
+                  text: "My Orders",
+                  icon: Icons.toc_outlined,
                   press: () {},
                 ),
                 ProfileMenu(
@@ -262,12 +266,15 @@ class ProfilePic extends StatelessWidget {
             fit: StackFit.expand,
             clipBehavior: Clip.none,
             children: [
-              CircleAvatar(
-                backgroundColor: secondaryColor,
-                child: Icon(
-                  Icons.person,
-                  size: SizeConfig.imageSizeMultiplier * 20,
-                  color: canvasColor,
+              Hero(
+                tag: 'profile-image',
+                child: CircleAvatar(
+                  backgroundColor: secondaryColor,
+                  child: Icon(
+                    Icons.person,
+                    size: SizeConfig.imageSizeMultiplier * 20,
+                    color: canvasColor,
+                  ),
                 ),
               ),
               Positioned(
