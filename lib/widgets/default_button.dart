@@ -16,7 +16,7 @@ class DefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: SizeConfig.heightMultiplier * 7,
+      height: SizeConfig.heightMultiplier * 6,
       width: width ?? SizeConfig.widthMultiplier * 90,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(

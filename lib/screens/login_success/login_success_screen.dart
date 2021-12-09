@@ -1,3 +1,4 @@
+import 'package:ecommerce/utils/scroll_configuration.dart';
 import 'package:flutter/material.dart';
 
 import '/screens/navigation_screen.dart';
@@ -12,36 +13,47 @@ class LoginSuccessScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 5,
+        child: ScrollConfiguration(
+          behavior: MyBehavior(),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 5,
+                ),
+                Center(
+                  child: Image.asset(
+                    "assets/images/success.png",
+                    width: SizeConfig.widthMultiplier * 100,
+                    height: SizeConfig.heightMultiplier * 40, //40%
+                  ),
+                ),
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 2,
+                ),
+                Text(
+                  "Login Success",
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 10,
+                ),
+                SizedBox(
+                  width: SizeConfig.widthMultiplier * 50,
+                  child: DefaultButton(
+                    text: "Back to home",
+                    press: () {
+                      Navigator.pushReplacementNamed(
+                          context, NavigationScreen.routeName);
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: SizeConfig.heightMultiplier * 2,
+                ),
+              ],
             ),
-            Image.asset(
-              "assets/images/success.png",
-              height: SizeConfig.heightMultiplier * 40, //40%
-            ),
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 2,
-            ),
-            Text(
-              "Login Success",
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 10,
-            ),
-            SizedBox(
-              width: SizeConfig.widthMultiplier * 50,
-              child: DefaultButton(
-                text: "Back to home",
-                press: () {
-                  Navigator.pushReplacementNamed(
-                      context, NavigationScreen.routeName);
-                },
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

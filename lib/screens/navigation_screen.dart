@@ -1,13 +1,13 @@
 import '/screens/wishlist/wishlist_screen.dart';
 
 import '/widgets/custom_bottom_nav_bar.dart';
-import '/screens/profile/profile_screen.dart';
+import '/screens/setting/setting_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'home/home_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
-  static const String routeName = "/home";
+  static const String routeName = "/navigate";
   const NavigationScreen({Key? key}) : super(key: key);
 
   @override
@@ -25,7 +25,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
       pages: const [
         HomeScreen(),
         WishlistScreen(),
-        ProfileScreen(),
+        SettingScreen(),
       ],
     );
   }
