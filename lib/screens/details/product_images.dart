@@ -1,9 +1,9 @@
-import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
-import '../../models/product.dart';
 
-import '../../../constant/constants.dart';
+import '/constant/color_properties.dart';
 import '/utils/size_config.dart';
+import '../../../constant/constants.dart';
+import '../../models/product.dart';
 
 class ProductImages extends StatefulWidget {
   const ProductImages({
@@ -64,7 +64,8 @@ class _ProductImagesState extends State<ProductImages> {
           color: Theme.of(context).primaryColorDark,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-              color: primaryColor.withOpacity(selectedImage == index ? 1 : 0)),
+              color:
+                  secondaryColor.withOpacity(selectedImage == index ? 1 : 0)),
         ),
         child: Image.asset(widget.product.images[index]),
       ),
