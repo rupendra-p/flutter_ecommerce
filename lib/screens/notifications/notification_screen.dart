@@ -1,7 +1,7 @@
-import 'package:ecommerce/constant/color_properties.dart';
-import 'package:ecommerce/screens/notifications/notification_tile.dart';
-import 'package:ecommerce/utils/scroll_configuration.dart';
-import 'package:ecommerce/utils/size_config.dart';
+import '/constant/color_properties.dart';
+import '/screens/notifications/notification_tile.dart';
+import '/utils/scroll_configuration.dart';
+import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class NotificationScreen extends StatelessWidget {
