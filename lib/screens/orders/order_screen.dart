@@ -1,5 +1,3 @@
-import 'package:ecommerce/screens/home/icon_btn_with_counter.dart';
-
 import '/constant/color_properties.dart';
 import '/utils/scroll_configuration.dart';
 import '/utils/size_config.dart';
