@@ -134,6 +134,7 @@ ThemeData darkTheme(BuildContext context) {
     colorScheme: Theme.of(context).colorScheme.copyWith(
           primary: colorLightGrey,
         ),
+    cardColor: primaryColorDark,
     inputDecorationTheme: InputDecorationTheme(
       hintStyle:
           Theme.of(context).textTheme.bodyText1!.copyWith(color: colorGrey),
