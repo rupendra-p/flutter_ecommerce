@@ -26,11 +26,11 @@ class _CartScreenState extends State<CartScreen> {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 2.5 * SizeConfig.heightMultiplier,
+            vertical: SizeConfig.heightMultiplier,
           ),
           child: Consumer<CartProvider>(builder: (_, data, __) {
             return Column(
               children: [
-                SizedBox(height: SizeConfig.heightMultiplier),
                 Row(
                   children: [
                     CircleAvatar(
