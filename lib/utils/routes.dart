@@ -1,4 +1,3 @@
-import '/screens/order_details/order_details.dart';
 import '/screens/orders/order_screen.dart';
 
 import '/screens/profile/edit_profile_screen.dart';
@@ -41,5 +40,4 @@ final Map<String, WidgetBuilder> routes = {
   EditProfileScreen.routeName: (context) => const EditProfileScreen(),
   NotificationScreen.routeName: (context) => const NotificationScreen(),
   OrderScreen.routeName: (context) => const OrderScreen(),
-  OrderDetailsScreen.routeName: (context) => const OrderDetailsScreen(),
 };

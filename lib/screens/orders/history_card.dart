@@ -1,7 +1,8 @@
-import 'package:ecommerce/constant/color_properties.dart';
-import 'package:ecommerce/screens/order_details/order_details.dart';
-import 'package:ecommerce/utils/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '/constant/color_properties.dart';
+import '/screens/order_details/order_details.dart';
+import '/utils/size_config.dart';
 
 class OrderCard extends StatelessWidget {
   final String date;
