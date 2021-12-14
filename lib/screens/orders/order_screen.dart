@@ -1,11 +1,10 @@
-import 'dart:developer';
-
-import 'package:ecommerce/screens/order_details/order_details.dart';
+import '/screens/order_details/order_details.dart';
+import '/screens/orders/history_card.dart';
+import 'package:flutter/material.dart';
 
 import '/constant/color_properties.dart';
 import '/utils/scroll_configuration.dart';
 import '/utils/size_config.dart';
-import 'package:flutter/material.dart';
 
 class OrderScreen extends StatelessWidget {
   static const routeName = '/orderScreen';
@@ -72,16 +71,11 @@ class OrderScreen extends StatelessWidget {
                 Expanded(
                   child: ScrollConfiguration(
                     behavior: MyBehavior(),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: SizeConfig.heightMultiplier,
-                      ),
-                      child: TabBarView(
-                        children: [
-                          pendingOrders(context),
-                          completedOrders(context),
-                        ],
-                      ),
+                    child: TabBarView(
+                      children: [
+                        pendingOrders(context),
+                        completedOrders(context),
+                      ],
                     ),
                   ),
                 ),
@@ -95,17 +89,32 @@ class OrderScreen extends StatelessWidget {
 
   Widget pendingOrders(BuildContext context) {
     return ListView.separated(
-      itemBuilder: (_, __) => orderCard(context),
+      itemBuilder: (_, __) => const OrderCard(
+        date: "2020-01-01",
+        orderId: "20TUV209",
+        price: "2000.00",
+        address: "Dharan Nepal",
+        title: "My Order",
+        backGround: colorWhite,
+      ),
       itemCount: 10,
+      padding: EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier),
       separatorBuilder: (_, __) => SizedBox(
-        height: SizeConfig.heightMultiplier * .5,
+        height: SizeConfig.heightMultiplier,
       ),
     );
   }
 
   Widget completedOrders(BuildContext context) {
     return ListView.separated(
-      itemBuilder: (_, __) => orderCard(context),
+      itemBuilder: (_, __) => const OrderCard(
+        date: "2020-01-01",
+        orderId: "20TUV209",
+        price: "2000.00",
+        address: "Dharan Nepal",
+        title: "My Order",
+        backGround: colorWhite,
+      ),
       itemCount: 10,
       separatorBuilder: (_, __) => SizedBox(
         height: SizeConfig.heightMultiplier * .5,
@@ -113,76 +122,5 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  void navigate(BuildContext context) {
-    Navigator.of(context).pushNamed(OrderDetailsScreen.routeName);
-  }
 
-  Widget orderCard(BuildContext context) {
-    return GestureDetector(
-      onTap: () => navigate(context),
-      child: Card(
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            SizeConfig.heightMultiplier * 2,
-          ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.heightMultiplier * 2,
-            vertical: SizeConfig.heightMultiplier,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Center(child: Text("Order ID: 12345")),
-              SizedBox(
-                height: SizeConfig.heightMultiplier,
-              ),
-              const Text(
-                "Package ID: #4566",
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(
-                height: SizeConfig.heightMultiplier * 1.5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text("Items: 3"),
-                  Text("Amount: \$300"),
-                ],
-              ),
-              SizedBox(
-                height: SizeConfig.heightMultiplier,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text("Date: 2073/12/11"),
-                  Container(
-                    height: 4.5 * SizeConfig.heightMultiplier,
-                    width: 4.5 * SizeConfig.heightMultiplier,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).canvasColor,
-                      borderRadius: BorderRadius.circular(
-                        SizeConfig.heightMultiplier * 2,
-                      ),
-                    ),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        size: SizeConfig.imageSizeMultiplier * 4.5,
-                      ),
-                      onPressed: () => navigate(context),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
-}
