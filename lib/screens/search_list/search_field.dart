@@ -26,7 +26,7 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Autocomplete<Product>(
+    return Autocomplete<Products>(
       optionsViewBuilder: (context, function, products) {
         return Scaffold(
             body: Container(
@@ -51,7 +51,7 @@ class SearchField extends StatelessWidget {
                     arguments:
                         ProductDetailsArguments(product: products.toList()[i]),
                   ),
-                  title: Text(products.toList()[i].title),
+                  title: Text(products.toList()[i].name),
                 );
               }),
         ));
@@ -114,7 +114,7 @@ class SearchField extends StatelessWidget {
       },
       optionsBuilder: (TextEditingValue textEditingValue) {
         if (textEditingValue.text == '') {
-          return const Iterable<Product>.empty();
+          return const Iterable<Products>.empty();
         }
         Provider.of<ProductProvider>(context, listen: false)
             .searchProducts(textEditingValue.text.trim());

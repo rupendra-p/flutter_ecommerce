@@ -1,8 +1,9 @@
+import 'package:ecommerce/api/sign_up_api.dart';
+import 'package:ecommerce/widgets/general_alert_dialog.dart';
 import 'package:flutter/material.dart';
 
 import '/constant/color_properties.dart';
 import '/constant/constants.dart';
-import '/screens/complete_profile/complete_profile_screen.dart';
 import '/screens/sign_in/sign_in_screen.dart';
 import '/utils/scroll_configuration.dart';
 import '/utils/size_config.dart';
@@ -122,6 +123,7 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
+  String? name;
   String? email;
   String? password;
   String? confirmPassword;
@@ -152,6 +154,10 @@ class _SignUpFormState extends State<SignUpForm> {
       key: _formKey,
       child: Column(
         children: [
+          buildNameFormField(),
+          SizedBox(
+            height: SizeConfig.heightMultiplier * 4,
+          ),
           buildEmailFormField(),
           SizedBox(
             height: SizeConfig.heightMultiplier * 4,
@@ -166,11 +172,22 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           DefaultButton(
             text: "Continue",
-            press: () {
+            press: () async {
               if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
+                try {
+                  _formKey.currentState!.save();
+                  // print(email);
+                  GeneralAlertDialog().showLoadingDialog(context);
+                  await SignUpApi().signUpUser(name!, email!, password!);
+                  Navigator.pop(context);
+                                  Navigator.pop(context);
 
-                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                } catch (ex) {
+                  // print(ex.toString());
+                  Navigator.pop(context);
+
+                  GeneralAlertDialog().showAlertDialog(ex.toString(),context);
+                }
               }
             },
           ),
@@ -272,6 +289,32 @@ class _SignUpFormState extends State<SignUpForm> {
             onPressed: () {},
             icon: const Icon(
               Icons.email_outlined,
+            )),
+      ),
+    );
+  }
+
+  TextFormField buildNameFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.next,
+      onSaved: (newValue) => name = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kNamelNullError);
+        }
+        return;
+      },
+      validator: (value) => ValidationMixin().validateName(value!),
+      decoration: InputDecoration(
+        isDense: true,
+        labelText: "Name",
+        hintText: "Enter your name",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.person_outlined,
             )),
       ),
     );

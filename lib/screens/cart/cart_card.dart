@@ -32,7 +32,7 @@ class CartCard extends StatelessWidget {
                 color: Theme.of(context).primaryColorDark,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(cart.product.images[0]),
+              child: Image.network(cart.product.image),
             ),
           ),
         ),
@@ -42,7 +42,7 @@ class CartCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                cart.product.title,
+                cart.product.name,
                 style: Theme.of(context).textTheme.bodyText1,
                 maxLines: 2,
               ),
@@ -51,7 +51,7 @@ class CartCard extends StatelessWidget {
               ),
               Text.rich(
                 TextSpan(
-                  text: "\$${cart.product.price}",
+                  text: "Rs. ${cart.product.price}",
                   style: Theme.of(context)
                       .textTheme
                       .bodyText1!

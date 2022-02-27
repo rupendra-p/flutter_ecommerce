@@ -1,4 +1,9 @@
+import 'package:ecommerce/api/sign_in_api.dart';
+import 'package:ecommerce/providers/product_provider.dart';
+import 'package:ecommerce/widgets/general_alert_dialog.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '/constant/color_properties.dart';
 import '/constant/constants.dart';
@@ -101,6 +106,16 @@ class _SignFormState extends State<SignForm> {
   final List<String?> errors = [];
   bool isObsecure = true;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (kDebugMode) {
+      email = "binit@gmail.com";
+      password = "123456789";
+    }
+  }
+
   void addError({String? error}) {
     if (!errors.contains(error)) {
       setState(() {
@@ -168,11 +183,22 @@ class _SignFormState extends State<SignForm> {
           ),
           DefaultButton(
             text: "Continue",
-            press: () {
+            press: () async {
               if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                try {
+                  _formKey.currentState!.save();
+                  KeyboardUtil.hideKeyboard(context);
+                  GeneralAlertDialog().showLoadingDialog(context);
+                  await SignInApi().signInUser(context, email!, password!);
+                  await Provider.of<ProductProvider>(context, listen: false)
+                      .fetchProduct();
+                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(
+                      context, LoginSuccessScreen.routeName);
+                } catch (ex) {
+                  Navigator.pop(context);
+                  GeneralAlertDialog().showAlertDialog(ex.toString(), context);
+                }
               }
             },
           ),
@@ -186,6 +212,7 @@ class _SignFormState extends State<SignForm> {
       obscureText: isObsecure,
       textInputAction: TextInputAction.done,
       onSaved: (newValue) => password = newValue,
+      initialValue: password,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
@@ -221,6 +248,7 @@ class _SignFormState extends State<SignForm> {
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
       onSaved: (newValue) => email = newValue,
+      initialValue: email,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);

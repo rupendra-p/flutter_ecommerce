@@ -275,7 +275,7 @@ class OrderDetail extends StatelessWidget {
             //   width: SizeConfig.heightMultiplier * 4,
             //   fit: BoxFit.cover,
             // ),
-            child: Image.asset(
+            child: Image.network(
               "assets/images/ps4_console_white_1.png",
             ),
           ),

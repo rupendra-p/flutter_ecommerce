@@ -32,7 +32,7 @@ class WishListCard extends StatelessWidget {
                 color: Theme.of(context).primaryColorDark,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(wishList.product.images[0]),
+              child: Image.network(wishList.product.image),
             ),
           ),
         ),
@@ -42,7 +42,7 @@ class WishListCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                wishList.product.title,
+                wishList.product.name,
                 style: Theme.of(context).textTheme.bodyText1,
                 maxLines: 2,
               ),
@@ -63,7 +63,7 @@ class WishListCard extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
-            if (wishList.product.quantity > 0) {}
+            if (wishList.product.countInStock > 0) {}
             Provider.of<CartProvider>(context, listen: false)
                 .addToCart(wishList.product, 1);
             Provider.of<WishListProvider>(context, listen: false)

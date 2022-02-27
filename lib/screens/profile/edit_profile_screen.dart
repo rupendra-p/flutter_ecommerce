@@ -1,10 +1,13 @@
+import 'package:ecommerce/api/profile_update_api.dart';
 import 'package:ecommerce/constant/color_properties.dart';
+import 'package:ecommerce/constant/constants.dart';
 import 'package:ecommerce/providers/customer_provider.dart';
 import 'package:ecommerce/utils/keyboard.dart';
 import 'package:ecommerce/utils/scroll_configuration.dart';
 import 'package:ecommerce/utils/size_config.dart';
 import 'package:ecommerce/utils/validation_mixin.dart';
 import 'package:ecommerce/widgets/default_button.dart';
+import 'package:ecommerce/widgets/general_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -49,25 +52,16 @@ class EditProfileScreen extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.heightMultiplier,
               ),
-              Hero(
-                tag: 'profile-image',
-                child: Consumer<CustomerProvider>(builder: (_, data, __) {
-                  return data.customer == null
-                      ? CircleAvatar(
-                          radius: SizeConfig.imageSizeMultiplier * 15,
+              CircleAvatar(
                           backgroundColor: secondaryColor,
+                        radius: SizeConfig.imageSizeMultiplier * 20 ,
+
                           child: Icon(
                             Icons.person,
                             size: SizeConfig.imageSizeMultiplier * 20,
                             color: canvasColor,
                           ),
-                        )
-                      : CircleAvatar(
-                          radius: SizeConfig.imageSizeMultiplier * 15,
-                          backgroundImage: MemoryImage(data.customer!.image!),
-                        );
-                }),
-              ),
+                        ),
               SizedBox(
                 height: SizeConfig.heightMultiplier * 5,
               ),
@@ -77,16 +71,7 @@ class EditProfileScreen extends StatelessWidget {
                   child: EditProfileForm(_formKey),
                 ),
               ),
-              DefaultButton(
-                text: "Submit",
-                press: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    KeyboardUtil.hideKeyboard(context);
-                    Navigator.of(context).pop();
-                  }
-                },
-              ),
+              
             ],
           ),
         ),
@@ -108,14 +93,32 @@ class _EditProfileFormState extends State<EditProfileForm> {
   final _validationMixin = ValidationMixin();
   String? name;
   String? email;
-  String? phoneNumber;
-  String? address;
-  List<String> genders = ["Male", "Female", "Others"];
-  String? gender;
+  String? password;
+  String? confirmPassword;
+  bool remember = false;
+  final List<String?> errors = [];
+  bool isPasswordObsecure = true;
+  bool isConfirmPasswordObsecure = true;
 
   @override
   void initState() {
     super.initState();
+  }
+
+  void addError({String? error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error);
+      });
+    }
+  }
+
+  void removeError({String? error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
   }
 
   @override
@@ -134,65 +137,114 @@ class _EditProfileFormState extends State<EditProfileForm> {
             SizedBox(
               height: SizeConfig.heightMultiplier * 3,
             ),
-            buildPhoneNumberFormField(),
+            buildPasswordFormField(),
             SizedBox(
               height: SizeConfig.heightMultiplier * 3,
             ),
-            buildAddressFormField(),
-            SizedBox(
-              height: SizeConfig.heightMultiplier * 3,
-            ),
-            buildGenderDropDownField(),
+            buildConfirmPassFormField(),
             SizedBox(
               height: SizeConfig.heightMultiplier * 2.5,
             ),
+            DefaultButton(
+                text: "Submit",
+                press: () async{
+                  if (widget.formKey.currentState!.validate()) {
+                    widget.formKey.currentState!.save();
+                    try {
+                  GeneralAlertDialog().showLoadingDialog(context);
+                  final response = await ProfileUpdateApi().updateProfile(context, name!, email!, password!);
+                  
+                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                    // Navigator.of(context).pop();
+
+                } catch (ex) {
+                  // print(ex.toString());
+                  Navigator.pop(context);
+
+                  GeneralAlertDialog().showAlertDialog(ex.toString(),context);
+                    KeyboardUtil.hideKeyboard(context);
+                }
+                  }
+                },
+              ),
           ],
         ),
       ),
     );
   }
 
-  TextFormField buildAddressFormField() {
+    TextFormField buildConfirmPassFormField() {
     return TextFormField(
-      keyboardType: TextInputType.streetAddress,
+      obscureText: isConfirmPasswordObsecure,
       textInputAction: TextInputAction.done,
-      onSaved: (newValue) => address = newValue,
-      validator: (value) => _validationMixin.validateAddress(value!),
+      onSaved: (newValue) => confirmPassword = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kPassNullError);
+        } else if (value.isNotEmpty && password == confirmPassword) {
+          removeError(error: kMatchPassError);
+        }
+        confirmPassword = value;
+      },
+      validator: (value) => ValidationMixin().validatePassword(value!),
       decoration: InputDecoration(
         isDense: true,
-        labelText: "Address",
-        hintText: "Enter your address",
+        labelText: "Confirm Password",
+        hintText: "Re-enter your password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.contact_mail_outlined,
+          onPressed: () {
+            setState(() {
+              isConfirmPasswordObsecure = !isConfirmPasswordObsecure;
+            });
+          },
+          icon: Icon(
+            isConfirmPasswordObsecure
+                ? Icons.visibility_off_outlined
+                : Icons.visibility_outlined,
           ),
         ),
       ),
     );
   }
 
-  TextFormField buildPhoneNumberFormField() {
+  TextFormField buildPasswordFormField() {
     return TextFormField(
-      keyboardType: TextInputType.phone,
+      obscureText: isPasswordObsecure,
       textInputAction: TextInputAction.next,
-      onSaved: (newValue) => phoneNumber = newValue,
-      validator: (value) => _validationMixin.validateMobile(value!),
+      onSaved: (newValue) => password = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kPassNullError);
+        } else if (value.length >= 8) {
+          removeError(error: kShortPassError);
+        }
+        password = value;
+      },
+      validator: (value) => ValidationMixin().validatePassword(value!),
       decoration: InputDecoration(
         isDense: true,
-        labelText: "Phone Number",
-        hintText: "Enter your phone number",
+        labelText: "Password",
+        hintText: "Enter your password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.phone_outlined,
+          onPressed: () {
+            setState(() {
+              isPasswordObsecure = !isPasswordObsecure;
+            });
+          },
+          icon: Icon(
+            isPasswordObsecure
+                ? Icons.visibility_off_outlined
+                : Icons.visibility_outlined,
           ),
         ),
       ),
     );
   }
+
+
 
   TextFormField buildNameFormField() {
     return TextFormField(
@@ -230,56 +282,6 @@ class _EditProfileFormState extends State<EditProfileForm> {
           onPressed: () {},
           icon: const Icon(
             Icons.email_outlined,
-          ),
-        ),
-      ),
-    );
-  }
-
-  buildGenderDropDownField() {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(2 * SizeConfig.heightMultiplier),
-        border: Border.all(
-          color: Theme.of(context).textTheme.headline1!.color == colorWhite
-              ? colorGrey
-              : primaryColor,
-          // color:
-          //     Theme.of(context).inputDecorationTheme.border!.borderSide.color,
-          width: 1,
-        ),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: SingleChildScrollView(
-          child: ButtonTheme(
-            alignedDropdown: true,
-            child: DropdownButton<String>(
-              iconDisabledColor: Colors.grey,
-              isExpanded: true,
-              hint: Text(
-                'Select Gender',
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
-              value: gender,
-              style: TextStyle(
-                fontSize: 2 * SizeConfig.textMultiplier,
-                fontWeight: FontWeight.w400,
-              ),
-              onChanged: (String? newValue) {
-                setState(() {
-                  gender = newValue!;
-                });
-              },
-              items: genders.map((genderType) {
-                return DropdownMenuItem(
-                  child: Text(
-                    genderType,
-                    style: Theme.of(context).textTheme.subtitle1,
-                  ),
-                  value: genderType,
-                );
-              }).toList(),
-            ),
           ),
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant/color_properties.dart';
 import 'package:ecommerce/screens/notifications/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +24,7 @@ class HomeHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const Text('TOKOTO'),
+          const Text('Shopping With Us',style:TextStyle(color: secondaryColor)),
           const Spacer(),
           IconBtnWithCounter(
             icon: const Icon(

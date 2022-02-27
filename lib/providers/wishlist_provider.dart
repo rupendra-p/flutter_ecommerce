@@ -9,7 +9,7 @@ class WishListProvider with ChangeNotifier {
   List<WishList> get wishlists => _wishlists;
 
   addToWishList(
-    Product product,
+    Products product,
   ) {
     final wishListItem = checkIsInWishList(product.id);
     if (wishListItem != null) {
@@ -23,13 +23,13 @@ class WishListProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  WishList? checkIsInWishList(int id) {
+  WishList? checkIsInWishList(String id) {
     return _wishlists.firstWhereOrNull(
       (element) => element.product.id == id,
     );
   }
 
-  removeFromWishList(Product product) {
+  removeFromWishList(Products product) {
     final wishListItem = checkIsInWishList(product.id);
     if (wishListItem != null) {
       _wishlists.remove(wishListItem);

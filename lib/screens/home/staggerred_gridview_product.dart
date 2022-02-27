@@ -28,6 +28,7 @@ class _StaggeredGridListViewState extends State<StaggeredGridListView> {
           height: SizeConfig.heightMultiplier,
         ),
         Consumer<ProductProvider>(builder: (_, data, __) {
+          print(data.products.length.toString() + "is the length");
           return StaggeredGridView.countBuilder(
             crossAxisCount: 2,
             shrinkWrap: true,

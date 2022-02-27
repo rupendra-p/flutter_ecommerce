@@ -1,7 +1,7 @@
 import 'product.dart';
 
 class WishList {
-  final Product product;
+  final Products product;
 
   WishList(this.product);
 }

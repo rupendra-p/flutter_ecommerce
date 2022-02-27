@@ -53,7 +53,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           preferredSize: Size.fromHeight(
             AppBar().preferredSize.height,
           ),
-          child: CustomAppBar(rating: agrs.product.rating),
+          child: CustomAppBar(rating: agrs.product.rating.toDouble()),
         ),
         bottomNavigationBar: Padding(
           padding: EdgeInsets.symmetric(
@@ -96,15 +96,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         product: agrs.product,
                         pressOnSeeMore: () {},
                       ),
-                      TopRoundedContainer(
-                        color: Theme.of(context).canvasColor,
-                        child: ColorDots(
-                          product: agrs.product,
-                          quantity: quantity,
-                          incrementChange: incrementValueChanged,
-                          decrementChange: decrementValueChanged,
-                        ),
-                      ),
+                      // TopRoundedContainer(
+                      //   color: Theme.of(context).canvasColor,
+                      //   child: ColorDots(
+                      //     product: agrs.product,
+                      //     quantity: quantity,
+                      //     incrementChange: incrementValueChanged,
+                      //     decrementChange: decrementValueChanged,
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
@@ -118,7 +118,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 }
 
 class ProductDetailsArguments {
-  final Product product;
+  final Products product;
 
   ProductDetailsArguments({required this.product});
 }

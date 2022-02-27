@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '/constant/color_properties.dart';
 import '/providers/wishlist_provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,10 +21,11 @@ class ProductCard extends StatelessWidget {
   }) : super(key: key);
 
   final double width, aspectRetio;
-  final Product product;
+  final Products product;
   final String category;
   @override
   Widget build(BuildContext context) {
+    print("00");
     return SizedBox(
       width: SizeConfig.widthMultiplier * 30,
       child: GestureDetector(
@@ -46,13 +49,13 @@ class ProductCard extends StatelessWidget {
                 ),
                 child: Hero(
                   tag: '${product.id.toString()} $category',
-                  child: Image.asset(product.images[0]),
+                  child:  Image.network(product.image),
                 ),
               ),
             ),
             const SizedBox(height: 10),
             Text(
-              product.title,
+              product.name,
               // style: const TextStyle(color: Colors.black),
               maxLines: 2,
             ),
@@ -60,7 +63,7 @@ class ProductCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "\$${product.price}",
+                  "Rs.${product.price}",
                   style: TextStyle(
                     fontSize: SizeConfig.heightMultiplier * 2.5,
                     fontWeight: FontWeight.w600,

@@ -1,3 +1,7 @@
+import 'package:ecommerce/providers/cart_provider.dart';
+import 'package:ecommerce/screens/address/address.dart';
+import 'package:provider/provider.dart';
+
 import '/constant/color_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,7 +34,7 @@ class CheckoutCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            /* Row(
               children: [
                 Container(
                   padding: EdgeInsets.all(SizeConfig.heightMultiplier),
@@ -53,29 +57,35 @@ class CheckoutCard extends StatelessWidget {
             ),
             SizedBox(
               height: 2.5 * SizeConfig.heightMultiplier,
-            ),
+            ), */
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text.rich(
-                  TextSpan(
-                    text: "Total:\n",
-                    style: Theme.of(context).textTheme.bodyText1,
-                    children: [
+                Consumer<CartProvider>(
+                  builder: (_, value, __) {
+                    return Text.rich(
                       TextSpan(
-                        text: "\$337.15",
-                        style: Theme.of(context).textTheme.headline6!.copyWith(
-                              color: secondaryColor,
-                            ),
+                        text: "Total:\n",
+                        style: Theme.of(context).textTheme.bodyText1,
+                        children: [
+                          TextSpan(
+                            text: "Rs. ${value.getTotalCartSum()}",
+                            style: Theme.of(context).textTheme.headline6!.copyWith(
+                                  color: secondaryColor,
+                                ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    );
+                  }
                 ),
                 SizedBox(
                   width: 25 * SizeConfig.heightMultiplier,
                   child: DefaultButton(
                     text: "Check Out",
-                    press: () {},
+                    press: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=>DeliveryAddress()));
+                    },
                   ),
                 ),
               ],

@@ -11,7 +11,7 @@ class ProductImages extends StatefulWidget {
     required this.product,
   }) : super(key: key);
 
-  final Product product;
+  final Products product;
 
   @override
   _ProductImagesState createState() => _ProductImagesState();
@@ -24,23 +24,23 @@ class _ProductImagesState extends State<ProductImages> {
     return Column(
       children: [
         SizedBox(
-          width: SizeConfig.heightMultiplier * 28,
+          width: SizeConfig.heightMultiplier * 100,
           child: AspectRatio(
             aspectRatio: 1,
             child: Hero(
               tag: widget.product.id.toString(),
-              child: Image.asset(widget.product.images[selectedImage]),
+              child: Image.network(widget.product.image,),
             ),
           ),
         ),
         // SizedBox(height: getProportionateScreenWidth(20)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...List.generate(widget.product.images.length,
-                (index) => buildSmallProductPreview(index)),
-          ],
-        )
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     ...List.generate(widget.product.images.length,
+        //         (index) => buildSmallProductPreview(index)),
+        //   ],
+        // )
       ],
     );
   }
@@ -67,7 +67,7 @@ class _ProductImagesState extends State<ProductImages> {
               color:
                   secondaryColor.withOpacity(selectedImage == index ? 1 : 0)),
         ),
-        child: Image.asset(widget.product.images[index]),
+        child: Image.asset(widget.product.image),
       ),
     );
   }

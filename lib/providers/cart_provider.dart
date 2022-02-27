@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:ecommerce/api/http_calls.dart';
+import 'package:ecommerce/urls.dart';
+
 import '/models/product.dart';
 import '/models/cart.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +13,7 @@ class CartProvider with ChangeNotifier {
   List<Cart> _carts = [];
   List<Cart> get cart => _carts;
 
-  addToCart(Product product, int numberOfItem) {
+  addToCart(Products product, int numberOfItem) {
     final cart = checkIsInCart(product.id);
     if (cart != null) {
       final indexOfCart = _carts.indexOf(cart);
@@ -21,13 +26,13 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Cart? checkIsInCart(int id) {
+  Cart? checkIsInCart(String id) {
     return _carts.firstWhereOrNull(
       (element) => element.product.id == id,
     );
   }
 
-  removeFromCart(Product product) {
+  removeFromCart(Products product) {
     final cart = checkIsInCart(product.id);
     if (cart != null) {
       _carts.remove(cart);
@@ -44,5 +49,46 @@ class CartProvider with ChangeNotifier {
       numberOfItems += element.numOfItem;
     }
     return numberOfItems;
+  }
+
+  double getTotalCartSum() {
+    if (_carts.isEmpty) {
+      return 0;
+    }
+    var sumOfItems = 0.0;
+    for (var element in _carts) {
+      sumOfItems += element.numOfItem * element.product.price;
+    }
+    return sumOfItems;
+  }
+
+  Map getPrices() {
+    final shippingPrice = getTotalCartSum() > 100 ? 0 : 100;
+    final taxPrice = getTotalCartSum() * 0.15;
+    final totalPrice = getTotalCartSum() + shippingPrice + taxPrice;
+
+    final map = {
+      "itemsPrice": getTotalCartSum(),
+      "shippingPrice": shippingPrice,
+      "taxPrice": taxPrice,
+      "totalPrice": totalPrice,
+    };
+    return map;
+  }
+
+  checkout(Map shippingAddresses)async {
+    try {
+    final map = {
+      // "orderItems": [],
+      "shippingAddress":shippingAddresses,      
+      "paymentMethod": "Paypal",
+      ...getPrices()
+    };
+    print(map);
+    final httpCalls = HTTPCalls();
+    final response = await httpCalls.postData(orderUrl, (map));
+  }catch (ex) {
+    throw ex.toString();
+  }
   }
 }

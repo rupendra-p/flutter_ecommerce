@@ -15,7 +15,7 @@ class ProductDescription extends StatelessWidget {
     this.pressOnSeeMore,
   }) : super(key: key);
 
-  final Product product;
+  final Products product;
   final GestureTapCallback? pressOnSeeMore;
 
   @override
@@ -35,13 +35,13 @@ class ProductDescription extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      product.title,
+                      product.name,
                       maxLines: 2,
                       style: Theme.of(context).textTheme.headline6,
                     ),
                     SizedBox(height: SizeConfig.heightMultiplier),
                     Text(
-                      "Rs.200",
+                      "Rs ${product.price}",
                       style: Theme.of(context)
                           .textTheme
                           .headline6!
@@ -110,13 +110,36 @@ class ProductDescription extends StatelessWidget {
           ),
         ),
         SizedBox(height: SizeConfig.heightMultiplier * 2),
+        SeeMoreDetail(product.description),
+      ],
+    );
+  }
+}
+
+class SeeMoreDetail extends StatefulWidget {
+  const SeeMoreDetail(this.description, { Key? key }) : super(key: key);
+
+  final String description;
+
+  @override
+  _SeeMoreDetailState createState() => _SeeMoreDetailState();
+}
+
+class _SeeMoreDetailState extends State<SeeMoreDetail> {
+
+  bool toShowLines = false;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: SizeConfig.heightMultiplier * 2,
           ),
           child: Text(
-            product.description,
-            maxLines: 3,
+            widget.description,
+            maxLines: toShowLines ? null : 3,
             textAlign: TextAlign.justify,
           ),
         ),
@@ -126,10 +149,14 @@ class ProductDescription extends StatelessWidget {
             vertical: 10,
           ),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              setState(() {
+                toShowLines = !toShowLines;
+              });
+            },
             child: Row(
               children: [
-                Text("See More Detail",
+                Text("See ${toShowLines ? 'Less' : 'More'} Detail",
                     style: Theme.of(context).textTheme.subtitle2!.copyWith(
                           color: secondaryColor,
                         )),

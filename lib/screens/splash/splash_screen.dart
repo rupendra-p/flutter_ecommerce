@@ -18,12 +18,11 @@ class _SplashScreenState extends State<SplashScreen> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to Tokoto, Let’s shop!",
+      "text": "Welcome to ECommerce App, Let’s shop!",
       "image": "assets/images/splash_1.png"
     },
     {
-      "text":
-          "We help people conect with store \naround United State of America",
+      "text": "We help people connect with store \naround all over the Nepal",
       "image": "assets/images/splash_2.png"
     },
     {
@@ -74,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       DefaultButton(
                         text: "Continue",
                         press: () {
-                          Navigator.pushNamed(context, SignInScreen.routeName);
+                          Navigator.pushReplacementNamed(context, SignInScreen.routeName);
                         },
                       ),
                       const Spacer(),
@@ -119,7 +118,7 @@ class SplashContent extends StatelessWidget {
       children: <Widget>[
         const Spacer(),
         Text(
-          "TOKOTO",
+          "ECommerce",
           style: Theme.of(context).textTheme.headline4!.copyWith(),
         ),
         SizedBox(height: SizeConfig.heightMultiplier * 2),

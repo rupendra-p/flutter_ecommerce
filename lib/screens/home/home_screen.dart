@@ -5,7 +5,6 @@ import '/utils/scroll_configuration.dart';
 import '/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
 
@@ -39,15 +38,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     const DiscountBanner(),
-                    const Categories(),
+                    // const Categories(),
                     const SpecialOffers(),
                     SizedBox(
                       height: SizeConfig.heightMultiplier * 2.5,
                     ),
-                    const PopularProducts(),
-                    SizedBox(
-                      height: SizeConfig.heightMultiplier * 2.5,
-                    ),
+                    // const PopularProducts(),
+                    // SizedBox(
+                    //   height: SizeConfig.heightMultiplier * 2.5,
+                    // ),
                     const StaggeredGridListView(),
                   ],
                 ),
