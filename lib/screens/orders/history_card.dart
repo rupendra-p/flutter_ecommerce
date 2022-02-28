@@ -7,8 +7,10 @@ import '/utils/size_config.dart';
 class OrderCard extends StatelessWidget {
   final String date;
   final String address;
-
   final String price;
+  final String charge;
+  final String shipping;
+  final List items;
   final String title;
   final String orderId;
   final Color? backGround;
@@ -19,6 +21,9 @@ class OrderCard extends StatelessWidget {
     required this.title,
     required this.address,
     required this.price,
+    required this.charge,
+    required this.shipping,
+    required this.items,
     required this.orderId,
     this.backGround,
   }) : super(key: key);
@@ -119,6 +124,22 @@ class OrderCard extends StatelessWidget {
   }
 
   void navigate(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => OrderDetail()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => OrderDetail(
+          details: {
+            "date": date,
+            "address": address,
+            "price": price,
+            "shipping": shipping,
+            "charge": charge,
+            "title": title,
+            "orderId": orderId,
+            "items": items,
+          },
+        ),
+      ),
+    );
   }
 }

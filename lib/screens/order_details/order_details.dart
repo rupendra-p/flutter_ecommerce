@@ -4,23 +4,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '/constant/color_properties.dart';
 import '/utils/size_config.dart';
 
-final amounts = [
-  [
-    "Sub Total",
-    "Rs. 1000",
-  ],
-  [
-    "Service Charge",
-    "Rs. 800",
-  ],
-  [
-    "Total",
-    "Rs. 1800",
-  ]
-];
-
 class OrderDetail extends StatelessWidget {
-  OrderDetail({Key? key}) : super(key: key);
+  OrderDetail({Key? key, required this.details}) : super(key: key);
+
+  final dynamic details;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +19,6 @@ class OrderDetail extends StatelessWidget {
           vertical: SizeConfig.heightMultiplier,
         ),
         child: Material(
-          // color: Theme.of(context).,
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
@@ -101,7 +87,7 @@ class OrderDetail extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'JUL 25, 2020',
+                                        details['date'],
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyText1,
@@ -111,7 +97,7 @@ class OrderDetail extends StatelessWidget {
                                             SizeConfig.heightMultiplier * .5,
                                       ),
                                       Text(
-                                        '#e23123343',
+                                        details['orderId'],
                                         style: Theme.of(context)
                                             .textTheme
                                             .subtitle2!
@@ -141,7 +127,7 @@ class OrderDetail extends StatelessWidget {
                                   width: SizeConfig.widthMultiplier,
                                 ),
                                 Text(
-                                  "Dharan, Nepal",
+                                  details['address'],
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText1!
@@ -169,10 +155,13 @@ class OrderDetail extends StatelessWidget {
                           SizeConfig.heightMultiplier * 2,
                         ),
                         child: Table(
-                            textDirection: TextDirection.ltr,
-                            children: amounts
-                                .map((e) => customTableRow(context, e))
-                                .toList()),
+                          textDirection: TextDirection.ltr,
+                          children:[ 
+                            customTableRow(context, 'VAT', details['charge']),
+                            customTableRow(context, 'Shipping Charge', details['shipping']),
+                            customTableRow(context, 'Total Amount', details['price']),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -217,15 +206,15 @@ class OrderDetail extends StatelessWidget {
     ));
   }
 
-  TableRow customTableRow(BuildContext context, List list) {
+  TableRow customTableRow(BuildContext context, String title, String value) {
     return TableRow(children: [
       Text(
-        list[0],
+       title,
         style: Theme.of(context).textTheme.bodyText2,
         textScaleFactor: 1.1,
       ),
       Text(
-        list[1],
+        value,
         textAlign: TextAlign.end,
         style: Theme.of(context).textTheme.bodyText1,
         textScaleFactor: 1.1,

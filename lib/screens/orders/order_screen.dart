@@ -98,21 +98,34 @@ class OrderScreen extends StatelessWidget {
       builder: (context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView.separated(
-            itemBuilder: (context, index) => snapshot.data![index]['isDelivered'] == false ? OrderCard(
-              date: DateFormat('yyyy-MM-dd').parse(snapshot.data![index]['createdAt'])
-                  .toString().split(" ")[0],
-              orderId: snapshot.data![index]['_id'],
-              price: snapshot.data![index]['totalPrice'].toString(),
-              address: "${snapshot.data![index]['shippingAddress']['address']}, ${snapshot.data![index]['shippingAddress']['city']}",
-              title: "My Order",
-              backGround: colorWhite,
-            ) : Container(),
+            itemBuilder: (context, index) =>
+                snapshot.data![index]['isDelivered'] == false
+                    ? OrderCard(
+                        date: DateFormat('yyyy-MM-dd')
+                            .parse(snapshot.data![index]['createdAt'])
+                            .toString()
+                            .split(" ")[0],
+                        orderId: snapshot.data![index]['_id'],
+                        charge: snapshot.data![index]['taxPrice'].toString(),
+                        price: snapshot.data![index]['totalPrice'].toString(),
+                        address:
+                            "${snapshot.data![index]['shippingAddress']['address']}, ${snapshot.data![index]['shippingAddress']['city']}",
+                        title: "My Order",
+                        items: snapshot.data![index]['orderItems'],
+                        shipping:
+                            snapshot.data![index]['shippingPrice'].toString(),
+                        backGround: colorWhite,
+                      )
+                    : Container(),
             itemCount: snapshot.data.length,
             padding:
                 EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier),
-            separatorBuilder: (_, index) =>snapshot.data![index]['isDelivered'] == false ? SizedBox(
-              height: SizeConfig.heightMultiplier,
-            ) : Container(),
+            separatorBuilder: (_, index) =>
+                snapshot.data![index]['isDelivered'] == false
+                    ? SizedBox(
+                        height: SizeConfig.heightMultiplier,
+                      )
+                    : Container(),
           );
         }
         return const Center(child: CircularProgressIndicator());
@@ -121,26 +134,39 @@ class OrderScreen extends StatelessWidget {
   }
 
   Widget completedOrders(BuildContext context) {
-     return FutureBuilder(
+    return FutureBuilder(
       future: OrderApi().getOrders(),
       builder: (context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView.separated(
-            itemBuilder: (context, index) => snapshot.data![index]['isDelivered'] == true ? OrderCard(
-              date: DateFormat('yyyy-MM-dd').parse(snapshot.data![index]['createdAt'])
-                  .toString().split(" ")[0],
-              orderId: snapshot.data![index]['_id'],
-              price: snapshot.data![index]['totalPrice'].toString(),
-              address: "${snapshot.data![index]['shippingAddress']['address']}, ${snapshot.data![index]['shippingAddress']['city']}",
-              title: "My Order",
-              backGround: colorWhite,
-            ) : Container(),
+            itemBuilder: (context, index) =>
+                snapshot.data![index]['isDelivered'] == true
+                    ? OrderCard(
+                        date: DateFormat('yyyy-MM-dd')
+                            .parse(snapshot.data![index]['createdAt'])
+                            .toString()
+                            .split(" ")[0],
+                        charge: snapshot.data![index]['taxPrice'].toString(),
+                        orderId: snapshot.data![index]['_id'],
+                        price: snapshot.data![index]['totalPrice'].toString(),
+                        address:
+                            "${snapshot.data![index]['shippingAddress']['address']}, ${snapshot.data![index]['shippingAddress']['city']}",
+                        items: snapshot.data![index]['orderItems'],
+                        shipping:
+                            snapshot.data![index]['shippingPrice'].toString(),
+                        title: "My Order",
+                        backGround: colorWhite,
+                      )
+                    : Container(),
             itemCount: snapshot.data.length,
             padding:
                 EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier),
-            separatorBuilder: (_, index) =>snapshot.data![index]['isDelivered'] == true ? SizedBox(
-              height: SizeConfig.heightMultiplier,
-            ) : Container(),
+            separatorBuilder: (_, index) =>
+                snapshot.data![index]['isDelivered'] == true
+                    ? SizedBox(
+                        height: SizeConfig.heightMultiplier,
+                      )
+                    : Container(),
           );
         }
         return const Center(child: CircularProgressIndicator());
