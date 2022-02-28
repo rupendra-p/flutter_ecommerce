@@ -24,6 +24,29 @@ class HTTPCalls {
     }
   }
 
+  
+  getDataWithToken(String url, ) async {
+    try {
+      final sharedPreferences = await SharedPreferences.getInstance();
+      final token = sharedPreferences.get(tokenKey);
+
+      http.Response response = await http.get(
+        Uri.parse(url),
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $token"   
+        }
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return jsonDecode(response.body);
+      } 
+      throw jsonDecode(response.body)["message"];
+    } catch (ex) {
+      throw ex.toString();
+    }
+  }
+
   getDataWithoutToken(String url, ) async {
     try {
       http.Response response = await http.get(

@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:ecommerce/api/order_api.dart';
+import 'package:intl/intl.dart';
+
 import '/screens/order_details/order_details.dart';
 import '/screens/orders/history_card.dart';
 import 'package:flutter/material.dart';
@@ -88,39 +93,58 @@ class OrderScreen extends StatelessWidget {
   }
 
   Widget pendingOrders(BuildContext context) {
-    return ListView.separated(
-      itemBuilder: (_, __) => const OrderCard(
-        date: "2020-01-01",
-        orderId: "20TUV209",
-        price: "2000.00",
-        address: "Dharan Nepal",
-        title: "My Order",
-        backGround: colorWhite,
-      ),
-      itemCount: 10,
-      padding: EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier),
-      separatorBuilder: (_, __) => SizedBox(
-        height: SizeConfig.heightMultiplier,
-      ),
+    return FutureBuilder(
+      future: OrderApi().getOrders(),
+      builder: (context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return ListView.separated(
+            itemBuilder: (context, index) => snapshot.data![index]['isDelivered'] == false ? OrderCard(
+              date: DateFormat('yyyy-MM-dd').parse(snapshot.data![index]['createdAt'])
+                  .toString().split(" ")[0],
+              orderId: snapshot.data![index]['_id'],
+              price: snapshot.data![index]['totalPrice'].toString(),
+              address: "${snapshot.data![index]['shippingAddress']['address']}, ${snapshot.data![index]['shippingAddress']['city']}",
+              title: "My Order",
+              backGround: colorWhite,
+            ) : Container(),
+            itemCount: snapshot.data.length,
+            padding:
+                EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier),
+            separatorBuilder: (_, index) =>snapshot.data![index]['isDelivered'] == false ? SizedBox(
+              height: SizeConfig.heightMultiplier,
+            ) : Container(),
+          );
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
     );
   }
 
   Widget completedOrders(BuildContext context) {
-    return ListView.separated(
-      itemBuilder: (_, __) => const OrderCard(
-        date: "2020-01-01",
-        orderId: "20TUV209",
-        price: "2000.00",
-        address: "Dharan Nepal",
-        title: "My Order",
-        backGround: colorWhite,
-      ),
-      itemCount: 10,
-      separatorBuilder: (_, __) => SizedBox(
-        height: SizeConfig.heightMultiplier * .5,
-      ),
+     return FutureBuilder(
+      future: OrderApi().getOrders(),
+      builder: (context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return ListView.separated(
+            itemBuilder: (context, index) => snapshot.data![index]['isDelivered'] == true ? OrderCard(
+              date: DateFormat('yyyy-MM-dd').parse(snapshot.data![index]['createdAt'])
+                  .toString().split(" ")[0],
+              orderId: snapshot.data![index]['_id'],
+              price: snapshot.data![index]['totalPrice'].toString(),
+              address: "${snapshot.data![index]['shippingAddress']['address']}, ${snapshot.data![index]['shippingAddress']['city']}",
+              title: "My Order",
+              backGround: colorWhite,
+            ) : Container(),
+            itemCount: snapshot.data.length,
+            padding:
+                EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier),
+            separatorBuilder: (_, index) =>snapshot.data![index]['isDelivered'] == true ? SizedBox(
+              height: SizeConfig.heightMultiplier,
+            ) : Container(),
+          );
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
     );
   }
-
-
-  }
+}
