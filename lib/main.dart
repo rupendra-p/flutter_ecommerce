@@ -15,7 +15,7 @@ import '/utils/routes.dart';
 import '/utils/size_config.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env");
+  WidgetsFlutterBinding.ensureInitialized();
   ThemeService.sharedPreferences = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
                           // ThemeMode.dark,
                           controller.themeMode,
                       debugShowCheckedModeBanner: false,
-                      title: dotenv.env['clientName']!,
+                      title: "Toy Shop",
                       theme: lightTheme(context),
                       darkTheme: darkTheme(context),
                       // home: NavigationScreen(),
